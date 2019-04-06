@@ -3,15 +3,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false|
-|name|string|null:false|
-|name_kana|string|null:false|
-|postal_code|integer|null:false|
-|predecture|string|null:false|
-|city|string|null:false|
-|address|integer|null:false|
-|building|string||
-|phone_number|integer|null:false|
-|nickname|string|null:false|
+|userinformation_id|integer|null: false ,foreign_key|
 |point|integer||
 |payment|string|null:false|
 |mailaddress|string|null:false ,unique:true|
@@ -24,11 +16,31 @@
 ### Association
 - belongs_to :evaluation
 - belongs_to :transaction
+- has_many :user_informations
 - has_many :todos
 - has_many :sales
 - has_many :sale_histories
 - has_many :exhibits
 - has_many :transfer_applications
+
+
+
+## User_informationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null:false|
+|name|string|null:false|
+|name_kana|string|null:false|
+|postal_code|integer|null:false|
+|predecture|string|null:false|
+|city|string|null:false|
+|address|integer|null:false|
+|building|string||
+|phone_number|integer|null:false|
+|nickname|string|null:false|
+
+### Association
+- belongs_to :user
 
 
 
