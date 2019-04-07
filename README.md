@@ -14,6 +14,7 @@
 - belongs_to :profile
 - belongs_to :evaluation
 - belongs_to :transaction
+- has_many :items
 - has_many :todos
 - has_many :sales
 - has_many :sale_hists
@@ -101,13 +102,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
+|exshibit|string|null: false|
 |user_id|integer|null: false, foreign_key:true|
-|item_id|integer|null: false, foreign_key:true|
 
 ### Association
 - belongs_to :user
-- has_many :items
+- has_many: items
 
 
 
@@ -192,6 +192,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|purchase|string|null: false|
 |user_id|integer|null: false ,foreign_key:true|
 |item_id|integer|null: false ,foreign_key:true|
 
@@ -206,9 +207,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |evaluation|string|null: false|
+|user_id|integer|null: false,foreign_key:true|
 
 ### Association
-- has_many :users
+- belongs_to :user
 
 
 
@@ -216,6 +218,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|transaction|string|null: false|
 |user_id|integer|null: false ,foreign_key:true|
 |item_id|integer|null: false ,foreign_key:true|
 
