@@ -2,33 +2,35 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
-|userinformation_id|integer|null: false ,foreign_key|
+|profile_id|integer|null: false ,foreign_key|
 |point|integer||
 |payment|string|null:false|
 |mailaddress|string|null:false ,unique:true|
 |password|string|null:false ,unique:true|
 |profile_comment|text||
 |transfer|sting|null:false|
-|evluation_id|integer||
-|transaction_id|integer||
 
 ### Association
+- belongs_to :profile
 - belongs_to :evaluation
 - belongs_to :transaction
-- has_many :user_informations
 - has_many :todos
 - has_many :sales
-- has_many :sale_histories
+- has_many :sale_hists
 - has_many :exhibits
-- has_many :transfer_applications
+- has_many :Transfer_appli_hists
+- has_many :comments
+- has_many :purchaseis
+- has_many :evaluations
+- has_many :transactions
 
 
 
-## User_informationsテーブル
+
+
+## Profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null:false|
 |name|string|null:false|
 |name_kana|string|null:false|
 |postal_code|integer|null:false|
@@ -40,7 +42,7 @@
 |nickname|string|null:false|
 
 ### Association
-- belongs_to :user
+- has_many :users
 
 
 
@@ -48,7 +50,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |user_id|integer|null: false, foreign_key:true|
 |todo|text|null: false|
 
@@ -57,11 +58,10 @@
 
 
 
-## Transferapplicationhistotoriesテーブル
+## Transfer_appli_histsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |user_id|integer|null: false, foreign_key:true|
 |history|string|null: false|
 |time|timestamps|null: false
@@ -75,7 +75,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |user_id|integer|null: false, foreign_key:true|
 |sale|integer|null:false|
 |limit|timestamps|null:false|
@@ -86,11 +85,10 @@
 
 
 
-## Salehistoriesテーブル
+## Sale_histsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |user_id|integer|null: false, foreign_key:true|
 |salehistory|integer|null:false|
 
@@ -117,16 +115,15 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |name|string|null: false|
 |picture|string|null: false|
-|user_id|integer|null: false ,foreign_key:true|
 |date_of_shipment|string|null: false|
 |description|text|null: false|
 |state|string|null: false|
 |fee|integer|null: false|
 |howmany|string|null: false|
 |amount_of_money|integer|null: false|
+|user_id|integer|null: false ,foreign_key:true|
 |exshibit_id|integer|null: false ,foreign_key:true|
 |category_id|integer|null: false ,foreign_key:true|
 |brand_id|integer|null: false ,foreign_key:true|
@@ -134,8 +131,11 @@
 ### Association
 - belongs_to :user
 - belongs_to :exhibit
-- has_many :categories
-- has_many :brands
+- belongs_to :category
+- belongs_to :brand
+- has_many :comments
+- has_many :purchaseis
+- has_many :transactions
 
 
 
@@ -143,14 +143,13 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |user_id|integer|null: false ,foreign_key:true|
 |item_id|integer|null: false ,foreign_key:true|
 |comment|text|null: false|
 
 ### Association
 - belongs_to :item
-- has_many :users
+- belongs_to :user
 
 
 
@@ -158,13 +157,13 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |category|string|null: false|
 |type_id|integer|null:false ,foreign_key:true|
 
 ### Association
-- belongs_to :item
-- has_many :types
+- belongs_to :type
+- has_many :items
+
 
 
 
@@ -172,23 +171,20 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |type|string|null: false|
 
 ### Association
-- belongs_to :category
-
+- has_many :categories
 
 
 ## Brandsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |brand|string|null: false|
 
 ### Association
-- belongs_to :item
+- has_many :items
 
 
 
@@ -196,13 +192,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |user_id|integer|null: false ,foreign_key:true|
 |item_id|integer|null: false ,foreign_key:true|
 
 ### Association
-- has_many :users
-- has_many :items
+- belongs_to :item
+- belongs_to :user
 
 
 
@@ -210,11 +205,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |evaluation|string|null: false|
 
 ### Association
-- belongs_to :user
+- has_many :users
 
 
 
@@ -222,10 +216,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|id|integer|null: false|
 |user_id|integer|null: false ,foreign_key:true|
 |item_id|integer|null: false ,foreign_key:true|
 
 ### Association
-- has_many :items
-- has_many :users
+- belongs_to :item
+- belongs_to :user
