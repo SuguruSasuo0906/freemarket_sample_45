@@ -52,7 +52,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|reference|null: false, foreign_key:true|
-|todo|text|null: false|
+|message|text|null: false|
 
 ### Association
 - belongs_to :user
@@ -145,7 +145,7 @@
 |------|----|-------|
 |user_id|reference|null: false ,foreign_key:true|
 |item_id|reference|null: false ,foreign_key:true|
-|comment|text|null: false|
+|message|text|null: false|
 
 ### Association
 - belongs_to :item
