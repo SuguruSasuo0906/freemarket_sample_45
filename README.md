@@ -2,7 +2,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|profile_id|integer|null: false ,foreign_key|
+|profile_id|reference|null: false ,foreign_key|
 |point|integer||
 |payment|string|null:false|
 |mailaddress|string|null:false ,unique:true|
@@ -51,7 +51,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key:true|
+|user_id|reference|null: false, foreign_key:true|
 |todo|text|null: false|
 
 ### Association
@@ -63,7 +63,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key:true|
+|user_id|referense|null: false, foreign_key:true|
 |history|string|null: false|
 |time|timestamps|null: false
 
@@ -76,7 +76,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key:true|
+|user_id|reference|null: false, foreign_key:true|
 |sale|integer|null:false|
 |limit|timestamps|null:false|
 |scedule|timestamps|null:false|
@@ -90,7 +90,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key:true|
+|user_id|reference|null: false, foreign_key:true|
 |salehistory|integer|null:false|
 
 ### Association
@@ -103,7 +103,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |exshibit|string|null: false|
-|user_id|integer|null: false, foreign_key:true|
+|user_id|reference|null: false, foreign_key:true|
 
 ### Association
 - belongs_to :user
@@ -123,10 +123,10 @@
 |fee|integer|null: false|
 |howmany|string|null: false|
 |amount_of_money|integer|null: false|
-|user_id|integer|null: false ,foreign_key:true|
-|exshibit_id|integer|null: false ,foreign_key:true|
-|category_id|integer|null: false ,foreign_key:true|
-|brand_id|integer|null: false ,foreign_key:true|
+|user_id|reference|null: false ,foreign_key:true|
+|exshibit_id|reference|null: false ,foreign_key:true|
+|category_id|reference|null: false ,foreign_key:true|
+|brand_id|reference|null: false ,foreign_key:true|
 
 ### Association
 - belongs_to :user
@@ -143,8 +143,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false ,foreign_key:true|
-|item_id|integer|null: false ,foreign_key:true|
+|user_id|reference|null: false ,foreign_key:true|
+|item_id|reference|null: false ,foreign_key:true|
 |comment|text|null: false|
 
 ### Association
@@ -158,23 +158,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |category|string|null: false|
-|type_id|integer|null:false ,foreign_key:true|
+|parent_id|reference||
 
 ### Association
-- belongs_to :type
+- belongs_to :parent
 - has_many :items
-
-
-
-
-## Typesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|type|string|null: false|
-
-### Association
-- has_many :categories
+- has_many :chirdren, foreign_key: :parent_id
 
 
 ## Brandsテーブル
@@ -192,9 +181,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|purchase|string|null: false|
-|user_id|integer|null: false ,foreign_key:true|
-|item_id|integer|null: false ,foreign_key:true|
+|history|string|null: false|
+|transaction|string|null: false|
+|user_id|reference|null: false ,foreign_key:true|
+|item_id|reference|null: false ,foreign_key:true|
 
 ### Association
 - belongs_to :item
@@ -207,21 +197,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |evaluation|string|null: false|
-|user_id|integer|null: false,foreign_key:true|
+|user_id|reference|null: false,foreign_key:true|
 
 ### Association
-- belongs_to :user
-
-
-
-## Transactionsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|transaction|string|null: false|
-|user_id|integer|null: false ,foreign_key:true|
-|item_id|integer|null: false ,foreign_key:true|
-
-### Association
-- belongs_to :item
 - belongs_to :user
