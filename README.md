@@ -77,7 +77,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|reference|null: false, foreign_key:true|
-|sale|integer|null:false|
+|name|integer|null:false|
 |limit|timestamps|null:false|
 |scedule|timestamps|null:false|
 
@@ -91,7 +91,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|reference|null: false, foreign_key:true|
-|salehistory|integer|null:false|
+|history|integer|null:false|
 
 ### Association
 - belongs_to :user
@@ -102,7 +102,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|exshibit|string|null: false|
+|name|string|null: false|
 |user_id|reference|null: false, foreign_key:true|
 
 ### Association
@@ -157,7 +157,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|category|string|null: false|
+|name|string|null: false|
 |parent_id|reference||
 
 ### Association
@@ -170,7 +170,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|brand|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :items
