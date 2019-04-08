@@ -85,19 +85,6 @@
 - belongs_to :user
 
 
-
-## Sale_histsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|reference|null: false, foreign_key:true|
-|history|integer|null:false|
-
-### Association
-- belongs_to :user
-
-
-
 ## Exshibitsテーブル
 
 |Column|Type|Options|
@@ -181,8 +168,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|history|string|null: false|
-|transaction|string|null: false|
+|sall_history|string|null: false|
+|buy_history|string|null: false|
+|status|enum|null: false|
 |user_id|reference|null: false ,foreign_key:true|
 |item_id|reference|null: false ,foreign_key:true|
 
