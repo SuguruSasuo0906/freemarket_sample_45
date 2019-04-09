@@ -32,16 +32,16 @@
 |------|----|-------|
 |name|string|null:false|
 |name_kana|string|null:false|
-|postal_code|integer|null:false|
-|predecture|string|null:false|
+|postal_code|string|null:false|
+|prefecture|string|null:false|
 |city|string|null:false|
-|address|integer|null:false|
-|building|string||
-|phone_number|integer|null:false|
+|block_number|string|null:false|
+|building_name|string||
+|phone_number|string|null:false|
 |nickname|string|null:false|
 
 ### Association
-- has_one :users
+- has_one :user
 
 
 
@@ -75,7 +75,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|reference|null: false, foreign_key:true|
-|name|integer|null:false|
+|name|string|null:false|
 |limit|timestamps|null:false|
 |scedule|timestamps|null:false|
 
@@ -105,8 +105,8 @@
 |description|text|null: false|
 |state|string|null: false|
 |fee|integer|null: false|
-|howmany|string|null: false|
-|amount_of_money|integer|null: false|
+|quantity|integer|null: false|
+|price|integer|null: false|
 |user_id|reference|null: false ,foreign_key:true|
 |exshibit_id|reference|null: false ,foreign_key:true|
 |category_id|reference|null: false ,foreign_key:true|
