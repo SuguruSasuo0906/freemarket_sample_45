@@ -12,8 +12,6 @@
 
 ### Association
 - belongs_to :profile
-- belongs_to :evaluation
-- belongs_to :transaction
 - has_many :items
 - has_many :todos
 - has_many :sales
@@ -103,7 +101,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|picture|string|null: false|
 |date_of_shipment|string|null: false|
 |description|text|null: false|
 |state|string|null: false|
@@ -120,9 +117,21 @@
 - belongs_to :exhibit
 - belongs_to :category
 - belongs_to :brand
+- has_many :pictures
 - has_many :comments
 - has_many :purchaseis
 - has_many :transactions
+
+
+
+## Picturesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|item_id|reference|null: false, foreign_key:true|
+
+### Association
+- belongs_to :item
 
 
 
