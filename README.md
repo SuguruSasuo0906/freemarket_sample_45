@@ -43,7 +43,7 @@
 |nickname|string|null:false|
 
 ### Association
-- has_many :users
+- has_one :users
 
 
 
