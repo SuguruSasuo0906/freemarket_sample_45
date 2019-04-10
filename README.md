@@ -6,7 +6,6 @@
 |name_kana|string|null:false|
 |nickname|string|null:false|
 |address_id|reference|null: false ,foreign_key|
-|phone_number|string|null:false|
 |mail_address|string|null:false ,unique:true|
 |password|string|null:false ,unique:true|
 |profile_comment|text||
@@ -37,6 +36,7 @@
 |city|string|null:false|
 |block_number|string|null:false|
 |building_name|string||
+|phone_number|string|null:false|
 
 ### Association
 - has_one :user
