@@ -2,16 +2,20 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|profile_id|reference|null: false ,foreign_key|
-|point|integer||
-|payment|string|null:false|
-|mailaddress|string|null:false ,unique:true|
+|name|string|null:false|
+|name_kana|string|null:false|
+|nickname|string|null:false|
+|address_id|reference|null: false ,foreign_key|
+|phone_number|string|null:false|
+|mail_address|string|null:false ,unique:true|
 |password|string|null:false ,unique:true|
 |profile_comment|text||
+|point|integer||
+|payment|string|null:false|
 |transfer|sting|null:false|
 
 ### Association
-- belongs_to :profile
+- belongs_to :address
 - has_many :items
 - has_many :todos
 - has_many :sales
@@ -25,20 +29,14 @@
 
 
 
-
-
-## Profilesテーブル
+## Addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false|
-|name_kana|string|null:false|
 |postal_code|string|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
 |block_number|string|null:false|
 |building_name|string||
-|phone_number|string|null:false|
-|nickname|string|null:false|
 
 ### Association
 - has_one :user
