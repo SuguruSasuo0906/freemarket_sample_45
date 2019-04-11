@@ -5,7 +5,6 @@
 |name|string|null:false|
 |name_kana|string|null:false|
 |nickname|string|null:false|
-|address_id|reference|null: false ,foreign_key|
 |mail_address|string|null:false ,unique:true|
 |password|string|null:false ,unique:true|
 |profile_comment|text||
@@ -14,7 +13,7 @@
 |transfer|sting|null:false|
 
 ### Association
-- belongs_to :address
+- has_one :address
 - has_many :items
 - has_many :todos
 - has_many :sales
@@ -31,6 +30,7 @@
 ## Addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
+|user_id|reference|null: false ,foreign_key|
 |postal_code|string|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
@@ -39,7 +39,7 @@
 |phone_number|string|null:false|
 
 ### Association
-- has_one :user
+- belongs_to :user
 
 
 
