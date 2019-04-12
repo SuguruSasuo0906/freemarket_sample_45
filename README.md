@@ -19,7 +19,7 @@
 - has_many :sales
 - has_many :sale_hists
 - has_many :exhibits
-- has_many :Transfer_appli_hists
+- has_many :transfer_appli_hists
 - has_many :comments
 - has_many :purchaseis
 - has_many :evaluations
@@ -30,7 +30,7 @@
 ## Addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false ,foreign_key|
+|user_id|references|null: false ,foreign_key|
 |postal_code|string|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
@@ -47,7 +47,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key:true|
+|user_id|references|null: false, foreign_key:true|
 |message|text|null: false|
 
 ### Association
@@ -59,9 +59,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|referense|null: false, foreign_key:true|
+|user_id|referenses|null: false, foreign_key:true|
 |history|string|null: false|
-|time|timestamps|null: false
+|time|timestamps|null: false|
 
 ### Association
 - belongs_to :user
@@ -72,10 +72,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key:true|
+|user_id|references|null: false, foreign_key:true|
 |name|string|null:false|
 |limit|timestamps|null:false|
-|scedule|timestamps|null:false|
+|schedule|timestamps|null:false|
 
 ### Association
 - belongs_to :user
@@ -86,7 +86,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|user_id|reference|null: false, foreign_key:true|
+|user_id|references|null: false, foreign_key:true|
 
 ### Association
 - belongs_to :user
@@ -105,10 +105,10 @@
 |fee|integer|null: false|
 |quantity|integer|null: false|
 |price|integer|null: false|
-|user_id|reference|null: false ,foreign_key:true|
-|exshibit_id|reference|null: false ,foreign_key:true|
-|category_id|reference|null: false ,foreign_key:true|
-|brand_id|reference|null: false ,foreign_key:true|
+|user_id|references|null: false ,foreign_key:true|
+|exshibit_id|references|null: false ,foreign_key:true|
+|category_id|references|null: false ,foreign_key:true|
+|brand_id|references|null: false ,foreign_key:true|
 
 ### Association
 - belongs_to :user
@@ -126,7 +126,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|item_id|reference|null: false, foreign_key:true|
+|item_id|references|null: false, foreign_key:true|
 
 ### Association
 - belongs_to :item
@@ -137,8 +137,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false ,foreign_key:true|
-|item_id|reference|null: false ,foreign_key:true|
+|user_id|references|null: false ,foreign_key:true|
+|item_id|references|null: false ,foreign_key:true|
 |message|text|null: false|
 
 ### Association
@@ -152,12 +152,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|parent_id|reference||
+|parent_id|references|null: false, foreign_key:true|
 
 ### Association
 - belongs_to :parent
 - has_many :items
-- has_many :chirdren, foreign_key: :parent_id
+- has_many :children, foreign_key: :parent_id
 
 
 ## Brandsテーブル
@@ -178,8 +178,8 @@
 |sall_history|string|null: false|
 |buy_history|string|null: false|
 |status|enum|null: false|
-|user_id|reference|null: false ,foreign_key:true|
-|item_id|reference|null: false ,foreign_key:true|
+|user_id|references|null: false ,foreign_key:true|
+|item_id|references|null: false ,foreign_key:true|
 
 ### Association
 - belongs_to :item
@@ -192,7 +192,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |evaluation|string|null: false|
-|user_id|reference|null: false,foreign_key:true|
+|user_id|references|null: false,foreign_key:true|
 
 ### Association
 - belongs_to :user
