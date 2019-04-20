@@ -1,0 +1,67 @@
+.header
+    .header__up
+        =image_tag "logo001.png", class:"header__up__logo"
+        %form.header__up__form
+            %input.header__up__form-input{placeholder:"何かお探しですか？"}
+            = fa_icon "search" ,class:"header__up__form-input__icon-search"
+    .header__down
+        .header__down-left
+            %ul.header__down-left__nav
+                %li.header__down-left__nav-list
+                    = link_to "",class:"header__down-left__nav-list__link" do
+                        = fa_icon "list",class:"header__down-left__nav-list__link__icon-category"
+                        %span カテゴリーから探す
+                %li.header__down-left__nav-list
+                    = link_to "",class:"header__down-left__nav-list__link" do
+                        = fa_icon "tag",class:"header__down-left__nav-list__link__icon-brand"
+                        %span ブランドを探す
+        .header__down-right
+            %ul.header__down-right__nav
+                %li.header__down-right__nav-list
+                    = link_to "" do
+                        %span.header__down-right__nav-list__login-btn ログイン
+                %li.header__down-right__nav-list
+                    = link_to "" do
+                        %span.header__down-right__nav-list__login-btn-new 新規会員登録
+
+#information
+    .swiper-container
+        .swiper-wrapper
+            .swiper-slide 
+                = image_tag "information001.jpg"
+            .swiper-slide
+                = image_tag "information002.jpg"
+            .swiper-slide
+                = image_tag "information001.jpg"
+        .swiper-pagination
+        .swiper-button-prev
+        .swiper-button-next
+
+.contents
+    %h1.pickup ピックアップカテゴリー
+    .item
+        %h2.item__title レディース新着アイテム
+        //_pickup-item.html.hamlを画面に表示
+        = render partial: "pickup-item"
+        = link_to "",class:"item__footer" do
+            すべての商品を見る
+
+    .item
+        %h2.item__title メンズ新着アイテム
+        //_pickup-item.html.hamlを画面に表示
+        = render partial: "pickup-item"
+        = link_to "",class:"item__footer" do
+            すべての商品を見る
+
+    .item
+        %h2.item__title レディース新着アイテム
+        //_pickup-item.html.hamlを画面に表示
+        = render partial: "pickup-item"
+        = link_to "",class:"item__footer" do
+            すべての商品を見る
+       
+        
+.footer
+= link_to "",class:"sell-btn" do
+    .sell 出品
+    =fa_icon "camera",class:"sell-icon"
