@@ -1,0 +1,38 @@
+.login__header
+    %h1
+        = link_to root_path do
+            =image_tag "logo001.png", class:"login__logo"
+
+.login
+    .login__new
+        %h2.login__title アカウントをお持ちでない方はこちら
+        = link_to "新規会員登録", "../sign_up",class:"login__link__new"
+    .login__link
+        .login__link__wrapper
+            %button.login__link__wrapper__facebook Facebookでログイン
+            = fa_icon "facebook-official",class:"login__link__wrapper__facebook-icon"
+        .login__link__wrapper
+            %button.login__link__wrapper__google　Googleでログイン
+            = fa_icon "google",class:"login__link__wrapper__google-icon"
+
+    .login__form
+        = form_for user_session_path do |f|
+            = f.text_field :emal, placeholder:"メールアドレス",class:"login__form-email"
+            = f.text_field :password, placeholder:"パスワード",class:"login__form-password"
+            = recaptcha_tags
+            = f.submit "ログイン",class:"login__form-loginbtn"
+            .login__form__wrap
+                = link_to "パスワードをお忘れの方",new_user_password_path
+
+.login__footer
+    .login__footer__list
+        .login__footer__list-privacy
+            = link_to "プライバシーボリシー"
+        .login__footer__list-riyou
+            = link_to "メルカリ利用規約"
+        .login__footer__list-syoutorihiki
+            = link_to "特定商取引に関する表記"
+    = link_to root_path do
+        =image_tag "logo-gray.svg",class:"login__footer__logo"
+    %p.small_title @××××　Mercari
+  
