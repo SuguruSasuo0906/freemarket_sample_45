@@ -1,7 +1,7 @@
 .login__header {
   text-align: center;
   height: 128px;
-  .login__logo {
+  &__logo {
     margin: 40px 0 0;
     width: 134px;
     height: 36px;
@@ -20,12 +20,12 @@
     padding: 40px 64px;
     margin: 0 auto;
     border-bottom: 1px solid #eee;
-    .login__title {
+    &__title {
       text-align: center;
       font-size: 14px;
       padding: 5px;
     }
-    .login__link__new {
+    #login__new__link-new {
       max-width: 320px;
       display: block;
       line-height: 48px;
