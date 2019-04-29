@@ -17,12 +17,18 @@
                         %span ブランドを探す
         .header__down-right
             %ul.header__down-right__nav
-                %li.header__down-right__nav-list
-                    = link_to new_user_session_path do
-                        %span.header__down-right__nav-list__login-btn ログイン
-                %li.header__down-right__nav-list
-                    = link_to "sign_up",method:'get' do
-                        %span.header__down-right__nav-list__login-btn-new 新規会員登録
+                -if user_signed_in?
+                    %li.header__down-right__nav-list
+                        = link_to destroy_user_session_path, method: :delete do
+                            %span.header__down-right__nav-list__login-btn ログアウト
+
+                -else
+                    %li.header__down-right__nav-list
+                        = link_to new_user_session_path do
+                            %span.header__down-right__nav-list__login-btn ログイン
+                    %li.header__down-right__nav-list
+                        = link_to "sign_up",method:'get' do
+                            %span.header__down-right__nav-list__login-btn-new 新規会員登録
 
 #information
     .swiper-container
