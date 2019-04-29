@@ -62,7 +62,7 @@
             = f.text_field :password, placeholder:"６文字以上",class:"login__form-password-error",maxlength:"128"
             %p.new__main-contents__form-wrap-p パスワード(確認)を入力してください
           -else
-            = f.text_field :password, placeholder:"６文字以上",class:"login__form-password",maxlength:"128"
+            = f.text_field :password_confirmation, placeholder:"６文字以上",class:"login__form-password",maxlength:"128"
           
         .new__main-contents__form-wrap
           %h1 本人確認
