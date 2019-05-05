@@ -67,4 +67,3 @@ gem 'font-awesome-rails'
 gem 'devise'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'dotenv-rails'
-gem 'rspec-rails'
