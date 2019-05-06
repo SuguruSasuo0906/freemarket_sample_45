@@ -1,0 +1,54 @@
+//新規会員登録ヘッダー部分//
+.new__header
+  .new__header__wrap
+    %h1
+      = link_to "/" do
+        =image_tag "logo001.png", class:"new__header__wrap__logo"
+    %ol
+      %li.new__header__wrap__order
+        会員情報
+        .new__header__wrap__order-active-draw
+      %li.new__header__wrap__order-active
+        電話番号認証
+        .new__header__wrap__order-draw
+      %li.new__header__wrap__order
+        お届け先住所入力
+        .new__header__wrap__order-draw
+      %li.new__header__wrap__order
+        支払い方法
+        .new__header__wrap__order-draw
+      %li.new__header__wrap__order-last
+        完了
+        .new__header__wrap__order-last-draw
+//電話番号の確認コンテンツ部分//
+.new__main
+  %h2.new__main-contents__title 電話番号の確認
+  .new__main-contents
+    = form_for(@address) do |f|
+      .new__main-contents__form
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 携帯電話の番号
+          = f.text_field :phone_number, placeholder:"携帯電話の番号を入力",class:"login__form-nickname"
+
+          %span 本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。
+  
+
+        = f.submit "SMSを送信する",class:"login__form-loginbtn"
+        %span ※電話番号は本人確認や不正利用防止の為に利用します。他のユーザーに公開されることはありません。
+
+        .login__form__wrap
+          = link_to "電話番号の確認が必要な理由＞",""
+
+//新規会員登録フッダー部分//
+.new__footer
+  .new__footer__list
+    .new__footer__list-privacy
+      = link_to "プライバシーボリシー"
+    .new__footer__list-riyou
+      = link_to "メルカリ利用規約"
+    .new__footer__list-syoutorihiki
+      = link_to "特定商取引に関する表記"
+  = link_to root_path do
+    =image_tag "logo-gray.svg",class:"new__footer__logo"
+  %p.small_title @××××　Mercari
+    
