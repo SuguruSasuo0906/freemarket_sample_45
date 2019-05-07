@@ -6,7 +6,7 @@ class AddressesController < ApplicationController
     def create
         @address=Address.new(address_params)
         if @address.save
-            redirect_to address_path(user_id:current_user.id)
+            redirect_to new_address_path(user_id:current_user.id)
         else
             render :new
         end
