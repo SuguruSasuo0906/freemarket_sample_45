@@ -6,7 +6,7 @@ class AddressesController < ApplicationController
     def create
         @address=Address.new(address_params)
         if @address.save
-            redirect_to root_path
+            redirect_to address_path(user_id:current_user.id)
         else
             render :new
         end
@@ -14,6 +14,6 @@ class AddressesController < ApplicationController
 
     private
     def address_params
-        params.require(:address).permit(:phone_number).merge(user_id:current_user.id)
+        params.require(:address).permit(:phone_number,:postal_code,:prefecture,:city,:block_number,:building_name).merge(user_id:current_user.id)
     end
 end

@@ -10,14 +10,16 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   has_one :address
-has_many :items
-has_many :todos
-has_many :sales
-has_many :sale_hists
-has_many :exhibits
-has_many :transfer_appli_hists
-has_many :comments
-has_many :purchaseis
-has_many :evaluations
-has_many :transactions
+  accepts_nested_attributes_for :address
+
+  has_many :items
+  has_many :todos
+  has_many :sales
+  has_many :sale_hists
+  has_many :exhibits
+  has_many :transfer_appli_hists
+  has_many :comments
+  has_many :purchaseis
+  has_many :evaluations
+  has_many :transactions
 end

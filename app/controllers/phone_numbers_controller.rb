@@ -6,7 +6,7 @@ class PhoneNumbersController < ApplicationController
     def create
         @address=Address.new(address_params)
         if @address.save
-            redirect_to root_path
+            redirect_to address_path(address)
         else
             render :new
         end

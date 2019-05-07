@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @user=User.new
+    # @user.build_address
   end
 
   # POST /resource
@@ -47,7 +48,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 def user_params
-  params.permit(:nickname,:last_name,:first_name,:last_name_kana,:first_name_kana,:year,:month,:day)
+  params.permit(:nickname,:last_name,:first_name,:last_name_kana,:first_name_kana,:year,:month,:day,address_attributes:[:postal_code,:prefecture,:city,:block_number,:building_name])
 end
 
 def check_captcha
