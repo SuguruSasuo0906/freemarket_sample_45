@@ -10,7 +10,6 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   has_one :address
-  accepts_nested_attributes_for :address
 
   has_many :items
   has_many :todos
