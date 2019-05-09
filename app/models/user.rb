@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   has_one :address
+  has_one :phonenumber
 
   has_many :items
   has_many :todos

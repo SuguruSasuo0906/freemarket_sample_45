@@ -24,7 +24,7 @@
 .new__main
   %h2.new__main-contents__title 電話番号の確認
   .new__main-contents
-    = form_for(@address) do |f|
+    = form_for(@phone_number,url:{controller:'phone_numbers',action:'create'}) do |f|
       .new__main-contents__form
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 携帯電話の番号

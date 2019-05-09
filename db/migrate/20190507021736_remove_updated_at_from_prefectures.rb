@@ -4,6 +4,6 @@ class RemoveUpdatedAtFromPrefectures < ActiveRecord::Migration[5.0]
   end
 
   def down
-    remove_column :prefectures, :updated_at, :string
+    add_column :prefectures, :updated_at, :string
   end
 end

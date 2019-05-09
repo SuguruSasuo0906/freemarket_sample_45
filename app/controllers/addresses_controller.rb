@@ -4,9 +4,9 @@ class AddressesController < ApplicationController
     end
 
     def create
-        @address=Address.update(address_params)
+        @address=Address.create(address_params)
         if @address
-            redirect_to root_path
+            redirect_to new_address_path(@address)
         else
             render :new
         end
