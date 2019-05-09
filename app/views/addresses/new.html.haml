@@ -50,7 +50,7 @@
           %label.new__main-contents__form-wrap__label 都道府県
           %span.new__main-contents__form-wrap__hissu 必須
           .new__main-contents__form-wrap__select
-            = f.collection_select :prefecture_id, Prefecture.all,:id,:name,{prompt:'都道府県',autofocus: 'true', class: 'new__main-contents__form-wrap__select-year'}  
+            = f.collection_select :prefecture_id, Prefecture.all,:id,:name,{prompt:'都道府県'},{autofocus: 'true', class: 'new__main-contents__form-wrap__select-year'}  
             
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 市区町村

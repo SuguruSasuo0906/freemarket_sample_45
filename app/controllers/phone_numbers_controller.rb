@@ -1,11 +1,11 @@
 class PhoneNumbersController < ApplicationController
     def new
-        @phone_number=Phonenumber.new
+        @phonenumber=Phonenumber.new
     end
 
     def create
-        @phone_number=Phonenumber.new(phone_number_params)
-        if @phone_number.save
+        @phonenumber=Phonenumber.create(phonenumber_params)
+        if @phonenumber
             redirect_to new_address_path(@user)
         else
             render :new
@@ -13,8 +13,8 @@ class PhoneNumbersController < ApplicationController
     end
 
     private
-    def phone_number_params
-        params.require(:phone_number).permit(:phone_number).merge(user_id:current_user.id)
+    def phonenumber_params
+        params.require(:phonenumber).permit(:phone_number).merge(user_id:current_user.id)
     end
 
 end
