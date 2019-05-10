@@ -6,7 +6,7 @@ class AddressesController < ApplicationController
     def create
         @address=Address.create(address_params)
         if @address
-            redirect_to new_address_path(@address)
+            redirect_to new_creditcard_path
         else
             render :new
         end

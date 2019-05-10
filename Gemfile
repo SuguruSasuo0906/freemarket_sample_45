@@ -68,3 +68,4 @@ gem 'devise'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'dotenv-rails'
 gem 'pry-rails'
+gem 'payjp'

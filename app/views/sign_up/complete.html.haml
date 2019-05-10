@@ -1,0 +1,48 @@
+//新規会員登録ヘッダー部分//
+.new__header
+  .new__header__wrap
+    %h1
+      = link_to "/" do
+        =image_tag "logo001.png", class:"new__header__wrap__logo"
+    %ol
+      %li.process-first
+        会員情報
+        .process-radius-active-first
+      %li.process
+        電話番号認証
+        .process-radius-active-end
+      %li.process
+        お届け先住所入力
+        .process-radius-active-end
+      %li.process
+        支払い方法
+        .process-radius-active-end
+      %li.process-last.active
+        完了
+        .process-radius-active-last
+//電話番号の確認コンテンツ部分//
+.new__main
+  %h2.new__main-contents__title 会員登録完了
+  .new__main-contents
+    .new__main-contents__form
+      %span.shaji
+        ありがとうございます。
+        %br
+        会員登録が完了しました。
+      
+      =link_to "/" do
+        %span.complete メルカリをはじめる
+
+//新規会員登録フッダー部分//
+.new__footer
+  .new__footer__list
+    .new__footer__list-privacy
+      = link_to "プライバシーボリシー"
+    .new__footer__list-riyou
+      = link_to "メルカリ利用規約"
+    .new__footer__list-syoutorihiki
+      = link_to "特定商取引に関する表記"
+  = link_to root_path do
+    =image_tag "logo-gray.svg",class:"new__footer__logo"
+  %p.small_title @××××　Mercari
+    
