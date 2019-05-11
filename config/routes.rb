@@ -5,15 +5,19 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root 'freemarket_sample#index'
+
   resources :users
   resources :freemarket_sample, only:[:index]
+
   resources :sign_up, only:[:index] do
     collection do
       get 'complete', to: 'sign_up#complete'
     end
   end
+
   resources :addresses
   resources :phone_numbers
+  
   resources :creditcards, only:[:new, :show] do
     collection do
       post 'show', to: 'creditcards#show'
