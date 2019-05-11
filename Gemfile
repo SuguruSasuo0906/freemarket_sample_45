@@ -69,3 +69,7 @@ gem 'recaptcha', require: "recaptcha/rails"
 gem 'dotenv-rails'
 gem 'pry-rails'
 gem 'payjp'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'carrierwave'
+gem 'fog-aws'

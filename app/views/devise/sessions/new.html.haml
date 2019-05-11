@@ -9,11 +9,13 @@
         = link_to "新規会員登録", "../sign_up",id:"login__new__link-new"
     .login__link
         .login__link__wrapper
-            %button.login__link__wrapper__facebook Facebookでログイン
-            = fa_icon "facebook-official",class:"login__link__wrapper__facebook-icon"
+            = link_to user_facebook_omniauth_authorize_path do
+                %button.login__link__wrapper__facebook Facebookでログイン
+                = fa_icon "facebook-official",class:"login__link__wrapper__facebook-icon"
         .login__link__wrapper
-            %button.login__link__wrapper__google　Googleでログイン
-            = fa_icon "google",class:"login__link__wrapper__google-icon"
+            = link_to user_google_oauth2_omniauth_authorize_path do
+                %button.login__link__wrapper__google　Googleでログイン
+                = fa_icon "google",class:"login__link__wrapper__google-icon"
 
     .login__form
         = form_for user_session_path do |f|

@@ -9,11 +9,13 @@
             = link_to "メールアドレスで登録", new_user_registration_path,class:"sign-up__link__wrapper__mail"
             = fa_icon "envelope",id:"sign-up__link__wrapper__mail-icon"
         .sign-up__link__wrapper
-            %button.sign-up__link__wrapper__facebook Facebookでログイン
-            = fa_icon "facebook-official",id:"sign-up__link__wrapper__facebook-icon"
+            = link_to user_facebook_omniauth_authorize_path do
+                %button.sign-up__link__wrapper__facebook Facebookでログイン
+                = fa_icon "facebook-official",id:"sign-up__link__wrapper__facebook-icon"
         .sign-up__link__wrapper
-            %button.sign-up__link__wrapper__google　Googleでログイン
-            = fa_icon "google",id:"sign-up__link__wrapper__google-icon"
+            = link_to user_google_oauth2_omniauth_authorize_path do
+                %button.sign-up__link__wrapper__google　Googleでログイン
+                = fa_icon "google",id:"sign-up__link__wrapper__google-icon"
 .sign-up__footer
     .sign-up__footer__list
         .sign-up__footer__list-privacy
