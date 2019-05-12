@@ -3,10 +3,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   validates :nickname, presence: true
-  validates :first_name, presence: true
-  validates :first_name_kana, presence: true
-  validates :last_name, presence: true
-  validates :last_name_kana, presence: true
   validates :password, presence: true,length:{minimum:6,maximum:128}
   validates :email, presence: true
 
@@ -24,16 +20,55 @@ class User < ApplicationRecord
   has_many :evaluations
   has_many :transactions
 
+  attr_writer :first_name,:first_name_kana,:last_name,:last_name_kana
+
+  validates :first_name, presence: true
+  validates :first_name_kana, presence: true
+  validates :last_name, presence: true
+  validates :last_name_kana, presence: true
+
+  before_validation :set_name
+  before_validation :set_name_kana
+
+  def last_name
+    @last_name || self.name.split(" ").first if self.name.present?
+  end
+
+  def first_name
+    @first_name || self.name.split(" ").last if self.name.present?
+  end
+
+  def set_name
+    self.name = [@last_name, @first_name].join(" ")
+  end
+
+  def last_name_kana
+    @last_name_kana || self.name.split(" ").first if self.namekana.present?
+  end
+
+  def first_name_kana
+    @first_name_kana || self.name.split(" ").last if self.namekana.present?
+  end
+
+  def set_name_kana
+    self.namekana = [@last_name_kana, @first_name_kana].join(" ")
+  end
+
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      # user.name = auth.info.name   # assuming the user model has a name
-      # user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails, 
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+    @user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless @user
+      @user = User.new(
+        uid: auth.uid,
+        provider: auth.provider,
+        # email: auth.info.email,
+        # name: auth.info.name,
+        password: Devise.friendly_token[0, 20],
+        # image: auth.info.image
+      )
+      @user.save(validate: false)
     end
+    @user
   end
 
 end

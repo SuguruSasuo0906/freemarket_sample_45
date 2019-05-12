@@ -16,7 +16,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 /.DS_Store
-/.env
+.env
 
-/config/secrets.yml
-/config/certs/*
+config/secrets.yml
+config/certs/*

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190510135343) do
+ActiveRecord::Schema.define(version: 20190512015024) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 20190510135343) do
 
   create_table "phonenumbers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.string   "phone_number", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "number",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_phonenumbers_on_user_id", using: :btree
   end
 
@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 20190510135343) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "first_name",                                        null: false
-    t.string   "first_name_kana",                                   null: false
     t.integer  "point"
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
@@ -65,10 +63,10 @@ ActiveRecord::Schema.define(version: 20190510135343) do
     t.integer  "year"
     t.integer  "month"
     t.integer  "day"
-    t.string   "last_name"
-    t.string   "last_name_kana"
     t.string   "provider"
     t.string   "uid"
+    t.string   "name",                                 default: "", null: false
+    t.string   "namekana",                             default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

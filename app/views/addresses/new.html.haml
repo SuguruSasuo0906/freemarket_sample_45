@@ -23,7 +23,7 @@
       
 //住所確認コンテンツ部分//
 .new__main
-  %h2.new__main-contents__title 会員情報入力
+  %h2.new__main-contents__title お届け先住所入力
   .new__main-contents
     = form_for(@address) do |f|
       .new__main-contents__form
@@ -51,29 +51,29 @@
           %label.new__main-contents__form-wrap__label 都道府県
           %span.new__main-contents__form-wrap__hissu 必須
           .new__main-contents__form-wrap__select
-            = f.collection_select :prefecture_id, Prefecture.all,:id,:name,{prompt:'都道府県'},{autofocus: 'true', class: 'new__main-contents__form-wrap__select-year'}  
+            = f.collection_select :prefecture_id, Prefecture.all,:id,:name,{prompt:'-'},{autofocus: 'true', class: 'new__main-contents__form-wrap__select-year'}  
             
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 市区町村
           %span.new__main-contents__form-wrap__hissu 必須
           -if @address.errors.any?
-            = f.text_field :city, placeholder:"例）111-1111",class:"login__form-first-name-kana-error"
-            %p.new__main-contents__form-wrap-p 郵便番号を入力してください
+            = f.text_field :city, placeholder:"例)○○市",class:"login__form-first-name-kana-error"
+            %p.new__main-contents__form-wrap-p 市区町村を入力してください
           -else
-            = f.text_field :city, placeholder:"例）111-1111",class:"login__form-first-name-kana"
+            = f.text_field :city, placeholder:"例)○○市",class:"login__form-first-name-kana"
 
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 番地
           %span.new__main-contents__form-wrap__hissu 必須
           -if @address.errors.any?
-            = f.text_field :block_number, placeholder:"例）111-1111",class:"login__form-first-name-kana-error"
-            %p.new__main-contents__form-wrap-p 郵便番号を入力してください
+            = f.text_field :block_number, placeholder:"例）1-1-1",class:"login__form-first-name-kana-error"
+            %p.new__main-contents__form-wrap-p 番地を入力してください
           -else
-            = f.text_field :block_number, placeholder:"例）111-1111",class:"login__form-first-name-kana"
+            = f.text_field :block_number, placeholder:"例）1-1-1",class:"login__form-first-name-kana"
         
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 建物名
-          = f.text_field :building_name, placeholder:"例）111-1111",class:"login__form-first-name-kana"
+          = f.text_field :building_name, placeholder:"例）○○ビルディング１F",class:"login__form-first-name-kana"
 
 
 

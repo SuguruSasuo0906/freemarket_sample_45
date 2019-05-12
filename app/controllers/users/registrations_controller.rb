@@ -15,13 +15,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     #@user = User.new(user_params)
     #if verify_recaptcha
+    # @user = User.new(user_params)
+    # if @user.save
+    #  redirect_to new_phone_number_path(user_id: current_user.id)
+    #   return
+    # else
+    #   render :new
+    # end
     super
-    #if @user.save
-     # redirect_to new_address_path
-      #return
-    #else
-      #render :new
-    #end
    # else
       #self.resource = resource_class.new
       #respond_with_navigational(resource) { render :new }
@@ -47,9 +48,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   private
-def user_params
-  params.permit(:nickname,:last_name,:first_name,:last_name_kana,:first_name_kana,:year,:month,:day,address_attributes:[:postal_code,:prefecture,:city,:block_number,:building_name])
-end
+# def user_params
+#   params.require(:user).permit(:nickname,:last_name,:first_name,:last_name_kana,:first_name_kana,:year,:month,:day)
+# end
 
 def check_captcha
   self.resource = resource_class.new sign_up_params
