@@ -16,8 +16,13 @@ Rails.application.routes.draw do
   end
 
   resources :addresses
-  resources :phone_numbers
-  
+  resources :phone_numbers do
+    collection do
+      get 'verification_code_input', to: 'phone_numbers#verification_code_input'
+      get 'verification', to: 'phone_numbers#verification'
+    end
+  end 
+
   resources :creditcards, only:[:new, :show] do
     collection do
       post 'show', to: 'creditcards#show'

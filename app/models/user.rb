@@ -61,7 +61,7 @@ class User < ApplicationRecord
       @user = User.new(
         uid: auth.uid,
         provider: auth.provider,
-        # email: auth.info.email,
+        email: auth.info.email,
         # name: auth.info.name,
         password: Devise.friendly_token[0, 20],
         # image: auth.info.image
