@@ -76,19 +76,7 @@
                 .new__main-contents__form-wrap
                     #card_token
                     = submit_tag "次へ", id: "token_submit",class:"login__form-loginbtn"
-            //カード情報入力部分//
+            //カード情報入力部分ここまで//
 
-//新規会員登録フッダー部分//
-.new__footer
-    .new__footer__list
-        .new__footer__list-privacy
-            = link_to "プライバシーボリシー"
-        .new__footer__list-riyou
-            = link_to "メルカリ利用規約"
-        .new__footer__list-syoutorihiki
-            = link_to "特定商取引に関する表記"
-    = link_to root_path do
-        =image_tag "logo-gray.svg",class:"new__footer__logo"
-        %p.small_title @××××　Mercari
-  
+= render 'shared/member-new-login-footer'      
 
