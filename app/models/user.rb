@@ -3,8 +3,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
   validates :nickname, presence: true
-  validates :password, presence: true,length:{minimum:6,maximum:128}
-  validates :email, presence: true
+  validates :password, presence: true,length:{minimum:6,maximum:128,message:"を6文字以上１２８以下にしてください。",allow_blank: true}
+  validates :email, presence: true,uniqueness: { message: "に誤りがあります。ご確認いただき、正しく変更してください。" ,allow_blank: true},format: { with: /\A[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*[a-zA-Z]+\z/, allow_blank: true }
 
   has_one :address
   has_one :phonenumber
@@ -23,9 +23,9 @@ class User < ApplicationRecord
   attr_writer :first_name,:first_name_kana,:last_name,:last_name_kana
 
   validates :first_name, presence: true
-  validates :first_name_kana, presence: true
+  validates :first_name_kana, presence: true,format:{with:/\A[ア-ン]+\z/,allow_blank: true}
   validates :last_name, presence: true
-  validates :last_name_kana, presence: true
+  validates :last_name_kana, presence: true,format: {with:/\A[ア-ン]+\z/,allow_blank: true}
 
   before_validation :set_name
   before_validation :set_name_kana

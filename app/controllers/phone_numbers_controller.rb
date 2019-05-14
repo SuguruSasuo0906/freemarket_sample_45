@@ -1,4 +1,6 @@
 class PhoneNumbersController < ApplicationController
+    before_action :move_to_root,unless: :user_signed_in?
+
     def new
         @phonenumber=Phonenumber.new
     end
@@ -6,30 +8,35 @@ class PhoneNumbersController < ApplicationController
     def create
         @phonenumber = Phonenumber.new(phonenumber_params)
         if @phonenumber.save
-            redirect_to verification_code_input_phone_numbers_path(@phonenumber)
+            redirect_to phone_number_path(@phonenumber)
         else
             render :new
         end
     end
 
-    def verification_code_input
-        @phonenumber = Phonenumber.find(current_user.id)
+    def show
+        @phonenumber = Phonenumber.find(params[:id])
     end
 
     def update
-        @phonenumber = Phonenumber.find(current_user.id)
-        respond_to do |format|
-            if @phonenumber.verify_and_save(params[:verification_code_confirmation])
-                format.html{redirect_to new_creditcard_path}
-            else
-                format.html{render action:"verification_code_input"}
-            end
+        @phonenumber = Phonenumber.find(params[:id])
+        @verification_code_confirmation = params.permit(phonenumber: :verification_code_confirmation).to_h
+        if @phonenumber.verification_code == @verification_code_confirmation[:phonenumber][:verification_code_confirmation]
+            @phonenumber.update(verified:"true",verification_code:"nil")
+            redirect_to new_address_path(@phonenumber)
+        else
+            render :show
         end
     end
 
+
     private
     def phonenumber_params
-        params.require(:phonenumber).permit(:number,:verification_code_confirmation).merge(user_id: current_user.id)
+        params.require(:phonenumber).permit(:number,:verification_code,:verification_code_confirmation).merge(user_id: current_user.id)
+    end
+
+    def move_to_root
+        redirect_to root_path
     end
 
 end

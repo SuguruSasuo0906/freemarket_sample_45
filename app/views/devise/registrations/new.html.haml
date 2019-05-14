@@ -20,6 +20,7 @@
       %li.process-last
         完了
         .process-radius
+
       //新規会員登録コンテンツ部分//
 .new__main
   %h2.new__main-contents__title 会員情報入力
@@ -29,41 +30,34 @@
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label ニックネーム
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @user.errors.any?
-            = f.text_field :nickname, placeholder:"例）メルカリ太郎",class:"login__form-nickname-error"
-            %p.new__main-contents__form-wrap-p ニックネームを入力してください
-          -else
-            = f.text_field :nickname, placeholder:"例）メルカリ太郎",class:"login__form-nickname"
+          = f.text_field :nickname, placeholder:"例）メルカリ太郎",class:"login__form-nickname"
+          - if @user.errors.present?
+            %p.new__main-contents__form-wrap-p ニックネームを入力してください。
 
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label メールアドレス
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @user.errors.any?
-            = f.text_field :email, placeholder:"PC・携帯どちらでも可",class:"login__form-email-error"
-            %p.new__main-contents__form-wrap-p メールアドレスを入力してください
-          -else
-            = f.text_field :email, placeholder:"PC・携帯どちらでも可",class:"login__form-email"
-
+          = f.text_field :email, placeholder:"PC・携帯どちらでも可",class:"login__form-email"
+          - if @user.errors.full_messages_for(:email).present?
+            - @user.errors.full_messages_for(:email).each do |message|
+              %p.new__main-contents__form-wrap-p= message
 
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label パスワード
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @user.errors.any?
-            = f.text_field :password, placeholder:"6文字以上",class:"login__form-password-error",maxlength:"128"
-            %p.new__main-contents__form-wrap-p パスワードを入力してください
-            %p.new__main-contents__form-wrap-p パスワードは６文字以上128文字以下で入力してください
-          -else
-            = f.text_field :password, placeholder:"6文字以上",class:"login__form-password",maxlength:"128"
-
+          = f.text_field :password, placeholder:"6文字以上",class:"login__form-password",maxlength:"128"
+          - if @user.errors.full_messages_for(:password).present?
+            - @user.errors.full_messages_for(:password).each do |message|
+              %p.new__main-contents__form-wrap-p= message
+        
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label パスワード（確認）
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @user.errors.any?
-            = f.text_field :password, placeholder:"６文字以上",class:"login__form-password-error",maxlength:"128"
-            %p.new__main-contents__form-wrap-p パスワード(確認)を入力してください
-          -else
-            = f.text_field :password, placeholder:"６文字以上",class:"login__form-password",maxlength:"128"
-          
+          = f.text_field :password, placeholder:"６文字以上",class:"login__form-password",maxlength:"128"
+          - if @user.errors.full_messages_for(:password).present?
+            - @user.errors.full_messages_for(:password).each do |message|
+              %p.new__main-contents__form-wrap-p= message
+         
         .new__main-contents__form-wrap
           %h1 本人確認
           %span 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
@@ -71,38 +65,35 @@
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 姓（全角）
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @user.errors.any?
-            = f.text_field :last_name, placeholder:"例）山田",class:"login__form-last-name-error"
-            %p.new__main-contents__form-wrap-p 姓を入力してください
-          -else
-            = f.text_field :last_name, placeholder:"例）山田",class:"login__form-last-name"
+          = f.text_field :last_name, placeholder:"例）山田",class:"login__form-last-name"
+          - if @user.errors.present?
+            %p.new__main-contents__form-wrap-p 姓を入力してください。
+
 
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 名（全角）
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @user.errors.any?
-            = f.text_field :first_name, placeholder:"例）綾",class:"login__form-first-name-error"
-            %p.new__main-contents__form-wrap-p 名を入力してください
-          -else
-            = f.text_field :first_name, placeholder:"例）綾",class:"login__form-first-name"
+          = f.text_field :first_name, placeholder:"例）綾",class:"login__form-first-name"
+          - if @user.errors.present?
+            %p.new__main-contents__form-wrap-p 名を入力してください。
 
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 姓カナ（全角）
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @user.errors.any?
-            = f.text_field :last_name_kana, placeholder:"例）ヤマダ",class:"login__form-last-name-kana-error"
-            %p.new__main-contents__form-wrap-p 姓カナを入力してください
-          -else
-            = f.text_field :last_name_kana, placeholder:"例）ヤマダ",class:"login__form-last-name-kana"
+          = f.text_field :last_name_kana, placeholder:"例）ヤマダ",class:"login__form-last-name-kana"
+          - if @user.errors.full_messages_for(:last_name_kana).present?
+            - @user.errors.full_messages_for(:last_name_kana).each do |message|
+              %p.new__main-contents__form-wrap-p= message
+
 
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 名カナ（全角）
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @user.errors.any?
-            = f.text_field :first_name_kana, placeholder:"例）アヤ",class:"login__form-first-name-kana-error"
-            %p.new__main-contents__form-wrap-p 名カナを入力してください
-          -else
-            = f.text_field :first_name_kana, placeholder:"例）アヤ",class:"login__form-first-name-kana"
+          = f.text_field :first_name_kana, placeholder:"例）アヤ",class:"login__form-first-name-kana"
+          - if @user.errors.full_messages_for(:first_name_kana).present?
+            - @user.errors.full_messages_for(:first_name_kana).each do |message|
+              %p.new__main-contents__form-wrap-p= message
+
 
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 生年月日
@@ -115,7 +106,7 @@
           .new__main-contents__form-wrap__select
             = f.select :day, options_for_select(1..31),{include_blank:"-"},{autofocus: 'true', class: 'new__main-contents__form-wrap__select-year'}
             %span.new__main-contents__form-wrap__select-title　日
-          -if @user.errors.any?
+          -if @user.errors.present?
             %p.new__main-contents__form-wrap-p 生年月日を入力してください
     
         .new__main-contents__form-wrap
@@ -131,15 +122,4 @@
         .login__form__wrap
           = link_to "本人情報の登録について",""
 
-//新規会員登録フッダー部分//
-.new__footer
-  .new__footer__list
-    .new__footer__list-privacy
-      = link_to "プライバシーボリシー"
-    .new__footer__list-riyou
-      = link_to "メルカリ利用規約"
-    .new__footer__list-syoutorihiki
-      = link_to "特定商取引に関する表記"
-  = link_to root_path do
-    =image_tag "logo-gray.svg",class:"new__footer__logo"
-  %p.small_title @××××　Mercari
+= render 'shared/member-new-login-footer'    

@@ -1,4 +1,6 @@
 class CreditcardsController < ApplicationController
+  protect_from_forgery except:  [:create]
+  before_action :move_to_root,unless: :user_signed_in?
 
   require "payjp"
 
@@ -49,6 +51,12 @@ class CreditcardsController < ApplicationController
       customer = Payjp::Customer.retrieve(creditcard.customer_id)
       @default_card_information = customer.cards.retrieve(creditcard.card_id)
     end
+  end
+
+  private
+
+  def move_to_root
+    redirect_to root_path
   end
 
 end

@@ -31,51 +31,57 @@
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 名前
           %span.new__main-contents__form-wrap__hissu 必須
-          = f.text_field :name, placeholder:"例）山田　綾",class:"login__form-last-name"
+          = f.text_field :name, placeholder:"例）山田綾",class:"login__form-last-name"
+          -# エラーメッセージ
+          - if @address.errors.present?
+            %p.new__main-contents__form-wrap-p 名前を入力してください。
 
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 名前カナ
           %span.new__main-contents__form-wrap__hissu 必須
-          = f.text_field :namekana, placeholder:"例）ヤマダ　アヤ",class:"login__form-last-name-kana"
+          = f.text_field :namekana, placeholder:"例）ヤマダアヤ",class:"login__form-last-name-kana"
+          -# エラーメッセージ
+          - if @address.errors.full_messages_for(:namekana).present?
+            - @address.errors.full_messages_for(:namekana).each do |message|
+              %p.new__main-contents__form-wrap-p= message
 
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 郵便番号
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @address.errors.any?
-            = f.text_field :postal_code, placeholder:"例）111-1111",class:"login__form-first-name-kana-error"
-            %p.new__main-contents__form-wrap-p 郵便番号を入力してください
-          -else
-            = f.text_field :postal_code, placeholder:"例）111-1111",class:"login__form-first-name-kana"
-    
+          = f.text_field :postal_code, placeholder:"例）111-1111",class:"login__form-first-name-kana"
+          -# エラーメッセージ
+          - if @address.errors.full_messages_for(:postal_code).present?
+            - @address.errors.full_messages_for(:postal_code).each do |message|
+              %p.new__main-contents__form-wrap-p= message
+        
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 都道府県
           %span.new__main-contents__form-wrap__hissu 必須
           .new__main-contents__form-wrap__select
             = f.collection_select :prefecture_id, Prefecture.all,:id,:name,{prompt:'-'},{autofocus: 'true', class: 'new__main-contents__form-wrap__select-year'}  
-            
+            -# エラーメッセージ
+            - if @address.errors.present?
+              %p.new__main-contents__form-wrap-p 都道府県を選択してください。
+
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 市区町村
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @address.errors.any?
-            = f.text_field :city, placeholder:"例)○○市",class:"login__form-first-name-kana-error"
-            %p.new__main-contents__form-wrap-p 市区町村を入力してください
-          -else
-            = f.text_field :city, placeholder:"例)○○市",class:"login__form-first-name-kana"
-
+          = f.text_field :city, placeholder:"例)○○市",class:"login__form-first-name-kana"
+          -# エラーメッセージ
+          - if @address.errors.present?
+            %p.new__main-contents__form-wrap-p 市区町村を入力してください。
+        
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 番地
           %span.new__main-contents__form-wrap__hissu 必須
-          -if @address.errors.any?
-            = f.text_field :block_number, placeholder:"例）1-1-1",class:"login__form-first-name-kana-error"
-            %p.new__main-contents__form-wrap-p 番地を入力してください
-          -else
-            = f.text_field :block_number, placeholder:"例）1-1-1",class:"login__form-first-name-kana"
+          = f.text_field :block_number, placeholder:"例）1-1-1",class:"login__form-first-name-kana"
+          -# エラーメッセージ
+          - if @address.errors.present?
+            %p.new__main-contents__form-wrap-p 番地を入力してください。
         
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label 建物名
           = f.text_field :building_name, placeholder:"例）○○ビルディング１F",class:"login__form-first-name-kana"
-
-
 
         .new__main-contents__form-wrap
           %span 「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
@@ -84,17 +90,4 @@
         .login__form__wrap
           = link_to "本人情報の登録について",""
 
-
-//新規会員登録フッダー部分//
-.new__footer
-  .new__footer__list
-    .new__footer__list-privacy
-      = link_to "プライバシーボリシー"
-    .new__footer__list-riyou
-      = link_to "メルカリ利用規約"
-    .new__footer__list-syoutorihiki
-      = link_to "特定商取引に関する表記"
-  = link_to root_path do
-    =image_tag "logo-gray.svg",class:"new__footer__logo"
-  %p.small_title @××××　Mercari
-  
+= render 'shared/member-new-login-footer'    

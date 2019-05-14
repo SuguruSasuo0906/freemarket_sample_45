@@ -16,15 +16,5 @@
             = link_to user_google_oauth2_omniauth_authorize_path do
                 %button.sign-up__link__wrapper__google　Googleでログイン
                 = fa_icon "google",id:"sign-up__link__wrapper__google-icon"
-.sign-up__footer
-    .sign-up__footer__list
-        .sign-up__footer__list-privacy
-            = link_to "プライバシーボリシー"
-        .sign-up__footer__list-riyou
-            = link_to "メルカリ利用規約"
-        .sign-up__footer__list-syoutorihiki
-            = link_to "特定商取引に関する表記"
-    = link_to root_path do
-        =image_tag "logo-gray.svg",class:"sign-up__footer__logo"
-    %p.small_title @××××　Mercari
-    
+                
+= render 'shared/member-new-login-footer'    
