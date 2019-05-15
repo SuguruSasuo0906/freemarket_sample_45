@@ -1,8 +1,8 @@
+
 /.DS_Store
 
 config/secrets.yml
 config/certs/*
-
 
 *.rbc
 capybara-*.html
