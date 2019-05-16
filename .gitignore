@@ -77,8 +77,6 @@ app/assets/javascripts/*.coffee
 config/secrets.yml
 test/*
 
-
-
 app/helpers
 
 app/controllers/omniauth_callbacks_controller.rb
