@@ -10,19 +10,16 @@
     %h2.new__main-contents__title 商品の情報を入力
     .new__main-contents
       = form_for(@item, html:{class:'dropzone', id:"item-dropzone"}) do |f|
-        .new__main-contents__form
-          .new__main-contents__form-wrap
-            %label.new__main-contents__form-wrap__label 出品画像
-            %span.new__main-contents__form-wrap__hissu 必須
-            .login__form-nickname
-              %h3 Drop file %header
-              %strong Click to upload
-            .fallback
-              =f.file_filed :image
+        .dz-message.needsclick
+          %h3 Drop file %header
+          %strong Click to upload
+        .fallback
+          =f.file_field :image
                               
-            = f.submit "次へ進む",class:"login__form-loginbtn"
-          .login__form__wrap
-            = link_to "本人情報の登録について"
+        = f.submit "出品する",class:"login__form-loginbtn"
+        
+      .login__form__wrap
+        = link_to "本人情報の登録について"
             
 .sign-up__footer
   .sign-up__footer__list
