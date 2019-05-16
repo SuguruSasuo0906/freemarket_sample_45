@@ -3,6 +3,7 @@
 
 config/secrets.yml
 config/certs/*
+vendor/bundle/*
 
 *.rbc
 capybara-*.html
