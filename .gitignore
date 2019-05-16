@@ -72,4 +72,8 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 
-/app/controllers/omniauth_callbacks_controller.rb
+app/assets/images
+
+app/helpers
+
+app/controllers/omniauth_callbacks_controller.rb

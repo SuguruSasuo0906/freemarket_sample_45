@@ -54,21 +54,21 @@ class User < ApplicationRecord
     self.namekana = [@last_name_kana, @first_name_kana].join(" ")
   end
 
-  # def self.from_omniauth(auth)
-  #   @user = User.where(uid: auth.uid, provider: auth.provider).first
+  def self.from_omniauth(auth)
+    @user = User.where(uid: auth.uid, provider: auth.provider).first
 
-  #   unless @user
-  #     @user = User.new(
-  #       uid: auth.uid,
-  #       provider: auth.provider,
-  #       email: auth.info.email,
-  #       # name: auth.info.name,
-  #       password: Devise.friendly_token[0, 20],
-  #       # image: auth.info.image
-  #     )
-  #     @user.save(validate: false)
-  #   end
-  #   @user
-  # end
+    unless @user
+      @user = User.new(
+        uid: auth.uid,
+        provider: auth.provider,
+        email: auth.info.email,
+        # name: auth.info.name,
+        password: Devise.friendly_token[0, 20],
+        # image: auth.info.image
+      )
+      @user.save(validate: false)
+    end
+    @user
+  end
 
 end
