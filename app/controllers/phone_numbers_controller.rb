@@ -1,5 +1,6 @@
 class PhoneNumbersController < ApplicationController
     before_action :redirect_to_root,unless: :user_signed_in?
+    before_action :set_phonenumber, only: [:show,:update]
 
     def new
         @phonenumber=Phonenumber.new
@@ -15,11 +16,9 @@ class PhoneNumbersController < ApplicationController
     end
 
     def show
-        @phonenumber = Phonenumber.find(params[:id])
     end
 
     def update
-        @phonenumber = Phonenumber.find(params[:id])
         @verification_code_confirmation = params.permit(phonenumber: :verification_code_confirmation).to_h
         if @phonenumber.verification_code == @verification_code_confirmation[:phonenumber][:verification_code_confirmation]
             @phonenumber.update(verified:"true",verification_code:"nil")
@@ -36,5 +35,9 @@ class PhoneNumbersController < ApplicationController
 
     def redirect_to_root
         redirect_to root_path
+    end
+
+    def set_phonenumber
+        @phonenumber = Phonenumber.find(params[:id])
     end
 end

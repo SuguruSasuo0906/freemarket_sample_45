@@ -79,4 +79,4 @@ test/*
 
 app/helpers
 
-app/controllers/omniauth_callbacks_controller.rb
+/public/*
