@@ -9,15 +9,15 @@
   .new__main
     %h2.new__main-contents__title 商品の情報を入力
     .new__main-contents
-      = form_for(@item, html:{multipart:true, class:'dropzone', id:"item-dropzone"}) do |f|
+      = form_for @item, html:{multipart:true, class:'dropzone', id:"item-dropzone"} do |f|
         .dz-message.needsclick
           %h3 Drop file %header
           %strong Click to upload
-          .fallback
-            =f.file_field 'attach[:file]'
-                              
+        .fallback
+          =f.file_field ':image'
+
         = f.submit "出品する",class:"login__form-loginbtn"
-        
+
       .login__form__wrap
         = link_to "本人情報の登録について"
             
