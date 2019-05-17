@@ -1,6 +1,6 @@
 class CreditcardsController < ApplicationController
   protect_from_forgery except:  [:create]
-  before_action :move_to_root,unless: :user_signed_in?
+  before_action :redirect_to_root,unless: :user_signed_in?
 
   require "payjp"
 
@@ -55,8 +55,7 @@ class CreditcardsController < ApplicationController
 
   private
 
-  def move_to_root
+  def redirect_to_root
     redirect_to root_path
   end
-
 end

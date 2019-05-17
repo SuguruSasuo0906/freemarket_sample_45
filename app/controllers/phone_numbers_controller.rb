@@ -1,5 +1,5 @@
 class PhoneNumbersController < ApplicationController
-    before_action :move_to_root,unless: :user_signed_in?
+    before_action :redirect_to_root,unless: :user_signed_in?
 
     def new
         @phonenumber=Phonenumber.new
@@ -29,14 +29,12 @@ class PhoneNumbersController < ApplicationController
         end
     end
 
-
     private
     def phonenumber_params
         params.require(:phonenumber).permit(:number,:verification_code,:verification_code_confirmation).merge(user_id: current_user.id)
     end
 
-    def move_to_root
+    def redirect_to_root
         redirect_to root_path
     end
-
 end
