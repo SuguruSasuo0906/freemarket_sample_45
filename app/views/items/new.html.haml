@@ -1,35 +1,35 @@
 //新規会員登録ヘッダー部分//
-.new__header
-  .new__header__wrap
+.item__header
+  .item__header__wrap
     %h1
       = link_to "/" do
         =image_tag "logo001.png", class:"new__header__wrap__logo"
   
         //商品情報登録コンテンツ部分//
-  .new__main
-    %h2.new__main-contents__title 商品の情報を入力
-    .new__main-contents
-      = form_for @item, html:{multipart:true, class:'dropzone', id:"item-dropzone"} do |f|
-        .dz-message.needsclick
-          %h3 Drop file %header
-          %strong Click to upload
+.item__main
+  .item__main-title
+    %h2.item__main-title__title 商品の情報を入力
+
+  .item__main-contents
+    = form_for @item, html:{multipart:true, class:'dropzone', id:"item-dropzone"} do |f|
+
+      .drop-image-wrap
+        .drop-image-wrap__titles
+          %label.title 出品画像
+          %span.hissu 必須
+        %span.maxupload 最大10枚までアップロード出来ます。
+        #preview_area.dz-message.needsclick
+          #dropfile-irase
+            %h3 ドラッグアンドドロップ
+            %h3 またはここをクリックしてファイルをアップロード
         .fallback
           =f.file_field ':image'
 
+      .item__main-contents__
+
         = f.submit "出品する",class:"login__form-loginbtn"
 
-      .login__form__wrap
-        = link_to "本人情報の登録について"
-            
-.sign-up__footer
-  .sign-up__footer__list
-    .sign-up__footer__list-privacy
-      = link_to "プライバシーボリシー"
-    .sign-up__footer__list-riyou
-      = link_to "メルカリ利用規約"
-    .sign-up__footer__list-syoutorihiki
-      = link_to "特定商取引に関する表記"
-  = link_to root_path do
-    =image_tag "logo-gray.svg",class:"sign-up__footer__logo"
-  %p.small_title @××××　Mercari
-    
+    .login__form__wrap
+      = link_to "本人情報の登録について"
+
+= render 'shared/member-new-login-footer'
