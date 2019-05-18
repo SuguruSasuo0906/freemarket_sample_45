@@ -1,94 +1,98 @@
 .item__header {
-    margin: 0 auto;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  height: 128px;
+
+  &__wrap {
     display: block;
-    text-align: center;
-    height: 128px;
+    margin: 0 auto;
 
-    &__wrap {
-        display: block;
-        margin: 0 auto;
-
-        &__logo {
-            margin: 40px 0 0;
-            width: 268px;
-            height: 72px;
-        }
-
+    &__logo {
+      margin: 40px 0 0;
+      width: 268px;
+      height: 72px;
     }
+
+  }
 }
 
 .item__main {
-    width: 700px;
-    height: auto;
-    margin: 0 auto;
-    background-color: #fff;
+  width: 700px;
+  height: auto;
+  margin: 0 auto;
+  background-color: #fff;
 
-    &-title {
+  &-title {
+    padding: 24px 40px;
+    margin: 0 auto;
+    border-bottom: solid 1px #eee;
+
+    &__title {
+      text-align: center;
+      font-size: 22px;
+    }
+  }
+
+  &-contents {
+    max-width: auto;
+    margin: 0 auto;
+
+    #item-dropzone {
+      cursor: default;
+    }
+
+    .dropzone.dz-clickable {
+      border: none;
+      padding: 0;
+
+      .drop-image-wrap {
         padding: 24px 40px;
-        margin: 0 auto;
         border-bottom: solid 1px #eee;
 
-        &__title {
-            text-align: center;
-            font-size: 22px;
+        .title {}
+
+        .hissu {
+          background: #ea352d;
+          margin: 0 0 0 8px;
+          padding: 2px 4px;
+          border-radius: 2px;
+          color: #fff;
+          font-size: 12px;
+          vertical-align: top;
         }
+
+        .maxupload {
+          font-size: 10px;
+        }
+
+        #preview_area {
+          min-height: 150px;
+          border: 2px dashed #b4bcc2;
+          background: #eee;
+
+          .dz-preview {
+            background: #eee;
+          }
+        }
+
+        .dz-message {
+          position: relative;
+          text-align: center;
+          margin: 0;
+
+          #dropfile-irase {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            top: 50%;
+            font-size: 12px;
+          }
+        }
+
+      }
+
     }
-
-    &-contents {
-        max-width: auto;
-        margin: 0 auto;
-
-        #item-dropzone {
-            cursor: default;
-        }
-
-        .dropzone.dz-clickable {
-            border: none;
-            padding: 0;
-
-            .drop-image-wrap {
-                padding: 24px 40px;
-                border-bottom: solid 1px #eee;
-
-                .title {}
-
-                .hissu {
-                    background: #ea352d;
-                    margin: 0 0 0 8px;
-                    padding: 2px 4px;
-                    border-radius: 2px;
-                    color: #fff;
-                    font-size: 12px;
-                    vertical-align: top;
-                }
-
-                .maxupload {
-                    font-size: 10px;
-                }
-
-                #preview_area {
-                    min-height: 150px;
-                    border: 2px dashed #b4bcc2;
-                    background: #eee;
-                }
-
-                .dz-message {
-                    position: relative;
-                    text-align: center;
-                    margin: 0;
-
-                    #dropfile-irase {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translateY(-50%) translateX(-50%);
-                        top: 50%;
-                        font-size: 12px;
-                    }
-                }
-
-            }
-
-        }
-    }
+  }
 }
