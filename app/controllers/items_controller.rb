@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = Item.new(image: params[:image])
     respond_to do |format|
       if @item.save
         format.json{}
