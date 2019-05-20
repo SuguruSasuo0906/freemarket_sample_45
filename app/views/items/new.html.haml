@@ -18,10 +18,12 @@
           %span.hissu 必須
         %span.maxupload 最大10枚までアップロード出来ます。
         //ul以下に画像がアップされたらliとしてプレビューされる
-        %ul#image__preview_area
-        .image__howmany
-          %h6 ドラッグアンドドロップ
-          %h6 またはここをクリックしてファイルをアップロード
+        .image__preview_area
+          %ul
+        .image__drop_area
+          .image__howmany
+            %h6 ドラッグアンドドロップ
+            %h6 またはここをクリックしてファイルをアップロード
 
     .item__main-contents
       = f.submit "出品する",class:"login__form-loginbtn"
