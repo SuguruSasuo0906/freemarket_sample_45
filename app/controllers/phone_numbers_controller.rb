@@ -3,7 +3,7 @@ class PhoneNumbersController < ApplicationController
   before_action :set_phonenumber, only: [:show,:update]
 
   def new
-    @phonenumber=Phonenumber.new
+    @phonenumber = Phonenumber.new
   end
 
   def create

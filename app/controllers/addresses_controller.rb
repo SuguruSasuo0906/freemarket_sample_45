@@ -2,11 +2,11 @@ class AddressesController < ApplicationController
     before_action :redirect_to_root,unless: :user_signed_in?
 
     def new
-        @address=Address.new
+        @address = Address.new
     end
 
     def create
-        @address=Address.new(address_params)
+        @address = Address.new(address_params)
         if @address.save
             redirect_to new_creditcard_path
         else

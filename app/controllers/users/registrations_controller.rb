@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :check_captcha, only: [:create]
   def new
-    @user=User.new
+    @user = User.new
   end
 
   def create
