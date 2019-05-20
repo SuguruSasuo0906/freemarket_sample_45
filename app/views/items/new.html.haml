@@ -10,26 +10,22 @@
   .item__main-title
     %h2.item__main-title__title 商品の情報を入力
 
-  .item__main-contents
-    = form_for @item, html:{multipart:true, class:'dropzone', id:"item-dropzone"} do |f|
-
+  = form_for @item, html:{id:"new-item"} do |f|
+    .item__main-contents
       .drop-image-wrap
         .drop-image-wrap__titles
           %label.title 出品画像
           %span.hissu 必須
         %span.maxupload 最大10枚までアップロード出来ます。
-        #preview_area.dz-message.needsclick
-          #dropfile-irase
-            %h3 ドラッグアンドドロップ
-            %h3 またはここをクリックしてファイルをアップロード
-        .fallback
-          =f.file_field image:[name]
+        //ul以下に画像がアップされたらliとしてプレビューされる
+        %ul#image__preview_area
+        .image__howmany
+          %h6 ドラッグアンドドロップ
+          %h6 またはここをクリックしてファイルをアップロード
 
-      .item__main-contents__
-
-        = f.submit "出品する",class:"login__form-loginbtn"
-
-    .login__form__wrap
-      = link_to "本人情報の登録について"
-
+    .item__main-contents
+      = f.submit "出品する",class:"login__form-loginbtn"
+      .login__form__wrap
+        = link_to "本人情報の登録について"
+  
 = render 'shared/member-new-login-footer'
