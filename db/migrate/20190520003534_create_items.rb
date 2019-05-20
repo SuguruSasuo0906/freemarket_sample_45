@@ -2,7 +2,6 @@ class CreateItems < ActiveRecord::Migration[5.0]
   def change
     create_table :items do |t|
       t.string :name,null: false#商品名
-      t.string :image,null: false#商品の画像
       t.text :description,null: false#商品の説明
       t.string :feewho,null: false#配送料の負担
       t.string :shipmentday,null: false#発送までの日数
