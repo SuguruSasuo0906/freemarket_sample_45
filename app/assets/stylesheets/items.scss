@@ -59,7 +59,7 @@
         font-size: 10px;
       }
 
-      .image__howmany {
+      .image__drop_area{
         cursor: pointer;
         min-height: 150px;
         border: 2px dashed #b4bcc2;
@@ -68,10 +68,17 @@
         margin: 0;
         padding: 50px 0;
 
-        & h6 {
-          font-size: 12px;
+      .image__howmany {
+        width: auto;
+        height: auto;
+        
+          & h6 {
+            font-size: 12px;
+          }
         }
+  
       }
+
 
     }
 
