@@ -1,0 +1,93 @@
+//新規会員登録ヘッダー部分//
+.new__header
+  .new__header__wrap
+    %h1
+      = link_to "/" do
+        =image_tag "logo001.png", class:"new__header__wrap__logo"
+    %ol
+      %li.process-first
+        会員情報
+        .process-radius-active-first
+      %li.process
+        電話番号認証
+        .process-radius-active-end
+      %li.process.active
+        お届け先住所入力
+        .process-radius-active
+      %li.process
+        支払い方法
+        .process-radius
+      %li.process-last
+        完了
+        .process-radius
+      
+//住所確認コンテンツ部分//
+.new__main
+  %h2.new__main-contents__title お届け先住所入力
+  .new__main-contents
+    = form_for(@address) do |f|
+      .new__main-contents__form
+          
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 名前
+          %span.new__main-contents__form-wrap__hissu 必須
+          = f.text_field :name, placeholder:"例）山田綾",class:"login__form-last-name"
+          -# エラーメッセージ
+          - if @address.errors.present?
+            %p.new__main-contents__form-wrap-p 名前を入力してください。
+
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 名前カナ
+          %span.new__main-contents__form-wrap__hissu 必須
+          = f.text_field :namekana, placeholder:"例）ヤマダアヤ",class:"login__form-last-name-kana"
+          -# エラーメッセージ
+          - if @address.errors.full_messages_for(:namekana).present?
+            - @address.errors.full_messages_for(:namekana).each do |message|
+              %p.new__main-contents__form-wrap-p= message
+
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 郵便番号
+          %span.new__main-contents__form-wrap__hissu 必須
+          = f.text_field :postal_code, placeholder:"例）111-1111",class:"login__form-first-name-kana"
+          -# エラーメッセージ
+          - if @address.errors.full_messages_for(:postal_code).present?
+            - @address.errors.full_messages_for(:postal_code).each do |message|
+              %p.new__main-contents__form-wrap-p= message
+        
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 都道府県
+          %span.new__main-contents__form-wrap__hissu 必須
+          .new__main-contents__form-wrap__select
+            = f.collection_select :prefecture_id, Prefecture.all,:id,:name,{prompt:'-'},{autofocus: 'true', class: 'new__main-contents__form-wrap__select-year'}  
+            -# エラーメッセージ
+            - if @address.errors.present?
+              %p.new__main-contents__form-wrap-p 都道府県を選択してください。
+
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 市区町村
+          %span.new__main-contents__form-wrap__hissu 必須
+          = f.text_field :city, placeholder:"例)○○市",class:"login__form-first-name-kana"
+          -# エラーメッセージ
+          - if @address.errors.present?
+            %p.new__main-contents__form-wrap-p 市区町村を入力してください。
+        
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 番地
+          %span.new__main-contents__form-wrap__hissu 必須
+          = f.text_field :block_number, placeholder:"例）1-1-1",class:"login__form-first-name-kana"
+          -# エラーメッセージ
+          - if @address.errors.present?
+            %p.new__main-contents__form-wrap-p 番地を入力してください。
+        
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 建物名
+          = f.text_field :building_name, placeholder:"例）○○ビルディング１F",class:"login__form-first-name-kana"
+
+        .new__main-contents__form-wrap
+          %span 「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
+
+        = f.submit "次へ進む",class:"login__form-loginbtn"
+        .login__form__wrap
+          = link_to "本人情報の登録について",""
+
+= render 'shared/member-new-login-footer'    

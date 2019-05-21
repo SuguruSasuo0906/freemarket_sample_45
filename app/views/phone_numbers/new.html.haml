@@ -1,0 +1,45 @@
+//新規会員登録ヘッダー部分//
+.new__header
+  .new__header__wrap
+    %h1
+      = link_to "/" do
+        =image_tag "logo001.png", class:"new__header__wrap__logo"
+    %ol
+      %li.process-first
+        会員情報
+        .process-radius-active-first
+      %li.process.active
+        電話番号認証
+        .process-radius-active
+      %li.process
+        お届け先住所入力
+        .process-radius
+      %li.process
+        支払い方法
+        .process-radius
+      %li.process-last
+        完了
+        .process-radius
+      //電話番号の確認コンテンツ部分//
+.new__main
+  %h2.new__main-contents__title 電話番号の確認
+  .new__main-contents
+    = form_for(@phonenumber,url:{controller:'phone_numbers',action:'create'}) do |f|
+      .new__main-contents__form
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 携帯電話の番号
+          = f.text_field :number, placeholder:"携帯電話の番号を入力",class:"login__form-nickname"
+          - if @phonenumber.errors.full_messages_for(:number).present?
+            - @phonenumber.errors.full_messages_for(:number).each do |message|
+              %p.new__main-contents__form-wrap-p= message
+
+
+          %span 本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。
+
+        = f.submit "SMSを送信する",class:"login__form-loginbtn"
+        %span ※電話番号は本人確認や不正利用防止の為に利用します。他のユーザーに公開されることはありません。
+
+        .login__form__wrap
+          = link_to "電話番号の確認が必要な理由＞",""
+
+= render 'shared/member-new-login-footer'    
