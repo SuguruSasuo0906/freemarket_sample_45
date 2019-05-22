@@ -76,6 +76,7 @@ app/assets/images
 app/assets/javascripts/*.coffee
 test/*
 
+
 app/helpers
 
 /public/*
