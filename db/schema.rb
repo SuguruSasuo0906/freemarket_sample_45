@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190512223450) do
+ActiveRecord::Schema.define(version: 20190520003535) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -18,13 +18,25 @@ ActiveRecord::Schema.define(version: 20190512223450) do
     t.string   "city",          default: "", null: false
     t.string   "block_number",  default: "", null: false
     t.string   "building_name"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
     t.string   "name",          default: "", null: false
     t.string   "namekana",      default: "", null: false
     t.integer  "prefecture_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["prefecture_id"], name: "index_addresses_on_prefecture_id", using: :btree
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
+
+  create_table "blands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "type",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "creditcards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -35,13 +47,55 @@ ActiveRecord::Schema.define(version: 20190512223450) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string  "image",   null: false
+    t.integer "item_id"
+    t.index ["item_id"], name: "index_images_on_item_id", using: :btree
+  end
+
+  create_table "item_solds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "status",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "item_states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "status",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                        null: false
+    t.text     "description",   limit: 65535, null: false
+    t.string   "feewho",                      null: false
+    t.string   "shipment_day",                null: false
+    t.string   "delivery",                    null: false
+    t.string   "size"
+    t.integer  "price",                       null: false
+    t.integer  "user_id"
+    t.integer  "prefecture_id"
+    t.integer  "category_id"
+    t.integer  "item_sold_id"
+    t.integer  "item_state_id"
+    t.integer  "bland_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["bland_id"], name: "index_items_on_bland_id", using: :btree
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["item_sold_id"], name: "index_items_on_item_sold_id", using: :btree
+    t.index ["item_state_id"], name: "index_items_on_item_state_id", using: :btree
+    t.index ["prefecture_id"], name: "index_items_on_prefecture_id", using: :btree
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
+  end
+
   create_table "phonenumbers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.string   "number",            null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
     t.string   "verification_code"
     t.boolean  "verified"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.index ["user_id"], name: "index_phonenumbers_on_user_id", using: :btree
   end
 
@@ -50,30 +104,39 @@ ActiveRecord::Schema.define(version: 20190512223450) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                                 default: "", null: false
+    t.string   "namekana",                             default: "", null: false
     t.integer  "point"
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
     t.text     "profile_comment",        limit: 65535
     t.string   "payment",                              default: "", null: false
     t.string   "transfer",                             default: "", null: false
+    t.string   "nickname"
+    t.string   "string"
+    t.integer  "year"
+    t.integer  "integer"
+    t.integer  "month"
+    t.integer  "day"
+    t.string   "provider"
+    t.string   "uid"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
-    t.string   "nickname"
-    t.integer  "year"
-    t.integer  "month"
-    t.integer  "day"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name",                                 default: "", null: false
-    t.string   "namekana",                             default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "addresses", "prefectures"
   add_foreign_key "addresses", "users"
+  add_foreign_key "images", "items"
+  add_foreign_key "items", "blands"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "item_solds"
+  add_foreign_key "items", "item_states"
+  add_foreign_key "items", "prefectures"
+  add_foreign_key "items", "users"
   add_foreign_key "phonenumbers", "users"
 end

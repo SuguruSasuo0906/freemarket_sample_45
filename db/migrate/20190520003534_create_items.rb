@@ -4,8 +4,8 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.string :name,null: false#商品名
       t.text :description,null: false#商品の説明
       t.string :feewho,null: false#配送料の負担
-      t.string :shipmentday,null: false#発送までの日数
-      t.string :howdelivery,null: false#配送の方法
+      t.string :shipment_day,null: false#発送までの日数
+      t.string :delivery,null: false#配送の方法
       t.string :size#商品のサイズ
 
       t.integer :price,null: false#価格

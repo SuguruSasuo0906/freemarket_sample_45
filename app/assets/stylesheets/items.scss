@@ -41,46 +41,162 @@
     border-bottom: solid 1px #eee;
 
     .drop-image-wrap {
-      padding: 24px 40px;
-
-      .title {}
-
-      .hissu {
-        background: #ea352d;
-        margin: 0 0 0 8px;
-        padding: 2px 4px;
-        border-radius: 2px;
-        color: #fff;
-        font-size: 12px;
-        vertical-align: top;
-      }
-
       .maxupload {
         font-size: 10px;
       }
-
-      .image__drop_area{
+      
+      .image__area{
         cursor: pointer;
         min-height: 150px;
         border: 2px dashed #b4bcc2;
         background: #eee;
         text-align: center;
         margin: 0;
-        padding: 50px 0;
+        padding: 10px 10px;
+        display: flex; 
 
-      .image__howmany {
-        width: auto;
-        height: auto;
-        
-          & h6 {
-            font-size: 12px;
+        .image__preview_area{
+          display: flex;
+          flex-wrap: wrap;
+
+          .image__preview{
+            margin: 15px;
+
+            .image-size{
+              width: 100px;
+              height: 100px;
+              background: #fff;
+              object-fit: contain;
+            }
           }
         }
-  
+        #image__drop_area{
+          width: 100%;
+          #imagefile{
+            display: none;
+          }
+          .image__howmany {
+            display: block;
+            margin-top: 40px;
+            width: auto;
+            height: auto;
+          
+            & h6 {
+              font-size: 12px;
+            }
+          }
+        }
       }
-
-
     }
 
+    .drop-image-wrapdouble{
+      display: flex;
+
+      &-left{
+        width: 40%;
+
+        .left-title{
+          font-size: 12px;
+        }
+      }
+
+      &-right{
+        width: 60%;
+        .list-wrap-top{
+          width: 100%;
+          height: 50px;
+          margin-bottom: 20px;
+          .kakaku{
+            display: flex;
+            &-title{
+              width: 50%;
+              padding: 10px 0;
+            }
+            &-text{
+              width: 50%;
+            }
+          }
+        }
+        .list-wrap{
+          width: 100%;
+          height: 50px;
+          margin-bottom: 10px;
+          border-top: solid 1px #eee;
+          .kakaku{
+            display: flex;
+            &-title{
+              width: 50%;
+              padding: 10px 0;
+            }
+            &-text{
+              width: 50%;
+              padding: 10px 0;
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+    &__footer{
+      font-size: 12px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 30px;
+    }
+    .back{
+      display: block;
+      width: 50%;
+      height: 50px;
+      margin: 0 auto;
+      background: #aaa;
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      padding: 15px;
+    }
   }
+}
+
+.title {}
+
+.hissu {
+  height: 23px;
+  background: #ea352d;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+.nini {
+  background: #ea352d;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+.item_price {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.item_text{
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+}
+
+.item_form {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 20px;
 }

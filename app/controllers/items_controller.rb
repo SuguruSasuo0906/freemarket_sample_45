@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @bland = Bland.new
   end
 
   def create
