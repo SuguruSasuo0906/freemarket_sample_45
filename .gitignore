@@ -1,7 +1,6 @@
 
 /.DS_Store
 
-config/secrets.yml
 config/certs/*
 vendor/bundle/*
 
