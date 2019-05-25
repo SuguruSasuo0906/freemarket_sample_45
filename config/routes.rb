@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :freemarket_sample, only:[:index]
   resources :items
+  resources :categories, onle:[:new]
 
   resources :sign_up, only:[:index] do
     collection do

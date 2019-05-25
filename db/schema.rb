@@ -28,15 +28,13 @@ ActiveRecord::Schema.define(version: 20190520003535) do
   end
 
   create_table "blands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string "name", default: "", null: false
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "type",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "name"
+    t.integer "parent_id"
+    t.index ["parent_id"], name: "index_categories_on_parent_id", using: :btree
   end
 
   create_table "creditcards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -54,15 +52,11 @@ ActiveRecord::Schema.define(version: 20190520003535) do
   end
 
   create_table "item_solds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "status",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "status", null: false
   end
 
   create_table "item_states", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "status",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "status", null: false
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

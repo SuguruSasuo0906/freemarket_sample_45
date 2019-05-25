@@ -133,6 +133,17 @@
               padding: 10px 0;
               text-align: right;
             }
+            #kakaku-text-10{
+              width: 50%;
+              padding: 10px 0;
+              text-align: right;
+            }
+            #kakaku-text-90{
+              width: 50%;
+              padding: 10px 0;
+              text-align: right;
+            }
+
           }
         }
       }
@@ -155,6 +166,10 @@
       padding: 15px;
     }
   }
+}
+
+#selectsize{
+  display: none;
 }
 
 .title {}
