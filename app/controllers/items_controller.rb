@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
-
     @category = Category.eager_load(children: :children).where(parent_id: nil)  
   end
 
@@ -12,7 +11,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       image_params[:images].each do |image|
-        item_image = @item.images.new(image: image)
+        item_image = @item.images.new(image: params[:image])
         item_image.save
       end
       respond to do |format|
