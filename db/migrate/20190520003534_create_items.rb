@@ -15,7 +15,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.references :category , foreign_key: true#商品のカテゴリーID
       t.references :item_sold , foreign_key: true#出品中かどうかのID
       t.references :item_state,foreign_key: true#商品の状態
-      t.references :bland,foreign_key: true#ブランド名
+      t.references :brand,foreign_key: true#ブランド名
 
       t.timestamps
     end

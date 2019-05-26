@@ -63,8 +63,7 @@
             .drop-image-wrapdouble-right-wrap__titles
               %label.title ブランド
               %span.nini 任意
-            = f.fields_for @bland do |b|
-              = b.text_field :name, placeholder:"商品名(40文字まで)",class:"item_form"
+            = f.collection_select :brand_id, Brand.all,:id,:name,{prompt:'-'},{autofocus: 'true', class: 'item_form'}  
   
           .drop-image-wrapdouble-right-wrap
             .drop-image-wrapdouble-right-wrap__titles

@@ -1,9 +1,10 @@
 class Item < ApplicationRecord
   has_many :images
-  has_many :blands
-  has_many :categories
-  has_many :item_solds
-  has_many :item_states
-  has_many :prefectures
+  accepts_nested_attributes_for :images
+  belongs_to :brands
+  belongs_to :categorie
+  belongs_to :item_solds
+  belongs_to :item_states
+  belongs_to :prefectures
   has_many :users
 end

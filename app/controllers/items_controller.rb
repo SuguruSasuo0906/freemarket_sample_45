@@ -3,21 +3,21 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @bland = Bland.new
+    @item.images.build
+
     @category = Category.eager_load(children: :children).where(parent_id: nil)  
   end
 
   def create
     @item = Item.new(item_params)
-    @bland = Bland.new(bland_params)
-    if @item.save && @bland.save
-      image_params[:image].each do |image|
-        @item.images.build
+    if @item.save
+      image_params[:images].each do |image|
         item_image = @item.images.new(image: image)
         item_image.save
       end
-      respond_to do |format|
-        format.json {render template:"/freemarket_sample"}
+      respond to do |format|
+        format.html {redirect_to root_path}
+        format.json {render :new}
       end
     end
   end
@@ -25,12 +25,10 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description,:feewho,:shipment_day,:delivery,:size,:price,:user_id,:prefecture_id,:category_id,:item_sold_id ,:item_state_id,:bland_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description,:feewho,:shipment_day,:delivery,:size,:price,:prefecture_id,:brand_id,:category_id,:item_sold_id ,:item_state_id,:bland_id).merge(user_id: current_user.id)
   end
-  def bland_params
-    params.require(:bland).permit(bland:[:name])
-  end
+
   def image_params
-    params.require(:image).permit(image:[])
+    params.require(:images).permit({image:[]})
   end
 end

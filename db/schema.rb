@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20190520003535) do
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
-  create_table "blands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", default: "", null: false
   end
 
@@ -72,10 +72,10 @@ ActiveRecord::Schema.define(version: 20190520003535) do
     t.integer  "category_id"
     t.integer  "item_sold_id"
     t.integer  "item_state_id"
-    t.integer  "bland_id"
+    t.integer  "brand_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.index ["bland_id"], name: "index_items_on_bland_id", using: :btree
+    t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["item_sold_id"], name: "index_items_on_item_sold_id", using: :btree
     t.index ["item_state_id"], name: "index_items_on_item_state_id", using: :btree
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20190520003535) do
   add_foreign_key "addresses", "prefectures"
   add_foreign_key "addresses", "users"
   add_foreign_key "images", "items"
-  add_foreign_key "items", "blands"
+  add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "item_solds"
   add_foreign_key "items", "item_states"
