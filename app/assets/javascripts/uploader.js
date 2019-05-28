@@ -112,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if ($(this).val() !== "") {
       $("#selectitem2").show();
+      $("#selectbrand").show();
       if (item <= 62)
         $("#selectsize").show();
     }
@@ -131,6 +132,17 @@ document.addEventListener("DOMContentLoaded", function () {
           appendCategory2(sub_category);
         });
       })
+  })
+  //
+  //配送の出現
+  $("#item_feewho").change(function () {
+
+    if ($(this).val() !== "") {
+      $("#selecthow").show();
+    } else {
+      $("#selecthow").hide();
+      $("#selecthow").val("");
+    }
   })
   //
   //価格に数値が入力された時の計算
@@ -153,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
     files_array.forEach(function (file) {
-      formData.append("images[data]", file)
+      formData.append("images[data][]", file)
     });
     $.ajax({
       url: '/items',

@@ -8,22 +8,20 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item_image = @item.images.build
-    binding.pry
-
-    @image = params[:images][:data]
-    @image.each do |a|
-      @image_data = a.read
-      @item_image = @item.images.create!(data: @image_data, item_id: @item.id)
+    #Itemテーブルに紐づいているImageテーブルを引っ張れるようにする
+    @item_image = @item.images.build 
+    # JSより送られてきたimages[data[]]の配列をstrongparameterで許可をし、
+    # params[:images][:data].each do |pic|で配列の個数分@item_image[:data] = pic.read.delete("\000")を繰り返す
+    params[:images][:data].each do |pic|
+      # pic.readで画像データのバイナリを読み込み,.delete("\000")でデータ内のnull文字を削除する。
+      # null文字を消さないと、Argumenterror(path name contains null byte)が出る
+      # 読み込んだ画像データをimageテーブルのdataカラムに渡す
+      @item_image[:data] = pic.read.delete("\000")
     end
     if @item.save!
-      # image_params[:images].each do |image|
-      #   item_image = @item.images.new(data: params[image].read)
-      #   item_image.save
-      # end
       respond_to do |format|
         format.html {redirect_to root_path}
-        format.json {render :new}
+        format.json 
       end
     end
   end
@@ -33,8 +31,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :description,:feewho,:shipment_day,:delivery,:size,:price,:prefecture_id,:brand_id,:category_id,:item_sold_id ,:item_state_id,:bland_id,images_attributes:[:id,:item_id,:data]).merge(user_id: current_user.id)
   end
-
-  # def image_params
-  #   params.require(:images).permit(:data)
-  # end
 end

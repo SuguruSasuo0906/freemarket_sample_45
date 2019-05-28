@@ -59,7 +59,7 @@
               %span.hissu 必須
             = f.select :size, options_for_select([["XXS以下","XXS以下"],["XS(SS)","XS(SS)"],["S","S"],["M","M"],["L","L"],["XL(LL)","XL(LL)"],["2XL(3L)","2XL(3L)"],["3XL(4L)","3XL(4L)"],["4XL(5L)以上","4XL(5L)以上"],["FREE SIZE","FREE SIZE"]]),{include_blank:"-"},{autofocus: 'true', class: 'item_form'}
 
-          .drop-image-wrapdouble-right-wrap
+          .drop-image-wrapdouble-right-wrap#selectbrand
             .drop-image-wrapdouble-right-wrap__titles
               %label.title ブランド
               %span.nini 任意
@@ -85,7 +85,7 @@
               %span.hissu 必須
             = f.select :feewho, options_for_select([["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]]),{include_blank:"-"},{autofocus: 'true', class: 'item_form'}
           
-          .drop-image-wrapdouble-right-wrap
+          .drop-image-wrapdouble-right-wrap#selecthow
             .drop-image-wrapdouble-right-wrap__titles
               %label.title 配送の方法
               %span.hissu 必須

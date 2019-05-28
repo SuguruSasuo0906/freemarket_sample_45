@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20190520003535) do
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "data",    null: false
+    t.binary  "data",    limit: 16777215, null: false
     t.integer "item_id"
     t.index ["item_id"], name: "index_images_on_item_id", using: :btree
   end
