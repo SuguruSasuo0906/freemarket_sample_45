@@ -93,7 +93,7 @@ GEM
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    ffi (1.11.0)
+    ffi (1.11.1)
     fog-aws (3.5.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
@@ -115,7 +115,7 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    haml (5.1.0)
+    haml (5.1.1)
       temple (>= 0.8.0)
       tilt
     haml-rails (1.0.0)
@@ -145,7 +145,7 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (2.2.0)
-    jwt (2.1.0)
+    jwt (2.2.1)
     kgio (2.11.2)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)

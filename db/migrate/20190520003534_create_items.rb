@@ -13,11 +13,10 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.references :user , foreign_key: true#ユーザーのID
       t.references :prefecture , foreign_key: true#地域のID
       t.references :category , foreign_key: true#商品のカテゴリーID
-      t.references :item_sold , foreign_key: true#出品中かどうかのID
+      t.references :item_sold , foreign_key: true, default: 1#出品中かどうかのID
       t.references :item_state,foreign_key: true#商品の状態
       t.references :brand,foreign_key: true#ブランド名
 
-      t.timestamps
     end
 
   end

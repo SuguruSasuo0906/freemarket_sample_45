@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
     files_array.forEach(function (file) {
-      formData.append("images[image][]", file)
+      formData.append("images[data]", file)
     });
     $.ajax({
       url: '/items',
@@ -163,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
       processData: false,
       dataType: 'json',
     })
-
       .done(function (data) {
         alert('出品に成功しました');
       })
