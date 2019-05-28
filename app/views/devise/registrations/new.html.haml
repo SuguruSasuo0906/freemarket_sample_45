@@ -25,7 +25,7 @@
 .new__main
   %h2.new__main-contents__title 会員情報入力
   .new__main-contents
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = form_for(resource, as: resource_name, url: registration_path{resource_name}) do |f|
       .new__main-contents__form
         .new__main-contents__form-wrap
           %label.new__main-contents__form-wrap__label ニックネーム
