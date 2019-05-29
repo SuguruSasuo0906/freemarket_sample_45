@@ -60,19 +60,21 @@ ActiveRecord::Schema.define(version: 20190520003535) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string  "name",                                    null: false
-    t.text    "description",   limit: 65535,             null: false
-    t.string  "feewho",                                  null: false
-    t.string  "shipment_day",                            null: false
-    t.string  "delivery",                                null: false
-    t.string  "size"
-    t.integer "price",                                   null: false
-    t.integer "user_id"
-    t.integer "prefecture_id"
-    t.integer "category_id"
-    t.integer "item_sold_id",                default: 1
-    t.integer "item_state_id"
-    t.integer "brand_id"
+    t.string   "name",                                    null: false
+    t.text     "description",   limit: 65535,             null: false
+    t.string   "feewho",                                  null: false
+    t.string   "shipment_day",                            null: false
+    t.string   "delivery",                                null: false
+    t.string   "size"
+    t.integer  "price",                                   null: false
+    t.integer  "user_id"
+    t.integer  "prefecture_id"
+    t.integer  "category_id"
+    t.integer  "item_sold_id",                default: 1
+    t.integer  "item_state_id"
+    t.integer  "brand_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["item_sold_id"], name: "index_items_on_item_sold_id", using: :btree

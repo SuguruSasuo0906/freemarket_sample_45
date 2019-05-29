@@ -17,6 +17,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.references :item_state,foreign_key: true#商品の状態
       t.references :brand,foreign_key: true#ブランド名
 
+      t.timestamps
     end
 
   end
