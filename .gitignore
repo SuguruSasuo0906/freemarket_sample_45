@@ -1,8 +1,16 @@
-/.DS_Store
+
+
 .DS_Store
 
 config/secrets.yml
+
+
+
+/.DS_Store
+
 config/certs/*
+vendor/bundle/*
+¥
 
 *.rbc
 capybara-*.html
@@ -16,7 +24,9 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
+
 /test/*
+
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -72,4 +82,14 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+
+app/assets/images
+app/assets/javascripts/*.coffee
+test/*
+
+
+app/helpers
+
+
 /public/*

@@ -1,6 +1,7 @@
 .login__header {
   text-align: center;
   height: 128px;
+
   &__logo {
     margin: 40px 0 0;
     width: 134px;
@@ -20,11 +21,13 @@
     padding: 40px 64px;
     margin: 0 auto;
     border-bottom: 1px solid #eee;
+
     &__title {
       text-align: center;
       font-size: 14px;
       padding: 5px;
     }
+
     #login__new__link-new {
       max-width: 320px;
       display: block;
@@ -35,16 +38,20 @@
       color: #fff;
     }
   }
+
   &__link {
     position: relative;
     max-width: 320px;
     margin: 0 auto;
+
     &__wrapper {
       position: relative;
       padding: 25px 0 0 0;
+
       .fa {
         font-size: 40px;
       }
+
       &__mail {
         text-align: center;
         position: relative;
@@ -55,6 +62,7 @@
         background: #eee;
         border: 1px solid transparent;
       }
+
       &__facebook {
         display: block;
         width: 100%;
@@ -65,12 +73,14 @@
         color: #fff;
         border: 1px solid transparent;
       }
+
       &__facebook-icon {
         position: absolute;
         top: 32px;
         left: 10px;
         color: #fff;
       }
+
       &__google {
         display: block;
         width: 100%;
@@ -81,6 +91,7 @@
         color: #333;
         border: 1px solid #979797;
       }
+
       &__google-icon {
         position: absolute;
         top: 32px;
@@ -89,6 +100,7 @@
       }
     }
   }
+
   &__form {
     padding-top: 16px;
     max-width: 320px;
@@ -104,6 +116,7 @@
       border-radius: 3px;
       border: solid 1px #aaa;
     }
+
     &-nickname-error {
       width: 100%;
       padding-left: 10px;
@@ -123,6 +136,7 @@
       border-radius: 3px;
       border: solid 1px #aaa;
     }
+
     &-email-error {
       width: 100%;
       padding-left: 10px;
@@ -142,6 +156,7 @@
       border-radius: 3px;
       border: solid 1px #aaa;
     }
+
     &-password-error {
       width: 100%;
       padding-left: 10px;
@@ -161,6 +176,7 @@
       border-radius: 3px;
       border: solid 1px #aaa;
     }
+
     &-last-name-error {
       width: 100%;
       padding-left: 10px;
@@ -180,6 +196,7 @@
       border-radius: 3px;
       border: solid 1px #aaa;
     }
+
     &-first-name-error {
       width: 100%;
       padding-left: 10px;
@@ -199,6 +216,7 @@
       border-radius: 3px;
       border: solid 1px #aaa;
     }
+
     &-last-name-kana-error {
       width: 100%;
       padding-left: 10px;
@@ -218,6 +236,7 @@
       border-radius: 3px;
       border: solid 1px #aaa;
     }
+
     &-first-name-kana-error {
       width: 100%;
       padding-left: 10px;
@@ -240,9 +259,11 @@
       color: #fff;
       cursor: pointer;
     }
+
     &__wrap {
       font-size: 14px;
       text-align: start;
+
       & a {
         color: #0099e8;
         line-height: 48px;
@@ -257,26 +278,32 @@
   margin: 0 auto;
   padding: 40px 0;
   text-align: center;
+
   &__list {
     font-size: 14px;
     color: #333;
     display: flex;
     justify-content: space-around;
+
     &-privacy {
       width: auto;
     }
+
     &-riyou {
       width: auto;
     }
+
     &-syoutorihiki {
       width: auto;
     }
   }
+
   &__logo {
     width: 80px;
     height: 65px;
     margin: 40px auto 0;
   }
+
   .small_title {
     font-size: 13px;
   }

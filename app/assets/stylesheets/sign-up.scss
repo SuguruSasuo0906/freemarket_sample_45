@@ -1,6 +1,7 @@
 .sign-up__header {
   text-align: center;
   height: 128px;
+
   &__logo {
     margin: 40px 0 0;
     width: 134px;
@@ -13,19 +14,23 @@
   height: auto;
   margin: 0 auto;
   background-color: #fff;
+
   &__title {
     text-align: center;
     font-size: 22px;
     padding: 32px 16px;
     border-bottom: solid 1px #eee;
   }
+
   &__link {
     max-width: 320px;
     margin: 0 auto;
     padding: 64px 0;
+
     &__wrapper {
       position: relative;
       padding: 25px 0 0 0;
+
       &__mail {
         text-align: center;
         position: relative;
@@ -36,6 +41,7 @@
         background: #eee;
         border: 1px solid transparent;
       }
+
       #sign-up__link__wrapper__mail-icon {
         position: absolute;
         top: 38px;
@@ -43,6 +49,7 @@
         color: #ccc;
         font-size: 25px;
       }
+
       &__facebook {
         position: relative;
         display: block;
@@ -55,6 +62,7 @@
         color: #fff;
         border: 1px solid transparent;
       }
+
       #sign-up__link__wrapper__facebook-icon {
         position: absolute;
         top: 48px;
@@ -62,6 +70,7 @@
         color: #fff;
         font-size: 40px;
       }
+
       &__google {
         position: relative;
         display: block;
@@ -74,6 +83,7 @@
         color: #333;
         border: 1px solid #979797;
       }
+
       #sign-up__link__wrapper__google-icon {
         position: absolute;
         top: 48px;
@@ -91,26 +101,32 @@
   margin: 0 auto;
   padding: 40px 0;
   text-align: center;
+
   &__list {
     font-size: 14px;
     color: #333;
     display: flex;
     justify-content: space-around;
+
     &-privacy {
       width: auto;
     }
+
     &-riyou {
       width: auto;
     }
+
     &-syoutorihiki {
       width: auto;
     }
   }
+
   &__logo {
     width: 80px;
     height: 65px;
     margin: 40px auto 0;
   }
+
   .small_title {
     font-size: 13px;
   }
