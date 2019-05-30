@@ -5,5 +5,5 @@ class Item < ApplicationRecord
   has_many :item_solds
   has_many :item_states
   has_many :prefectures
-  has_many :users
+  belongs_to :user
 end

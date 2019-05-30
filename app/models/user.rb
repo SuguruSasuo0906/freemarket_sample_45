@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one :address
   has_one :phonenumber
 
-  belongs_to :item
+  has_many :items
   
   has_many :todos
   has_many :sales
