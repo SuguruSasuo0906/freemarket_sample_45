@@ -58,7 +58,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-  gem 'unicorn','5.4.1'
+  gem 'unicorn', '5.4.1'
 end
 
 gem 'haml-rails'
@@ -74,4 +74,4 @@ gem 'omniauth-google-oauth2'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'twilio-ruby'
-gem 'rails-i18n'
+# gem 'rails-i18n'
