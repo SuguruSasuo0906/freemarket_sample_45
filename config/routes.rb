@@ -4,9 +4,15 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
+
+  devise_scope :users do
+    get "sign_in", to:"users/sessions#new"
+    get "sign_out", to:"users/sessions#destroy" 
+  end
+
   root 'freemarket_sample#index'
 
-  resources :users
+  # resources :users
   resources :freemarket_sample, only:[:index]
 
   resources :sign_up, only:[:index,:show] 
