@@ -74,7 +74,7 @@ yarn-debug.log*
 app/assets/images
 app/assets/javascripts/*.coffee
 test/*
-
+config/secrets.yml
 
 app/helpers
 
