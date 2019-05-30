@@ -3,17 +3,21 @@
   display: flex;
   text-align: center;
   height: 128px;
+
   &__wrap {
     display: flex;
     margin: 0 auto;
+
     &__logo {
       margin: 40px 0 0;
       width: 268px;
       height: 72px;
     }
+
     & ol {
       display: flex;
       padding: 40px 0 0 44px;
+
       & li {
         margin: 0 40px 0 0;
       }
@@ -29,6 +33,7 @@
   position: relative;
   color: #ccc;
   z-index: 0;
+
   .process-radius {
     position: relative;
     width: 12px;
@@ -36,6 +41,7 @@
     margin: 8px auto 0;
     background: #ccc;
     border-radius: 50%;
+
     &::after {
       position: absolute;
       bottom: 5px;
@@ -56,6 +62,7 @@
   position: relative;
   color: #ccc;
   z-index: 0;
+
   .process-radius {
     position: relative;
     width: 12px;
@@ -64,6 +71,7 @@
     background: #ccc;
     border-radius: 50%;
     z-index: 1;
+
     &::after {
       position: absolute;
       bottom: 5px;
@@ -75,6 +83,7 @@
       background: #ccc;
       z-index: -1;
     }
+
     &::before {
       position: absolute;
       bottom: 5px;
@@ -95,6 +104,7 @@
   position: relative;
   color: #ccc;
   z-index: 0;
+
   .process-radius {
     position: relative;
     width: 12px;
@@ -102,6 +112,7 @@
     margin: 8px auto 0;
     background: #ccc;
     border-radius: 50%;
+
     &::before {
       position: absolute;
       bottom: 5px;
@@ -128,6 +139,7 @@
   background: #ea352d;
   border-radius: 50%;
   z-index: 10;
+
   &::after {
     position: absolute;
     bottom: 5px;
@@ -149,6 +161,7 @@
   background: #ea352d;
   border-radius: 50%;
   z-index: 1;
+
   &::before {
     position: absolute;
     bottom: 5px;
@@ -160,6 +173,7 @@
     background: #ea352d;
     z-index: -1;
   }
+
   &::after {
     position: absolute;
     bottom: 5px;
@@ -181,6 +195,7 @@
   background: #ea352d;
   border-radius: 50%;
   z-index: 1;
+
   &::before {
     position: absolute;
     bottom: 5px;
@@ -192,6 +207,7 @@
     background: #ea352d;
     z-index: -1;
   }
+
   &::after {
     position: absolute;
     bottom: 5px;
@@ -213,6 +229,7 @@
   background: #ea352d;
   border-radius: 50%;
   z-index: 1;
+
   &::before {
     position: absolute;
     bottom: 5px;
@@ -233,31 +250,39 @@
   height: auto;
   margin: 0 auto;
   background-color: #fff;
+
   &-contents {
     padding: 24px 40px;
   }
+
   &-contents__title {
     text-align: center;
     font-size: 22px;
     padding: 32px 16px;
     border-bottom: solid 1px #eee;
   }
+
   &-contents__form {
     max-width: 320px;
     margin: 0 auto;
+
     &-wrap {
       &-p {
         color: #ea352d;
       }
+
       margin: 24px 0 0 0;
+
       &__select {
         margin: 8px 0 0;
       }
+
       &__select-year {
         width: 200px;
         height: 48px;
       }
     }
+
     &-wrap__hissu {
       background: #ea352d;
       margin: 0 0 0 8px;
@@ -275,6 +300,7 @@
   width: 100%;
   text-align: center;
 }
+
 .complete {
   display: inline-block;
   width: 100%;
@@ -287,10 +313,12 @@
 
 .creditcard-wrap {
   display: flex;
+
   &-select {
     width: 100px;
     height: 48px;
   }
+
   &-day {
     display: inline-block;
     margin: 10px;
@@ -303,26 +331,32 @@
   margin: 0 auto;
   padding: 40px 0;
   text-align: center;
+
   &__list {
     font-size: 14px;
     color: #333;
     display: flex;
     justify-content: space-around;
+
     &-privacy {
       width: auto;
     }
+
     &-riyou {
       width: auto;
     }
+
     &-syoutorihiki {
       width: auto;
     }
   }
+
   &__logo {
     width: 80px;
     height: 65px;
     margin: 40px auto 0;
   }
+
   .small_title {
     font-size: 13px;
   }

@@ -11,11 +11,7 @@ Rails.application.routes.draw do
   resources :items
   resources :categories, only:[:new]
 
-  resources :sign_up, only:[:index] do
-    collection do
-      get 'complete', to: 'sign_up#complete'
-    end
-  end
+  resources :sign_up, only:[:index,:show] 
 
   resources :addresses
   resources :phone_numbers

@@ -1,6 +1,6 @@
 class CreditcardsController < ApplicationController
   protect_from_forgery except:  [:create]
-  before_action :move_to_root,unless: :user_signed_in?
+  before_action :redirect_to_root,unless: :user_signed_in?
 
   require "payjp"
 
@@ -23,7 +23,7 @@ class CreditcardsController < ApplicationController
       )
       @creditcard = Creditcard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @creditcard.save
-        redirect_to complete_sign_up_index_path
+        redirect_to sign_up_path(current_user.id)
       else
         redirect_to action: "pay"
       end
@@ -55,8 +55,7 @@ class CreditcardsController < ApplicationController
 
   private
 
-  def move_to_root
+  def redirect_to_root
     redirect_to root_path
   end
-
 end
