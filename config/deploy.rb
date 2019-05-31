@@ -3,8 +3,6 @@ lock "~> 3.11.0"
 
 set :linked_files, %w{ config/secrets.yml }
 
-set :linked_files, %w{ .env }
-
 set :application, 'freemarket_sample_45'
 set :repo_url,  'git@github.com:SuguruSasuo0906/freemarket_sample_45.git'
 
@@ -24,7 +22,13 @@ set :default_env, {
   rbenv_root: "/usr/local/rbenv",
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
   AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
-  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"],
+  RECAPTCHA_SITE_KEY: ENV['RECAPTCHA_SITE_KEY'],
+  RECAPTCHA_SECRET_KEY:ENV['RECAPTCHA_SECRET_KEY'],
+  FACEBOOK_KEY:ENV['FACEBOOK_KEY'],
+  FACEBOOK_SECRET:ENV['FACEBOOK_SECRET'],
+  GOOGLE_CLIENT_ID:ENV['GOOGLE_CLIENT_ID'],
+  GOOGLE_CLIENT_SECRET:ENV['GOOGLE_CLIENT_SECRET']
 }
 
 after 'deploy:publishing', 'deploy:restart'
