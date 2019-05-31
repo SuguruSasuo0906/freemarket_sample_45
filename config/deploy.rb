@@ -3,6 +3,8 @@ lock "~> 3.11.0"
 
 set :linked_files, %w{ config/secrets.yml }
 
+set :linked_files, %w{ .env }
+
 set :application, 'freemarket_sample_45'
 set :repo_url,  'git@github.com:SuguruSasuo0906/freemarket_sample_45.git'
 

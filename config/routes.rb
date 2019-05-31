@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   root 'freemarket_sample#index'
 
-  # resources :users
+  resources :users
   resources :freemarket_sample, only:[:index]
 
   resources :sign_up, only:[:index,:show] 
