@@ -4,10 +4,9 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
-  root 'freemarket_sample#index'
+  root 'items#index'
 
   resources :users
-  resources :freemarket_sample, only:[:index]
   resources :items
   resources :categories, only:[:new]
 
