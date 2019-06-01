@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
     # 商品一覧表示をする為に、
     # モデルに定義したメソッドを使用し
     # カテゴリー毎のインスタンス変数の作成
-    @ladies_item = 
+    # limit(4)は４つ表示するということ
+    @ladies_item = item.result.set_index(category_id: 150..336).limit(4)
   end
 
   def new
