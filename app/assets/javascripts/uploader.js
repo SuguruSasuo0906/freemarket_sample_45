@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
     files_array.forEach(function (file) {
-      formData.append("images[data][]", file)
+      formData.append("images[name][]", file)
     });
     $.ajax({
       url: '/items',

@@ -21,11 +21,10 @@ class ItemsController < ApplicationController
     @item_image = @item.images.build 
     # JSより送られてきたimages[data[]]の配列をstrongparameterで許可をし、
     # params[:images][:data].each do |pic|で配列の個数分@item_image[:data] = pic.read.delete("\000")を繰り返す
-    params[:images][:data].each do |pic|
-      # pic.readで画像データのバイナリを読み込み,.delete("\000")でデータ内のnull文字を削除する。
-      # null文字を消さないと、Argumenterror(path name contains null byte)が出る
-      # 読み込んだ画像データをimageテーブルのdataカラムに渡す
-      @item_image[:data] = pic.read.delete("\000")
+    params[:images][:name].each do |pic|
+      # pic.readで画像データの名前を読み込み
+      # 読み込んだ画像データをimageテーブルのnameカラムに渡す
+      @item_image[:name] = pic.original_filename
     end
     if @item.save!
       respond_to do |format|
@@ -38,6 +37,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description,:feewho,:shipment_day,:delivery,:size,:price,:prefecture_id,:brand_id,:category_id,:item_sold_id ,:item_state_id,:bland_id,images_attributes:[:id,:item_id,:data]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description,:feewho,:shipment_day,:delivery,:size,:price,:prefecture_id,:brand_id,:category_id,:item_sold_id ,:item_state_id,:bland_id,images_attributes:[:id,:item_id,:name]).merge(user_id: current_user.id)
   end
 end
