@@ -48,7 +48,7 @@
   .item
     %h2.item__title レディース新着アイテム
     //_pickup-item.html.hamlを画面に表示
-    = render partial: "pickup-item"
+    = render partial: "pickup-item", collection: @ladies_items ,as: 'item'
     = link_to "",class:"item__footer" do
       すべての商品を見る
 
