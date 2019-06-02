@@ -8,7 +8,8 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'd2f9278106e88459561a1039d659741e7cb3c093a15a6fe7e08c4474a825dc26b6efe99f048ee6e725c8eb1a13280855c2a7ab0f4aaad3c6bdd668aa430b92b5'
+  # config.secret_key = '9ee3ec8b8b6d32d30c6bb296e78b4ba683e9659b15a2476aa28b1818031706e8cb89dcb1a92cce3079a530ed3342bd8bdd2967bb5be8727a3887a246ff887840'
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -300,5 +301,4 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], scope: 'email'
   #  redirect_uri: "#{ENV['HOST']}/users/auth/google_oauth2/callback"
   OmniAuth.config.logger = Rails.logger if Rails.env.development? # debug用
-  
 end

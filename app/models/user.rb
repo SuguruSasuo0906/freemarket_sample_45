@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_one :phonenumber
 
   has_many :items
-  
   has_many :todos
   has_many :sales
   has_many :sale_hists
