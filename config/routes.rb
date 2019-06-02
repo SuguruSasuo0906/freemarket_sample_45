@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :freemarket_sample, only:[:index]
+  resources :items
+  resources :categories, only:[:new]
 
   resources :sign_up, only:[:index,:show] 
 
