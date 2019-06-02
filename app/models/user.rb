@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one :address
   has_one :phonenumber
 
-  belongs_to :item
+  has_many :items
   
   has_many :todos
   has_many :sales
@@ -63,7 +63,7 @@ class User < ApplicationRecord
         uid: auth.uid,
         provider: auth.provider,
         email: auth.info.email,
-        # name: auth.info.name,
+        name: auth.info.name,
         password: Devise.friendly_token[0, 20],
         # image: auth.info.image
       )

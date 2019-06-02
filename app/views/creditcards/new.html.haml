@@ -1,82 +1,59 @@
 //新規会員登録ヘッダー部分//
 .new__header
-    .new__header__wrap
-        %h1
-            = link_to "/" do
-                =image_tag "logo001.png", class:"new__header__wrap__logo"
-        %ol
-            %li.process-first
-                会員情報
-                .process-radius-active-first
-            %li.process
-                電話番号認証
-                .process-radius-active-end
-            %li.process
-                お届け先住所入力
-                .process-radius-active-end
-            %li.process.active
-                支払い方法
-                .process-radius-active
-            %li.process-last
-                完了
-                .process-radius
+  .new__header__wrap
+    %h1
+      = link_to "/" do
+        =image_tag "logo001.png", class:"new__header__wrap__logo"
+    %ol
+      %li.process-first
+        会員情報
+        .process-radius-active-first
+      %li.process
+        電話番号認証
+        .process-radius-active-end
+      %li.process
+        お届け先住所入力
+        .process-radius-active-end
+      %li.process.active
+        支払い方法
+        .process-radius-active
+      %li.process-last
+        完了
+        .process-radius
 
 //コンテンツ部分//
 .new__main
-    %h2.new__main-contents__title 支払い方法
-    .new__main-contents
 
-        //カード情報入力部分//
-        =form_tag(pay_creditcards_path, method: :post,id: 'charge-form', name: "inputForm") do
-            .new__main-contents__form        
-                .new__main-contents__form-wrap
-                    %label.new__main-contents__form-wrap__label カード番号
-                    %span.new__main-contents__form-wrap__hissu 必須
-                    = text_field_tag "number", "",class:"number login__form-last-name", placeholder: "半角数字のみ" ,maxlength: "16",id: "card_number"
-                
-                .new__main-contents__form-wrap
-                    %label.new__main-contents__form-wrap__label 有効期限
-                    %span.new__main-contents__form-wrap__hissu 必須
-                    .creditcard-wrap
-                        %select#exp_month{name: "exp_month",type: "text", class: 'creditcard-wrap-select'}
-                            %option{value: ""} --
-                            %option{value: "1"} 01
-                            %option{value: "2"} 02
-                            %option{value: "3"} 03
-                            %option{value: "4"} 04
-                            %option{value: "5"} 05
-                            %option{value: "6"} 06
-                            %option{value: "7"} 07
-                            %option{value: "8"} 08
-                            %option{value: "9"} 09
-                            %option{value: "10"} 10
-                            %option{value: "11"} 11
-                            %option{value: "12"} 12
-                        %span.creditcard-wrap-day 月
-                        %select#exp_year{name: "exp_year",type: "text", class: 'creditcard-wrap-select'}
-                            %option{value: ""} --
-                            %option{value: "2019"} 19
-                            %option{value: "2020"} 20
-                            %option{value: "2021"} 21
-                            %option{value: "2022"} 22
-                            %option{value: "2023"} 23
-                            %option{value: "2024"} 24
-                            %option{value: "2025"} 25
-                            %option{value: "2026"} 26
-                            %option{value: "2027"} 27
-                            %option{value: "2028"} 28
-                            %option{value: "2029"} 29
-                        %span.creditcard-wrap-day 年
+  %h2.new__main-contents__title 支払い方法
+  .new__main-contents
+                    
+    //カード情報入力部分//
+    =form_tag(pay_creditcards_path, method: :post,id: 'charge-form', name: "inputForm") do
+      .new__main-contents__form        
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label カード番号
+          %span.new__main-contents__form-wrap__hissu 必須
+          = text_field_tag "number", "",class:"number login__form-last-name", placeholder: "半角数字のみ" ,maxlength: "16",id: "card_number"
+        
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label 有効期限
+          %span.new__main-contents__form-wrap__hissu 必須
+          .creditcard-wrap
+            = select_tag "exp_month", options_for_select((1..12),include_blank:"-",autofocus: 'true', class: 'creditcard-wrap-select')
+            %span.creditcard-wrap-day 月
 
-                .new__main-contents__form-wrap
-                    %label.new__main-contents__form-wrap__label  セキュリティコード
-                    %span.new__main-contents__form-wrap__hissu 必須
-                    = text_field_tag "cvc", "",class: "cvc login__form-last-name", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+            = select_tag "exp_year" , options_for_select([["19","2019"],["20","2020"],["21","2021"],["22","2022"],["23","2023"],["24","2024"],["25","2025"],["26","2026"],["27","2027"],["28","2028"],["29","2029"]]),include_blank:"-",autofocus: 'true', class: 'creditcard-wrap-select'
+            %span.creditcard-wrap-day 年
 
-                .new__main-contents__form-wrap
-                    #card_token
-                    = submit_tag "次へ", id: "token_submit",class:"login__form-loginbtn"
-            //カード情報入力部分ここまで//
+        .new__main-contents__form-wrap
+          %label.new__main-contents__form-wrap__label  セキュリティコード
+          %span.new__main-contents__form-wrap__hissu 必須
+          = text_field_tag "cvc", "",class: "cvc login__form-last-name", placeholder: "カード背面3~4桁の番号", maxlength: "4", id: "cvc"
+
+        .new__main-contents__form-wrap
+          #card_token
+          = submit_tag "次へ", id: "token_submit",class:"login__form-loginbtn"
+  //カード情報入力部分ここまで//
 
 = render 'shared/member-new-login-footer'      
 

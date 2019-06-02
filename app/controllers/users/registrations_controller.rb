@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :check_captcha, only: [:create]
   def new
-    @user=User.new
+    @user = User.new
   end
 
   def create
@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    new_phone_number_path(@user)
+    new_phone_number_path(user_id: current_user.id)
   end
 
   private
