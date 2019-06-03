@@ -10,7 +10,7 @@
   .item__main-title
     %h2.item__main-title__title 商品の情報を入力
 
-  = form_for @item, html:{id:"new-item"} do |f|
+  = form_for @item, html:{multipart: true ,id:"new-item"} do |f|
     .item__main-contents
       .drop-image-wrap
         .drop-image-wrap__titles
