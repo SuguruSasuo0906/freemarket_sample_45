@@ -7,8 +7,11 @@ process resize_to_fit: [200,200]
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-
+  if Rails.env.production? || Rails.env.staging?
     storage :fog
+  else
+    storage :file
+  end
 
 
   # Override the directory where uploaded files will be stored.
@@ -31,7 +34,13 @@ process resize_to_fit: [200,200]
   # def scale(width, height)
   #   # do something
   # end
-
+  # デフォルト画像は700x700に収まるようリサイズ
+  process :resize_to_limit => [700, 700]
+  
+  # サムネイル画像
+  version :thumb do
+    process resize_to_fill: [100, 100]
+  end
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process resize_to_fit: [50, 50]

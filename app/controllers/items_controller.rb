@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     if @item.save!
       respond_to do |format|
         format.html {redirect_to root_path}
-        format.json 
+        format.json {}
       end
     end
   end
