@@ -20,11 +20,12 @@
         //以下に画像がアップされたらプレビューされる
         .image__area
           .image__preview_area
-          #image__drop_area
-            %input{type:"file",accept:"image/*",id:"imagefile"}
-            .image__howmany
-              %h6 ドラッグアンドドロップ
-              %h6 またはここをクリックしてファイルをアップロード
+          =f.fields_for :images do |i|
+            #image__drop_area
+              = i.file_field :name ,name:"item[images_attributes][][name]" ,multiple: "true",accept:"image/*",id:"imagefile"
+              .image__howmany
+                %h6 ドラッグアンドドロップ
+                %h6 またはここをクリックしてファイルをアップロード
 
     .item__main-contents
       .drop-image-wrap
