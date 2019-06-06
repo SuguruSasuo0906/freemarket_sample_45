@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item_image = @item.images.build
     @category = Category.eager_load(children: :children).where(parent_id: nil)  
   end
 
@@ -24,7 +25,7 @@ class ItemsController < ApplicationController
     params[:images][:name].each do |pic|
       # pic.readで画像データの名前を読み込み
       # 読み込んだ画像データをimageテーブルのnameカラムに渡す
-      @item_image[:name] = pic.original_filename
+      @item_image[:name] = pic
     end
     if @item.save!
       respond_to do |format|

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+$(document).on('turbolinks:load', function () {
 
   const image__howmany = document.querySelector('.image__howmany');
 
@@ -159,24 +159,25 @@ document.addEventListener("DOMContentLoaded", function () {
       $('#kakaku-text-90').text("-");
     }
   });
-  //
-  //submitが押された際のイベント
-  $('#new-item').on('submit', function (e) {
-    e.preventDefault();
-    var formData = new FormData($(this).get(0));
-    files_array.forEach(function (file) {
-      formData.append("images[name][]", file)
-    });
-    $.ajax({
-      url: '/items',
-      type: 'POST',
-      data: formData,
-      contentType: false,
-      processData: false,
-      dataType: 'json',
-    })
-      .done(function (data) {
-        alert('出品に成功しました');
-      })
+});
+//
+//submitが押された際のイベント
+$('#new-item').on('submit', function (e) {
+  e.preventDefault();
+  var formData = new FormData($(this).get(0));
+  files_array.forEach(function (file) {
+    formData.append("images[name][]", file)
   });
+  console.log(files_array);
+  $.ajax({
+    url: '/items',
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    processData: false,
+    dataType: 'json',
+  })
+    .done(function (data) {
+      alert('出品に成功しました');
+    })
 });
