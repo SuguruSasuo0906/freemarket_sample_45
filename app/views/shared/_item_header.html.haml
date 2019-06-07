@@ -1,0 +1,31 @@
+.header
+  .header__up
+    =image_tag "logo001.png", class:"header__up__logo"
+    %form.header__up__form
+      %input.header__up__form-input{placeholder:"何かお探しですか？"}
+      = fa_icon "search" ,class:"header__up__form-input__icon-search"
+  .header__down
+    .header__down-left
+      %ul.header__down-left__nav
+        %li.header__down-left__nav-list
+          = link_to "",class:"header__down-left__nav-list__link" do
+            = fa_icon "list",class:"header__down-left__nav-list__link__icon-category"
+            %span カテゴリーから探す
+        %li.header__down-left__nav-list
+          = link_to "",class:"header__down-left__nav-list__link" do
+            = fa_icon "tag",class:"header__down-left__nav-list__link__icon-brand"
+            %span ブランドを探す
+    .header__down-right
+      %ul.header__down-right__nav
+        -if user_signed_in?
+          %li.header__down-right__nav-list
+            = link_to destroy_user_session_path, method: :delete do
+              %span.header__down-right__nav-list__login-btn ログアウト
+
+        -else
+          %li.header__down-right__nav-list
+            = link_to new_user_session_path do
+              %span.header__down-right__nav-list__login-btn ログイン
+          %li.header__down-right__nav-list
+            = link_to "sign_up",method:'get' do
+              %span.header__down-right__nav-list__login-btn-new 新規会員登録
