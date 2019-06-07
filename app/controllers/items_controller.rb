@@ -8,6 +8,24 @@ class ItemsController < ApplicationController
     # limit(4)は４つ表示するということ    
     @ladies_items = Item.set_index(category_id: 150..336)
     @ladies_items_images = Image.where(item_id: @ladies_items.ids).order("id DESC")
+    @mens_items = Item.set_index(category_id: 337..466)
+    @mens_items_images = Image.where(item_id: @mens_items.ids).order("id DESC")
+    @kids_items = Item.set_index(category_id: 467..585)
+    @kids_items_images = Image.where(item_id: @kids_items.ids).order("id DESC")
+    @cosme_items = Item.set_index(category_id: 865..952)
+    @cosme_items_images = Image.where(item_id: @cosme_items.ids).order("id DESC")
+
+    @shanel_items = Item.set_index(brand_id: 2)
+    @shanel_items_images = Image.where(item_id: @shanel_items.ids).order("id DESC")
+    @vuitton_items = Item.set_index(brand_id: 3)
+    @vuitton_items_images = Image.where(item_id: @vuitton_items.ids).order("id DESC")
+    @supreme_items = Item.set_index(brand_id: 4)
+    @supreme_items_images = Image.where(item_id: @supreme_items.ids).order("id DESC")
+    @nike_items = Item.set_index(brand_id: 5)
+    @nike_items_images = Image.where(item_id: @nike_items.ids).order("id DESC")
+
+
+
   end
 
   def new
