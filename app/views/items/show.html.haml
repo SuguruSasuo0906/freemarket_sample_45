@@ -1,5 +1,35 @@
 = render 'shared/item_header'
 
+.navi
+
+.show
+  %h1 hogehoge
+  .show__item
+    .show__item-left
+      .item-left__image
+        .item-left__image-main
+        .item-left__iamge-sub
+    .show__item-right
+      %table.item-right__table
+        %tr
+          %th 出品者
+          %td
+            = link_to "hoge" ,""
+            .user-rate
+              .good
+              .normal
+              .bad
+        %tr
+          %th カテゴリー
+          %td
+            = link_to "category-1",""
+            = link_to "category-2",""
+            = link_to "category-3",""
+        %tr
+          %th ブランド
+          %td
+        %tr
+          %th 
 
 
 = render 'shared/item_footer'
