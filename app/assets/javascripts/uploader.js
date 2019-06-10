@@ -165,7 +165,6 @@ $(document).on('turbolinks:load', function () {
   $('#new-item').on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
-    console.log(formData)
 
     $.ajax({
       url: '/items',
