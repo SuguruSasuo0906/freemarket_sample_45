@@ -23,9 +23,6 @@ class ItemsController < ApplicationController
     @supreme_items_images = Image.where(item_id: @supreme_items.ids).order("id DESC")
     @nike_items = Item.set_index(brand_id: 5)
     @nike_items_images = Image.where(item_id: @nike_items.ids).order("id DESC")
-
-
-
   end
 
   def new
@@ -45,7 +42,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
+    @item_all = Item.all.includes(:user,:brand,:item_sold,:item_state,:prefecture,:category)
+    @item = @item_all.find(params[:id])
   end
 
   private

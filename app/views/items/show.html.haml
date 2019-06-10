@@ -1,35 +1,280 @@
 = render 'shared/item_header'
 
-.navi
+.navi-bar
 
 .show
-  %h1 hogehoge
-  .show__item
-    .show__item-left
-      .item-left__image
-        .item-left__image-main
-        .item-left__iamge-sub
-    .show__item-right
-      %table.item-right__table
-        %tr
-          %th 出品者
-          %td
-            = link_to "hoge" ,""
-            .user-rate
-              .good
-              .normal
-              .bad
-        %tr
-          %th カテゴリー
-          %td
-            = link_to "category-1",""
-            = link_to "category-2",""
-            = link_to "category-3",""
-        %tr
-          %th ブランド
-          %td
-        %tr
-          %th 
+  .show-contents
+    %h1.item-name 
+      = @item.name
+    .show__item
+      .show__item-left
+        .item-left__image
+          .item-left__image-main
+          .item-left__iamge-sub
+      .show__item-right
+        %table.item-right__table
+          %tr
+            %th 
+              出品者
+            %td
+              = link_to "" do
+                = @item.user.name
+              .user-rate
+                .good
+                  = fa_icon "smile-o",class:"icon"
+                  %span 0
+                .normal
+                  = fa_icon "meh-o",class:"icon"
+                  %span 0
+                .bad
+                  = fa_icon "frown-o",class:"icon"
+                  %span 0
+          %tr
+            %th カテゴリー
+            %td
+              = @item.category.parent_id
+              = link_to "c-2",""
+              = link_to "c-3",""
+          %tr
+            %th ブランド
+            %td 
+              = @item.brand.name
+          %tr
+            %th 商品のサイズ
+            %td 
+              = @item.size
+          %tr
+            %th 商品の状態
+            %td 
+              = @item.item_state.status
+          %tr
+            %th 配送料の負担
+            %td 
+              = @item.feewho
+          %tr
+            %th 配送の方法
+            %td 
+              = @item.delivery
+          %tr
+            %th 配送元地域
+            %td 
+              = @item.prefecture.name
+          %tr
+            %th 発送日の目安
+            %td 
+              = @item.shipment_day
+    .item-price
+      %span.item-price__box 
+        = "¥" + number_with_delimiter(@item.price)
+      %span.item-price__tax (税込)
+      %span.item-price__shipping 送料込み
+    
+    =link_to "購入画面に進む","",class:"buy-btn"
+    
+    .item-description
+      %p.item-description__inner
+        = @item.description
+    
+    .item-status
+      %button.item-status__btn 
+        = fa_icon "heart-o"
+        %span いいね
+        %span.itemn-status__btn__good 0
+      =link_to "" do
+        %span.item-status__no-good-report
+          = fa_icon "flag-o"
+          不適切な商品の報告
+      .item-status__safety
+        =link_to "" do
+          = fa_icon "lock"
+          あんしん・あんぜんへの取り組み
+  
+  .show-comments
+    .show-comments__wrap
+      .show-comments__wrap__attention
+        %p.show-comments__wrap__attention-p
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .show-comments__wrap__box
+      
+      %bottun.show-comments__wrap__btn コメントする
 
+  .show-next
+    .show-next__back 
+      = link_to "" do
+        = fa_icon "angle-left"
+        前
+    .show-next__prev 
+      = link_to "" do
+        次
+        = fa_icon "angle-right"
+
+  .show-sns
+    .show-sns__box
+      .show-sns__box-1st
+        = link_to "" do
+          = fa_icon "twitter-square"
+      .show-sns__box-2nd
+        = link_to "" do
+          = fa_icon "facebook-square"
+      .show-sns__box-3rd
+        = link_to "" do
+          = fa_icon "pinterest-square"
+
+  .show-other-item
+    %span.show-other-item__title
+      = link_to "hogehogeさんのその他の出品",""
+
+    .show-other-item__wrap
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon 
+                  = fa_icon "heart-o"
+                .show-other-item__wrap-item-box__pricies__good-num 
+                  １
+            %p.show-other-item__wrap-item-box__tax (税込)
+
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+        
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+
+  .show-other-item
+    %span.show-other-item__title
+      = link_to "brandのcategoryその他の出品",""
+
+    .show-other-item__wrap
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+        
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+
+      = link_to "" do
+        .show-other-item__wrap-item
+          .show-other-item__wrap-item-pic
+          .show-other-item__wrap-item-box
+            %p.show-other-item__wrap-item-box__name hogehoge
+            .show-other-item__wrap-item-box__pricies
+              .show-other-item__wrap-item-box__pricies__price ¥4000
+              .show-other-item__wrap-item-box__pricies__good
+                .show-other-item__wrap-item-box__pricies__good-icon
+                .show-other-item__wrap-item-box__pricies__good-num １
+            %p.show-other-item__wrap-item-box__tax (税込)
+            
 
 = render 'shared/item_footer'
