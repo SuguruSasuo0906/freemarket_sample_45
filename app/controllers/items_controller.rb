@@ -28,7 +28,8 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
-    @category = Category.eager_load(children: :children).where(parent_id: nil)  
+    @category = Category.eager_load(children: :children).where(parent_id: nil) 
+    @message = Message.new
   end
 
   def create
@@ -42,13 +43,28 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item_all = Item.all.includes(:user,:brand,:item_sold,:item_state,:prefecture,:category)
+    @item_all = Item.all.includes(:user,:brand,:item_sold,:item_state,:prefecture,:category,:images)
     @item = @item_all.find(params[:id])
+    @image = @item.images
+    @category_gchild = @item.category
+    @category_child = Category.find(@category_gchild.parent_id)
+    @category = Category.find(@category_child.parent_id)
+    @message = Message.new
+
+    @user_items = Item.where(user_id: current_user.id).limit(6).order("created_at DESC")
+    @user_images = Image.where(item_id: @user_items.ids).limit(6).order("id DESC")
+
+    @another_items = Item.where(category_id: @item.category_id,brand_id: @item.brand_id).limit(6).order("created_at DESC")
+    @another_images = Image.where(item_id: @another_items.ids).limit(6).order("id DESC")
   end
 
   private
 
   def item_params
     params.require(:item).permit(:name, :description,:feewho,:shipment_day,:delivery,:size,:price,:prefecture_id,:brand_id,:category_id,:item_sold_id ,:item_state_id,:bland_id,images_attributes:[:name]).merge(user_id: current_user.id)
+  end
+
+  def message_params
+    # params.require(:message).permit(:comment,:item_id).merge(user_id: current_user.id)
   end
 end

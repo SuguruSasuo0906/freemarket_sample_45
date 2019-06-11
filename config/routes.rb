@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :users
-  resources :items
+  resources :items do
+    resources :messages
+  end
   resources :categories, only:[:new]
 
   resources :sign_up, only:[:index,:show] 

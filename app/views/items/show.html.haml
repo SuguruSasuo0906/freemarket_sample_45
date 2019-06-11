@@ -9,8 +9,9 @@
     .show__item
       .show__item-left
         .item-left__image
-          .item-left__image-main
-          .item-left__iamge-sub
+          - @image.each do |image|
+            = image_tag image.name_url ,class:"item-left__image-main" 
+            .item-left__iamge-sub
       .show__item-right
         %table.item-right__table
           %tr
@@ -32,9 +33,14 @@
           %tr
             %th カテゴリー
             %td
-              = @item.category.parent_id
-              = link_to "c-2",""
-              = link_to "c-3",""
+              = link_to "" do
+                = @category.name
+              = link_to "" do
+                = fa_icon "angle-right"
+                = @category_child.name
+              = link_to "" do
+                = fa_icon "angle-right"
+                = @category_gchild.name
           %tr
             %th ブランド
             %td 
@@ -58,7 +64,8 @@
           %tr
             %th 配送元地域
             %td 
-              = @item.prefecture.name
+              = link_to "" do
+                = @item.prefecture.name
           %tr
             %th 発送日の目安
             %td 
@@ -91,22 +98,28 @@
   
   .show-comments
     .show-comments__wrap
+
+      %ul.show-comments__wrap__message
+
       .show-comments__wrap__attention
         %p.show-comments__wrap__attention-p
           相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      .show-comments__wrap__box
+      = form_for [@item,@message] do |f|
+        = f.text_area :comment ,class:"show-comments__wrap__box"
       
-      %bottun.show-comments__wrap__btn コメントする
+        = f.submit "コメントする",class:"show-comments__wrap__btn"
 
   .show-next
     .show-next__back 
-      = link_to "" do
-        = fa_icon "angle-left"
-        前
+      -if @item.previous.present?
+        = link_to "" do
+          = fa_icon "angle-left"
+          = @item.previous.name
     .show-next__prev 
-      = link_to "" do
-        次
-        = fa_icon "angle-right"
+      -if @item.next.present?
+        = link_to "" do
+          = @item.next.name
+          = fa_icon "angle-right"
 
   .show-sns
     .show-sns__box
@@ -122,159 +135,50 @@
 
   .show-other-item
     %span.show-other-item__title
-      = link_to "hogehogeさんのその他の出品",""
-
+      = link_to "" do
+        = @item.user.name
+        さんのその他の出品
     .show-other-item__wrap
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon 
-                  = fa_icon "heart-o"
-                .show-other-item__wrap-item-box__pricies__good-num 
-                  １
-            %p.show-other-item__wrap-item-box__tax (税込)
-
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-        
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
+      - @user_items.zip(@user_images).each do |item,image|
+        = link_to "" do
+          .show-other-item__wrap-item
+            = image_tag image.name_url,class:"show-other-item__wrap-item-pic"
+            .show-other-item__wrap-item-box
+              %p.show-other-item__wrap-item-box__name 
+                = item.name
+              .show-other-item__wrap-item-box__pricies
+                .show-other-item__wrap-item-box__pricies__price 
+                  = "¥" + number_with_delimiter(item.price) 
+                .show-other-item__wrap-item-box__pricies__good
+                  .show-other-item__wrap-item-box__pricies__good-icon 
+                    = fa_icon "heart-o"
+                  .show-other-item__wrap-item-box__pricies__good-num 
+                    １
+              %p.show-other-item__wrap-item-box__tax (税込)
 
   .show-other-item
     %span.show-other-item__title
-      = link_to "brandのcategoryその他の出品",""
-
+      = link_to "" do
+        = @item.brand.name
+        の
+        = @item.category.name
+        その他の出品
     .show-other-item__wrap
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-        
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-
-      = link_to "" do
-        .show-other-item__wrap-item
-          .show-other-item__wrap-item-pic
-          .show-other-item__wrap-item-box
-            %p.show-other-item__wrap-item-box__name hogehoge
-            .show-other-item__wrap-item-box__pricies
-              .show-other-item__wrap-item-box__pricies__price ¥4000
-              .show-other-item__wrap-item-box__pricies__good
-                .show-other-item__wrap-item-box__pricies__good-icon
-                .show-other-item__wrap-item-box__pricies__good-num １
-            %p.show-other-item__wrap-item-box__tax (税込)
-            
+      - @another_items.zip(@another_images).each do |item,image|
+        = link_to "" do
+          .show-other-item__wrap-item
+            = image_tag image.name_url,class:"show-other-item__wrap-item-pic"
+            .show-other-item__wrap-item-box
+              %p.show-other-item__wrap-item-box__name
+                = item.name
+              .show-other-item__wrap-item-box__pricies
+                .show-other-item__wrap-item-box__pricies__price
+                  = "¥" + number_with_delimiter(item.price) 
+                .show-other-item__wrap-item-box__pricies__good
+                  .show-other-item__wrap-item-box__pricies__good-icon
+                    = fa_icon "heart-o"
+                  .show-other-item__wrap-item-box__pricies__good-num 
+                    １
+              %p.show-other-item__wrap-item-box__tax (税込)
 
 = render 'shared/item_footer'
