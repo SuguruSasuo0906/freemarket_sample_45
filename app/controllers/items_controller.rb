@@ -24,8 +24,6 @@ class ItemsController < ApplicationController
     @nike_items = Item.set_index(brand_id: 5)
     @nike_items_images = Image.where(item_id: @nike_items.ids).order("id DESC")
 
-
-
   end
 
   def new

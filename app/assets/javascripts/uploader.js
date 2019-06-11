@@ -15,7 +15,8 @@ $(document).on('turbolinks:load', function () {
     return html
   };
   // 画像を入れる配列
-  var imagefile = document.getElementById('imagefile');
+  // var imagefile = document.getElementById('imagefile');
+  var imagefile = $('#imagefile');
   //
   $('#image__drop_area').on('dragover', function (e) {
     e.preventDefault();
