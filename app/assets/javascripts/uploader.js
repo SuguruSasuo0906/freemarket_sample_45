@@ -158,7 +158,7 @@ $(document).on('turbolinks:load', function () {
       dataType: 'json',
     })
       .done(function (data) {
-        alert('出品に成功しました');
+        window.location.href = '/';
       })
   });
 });
