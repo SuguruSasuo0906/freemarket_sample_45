@@ -37,23 +37,6 @@ $(document).on('turbolinks:load', function () {
     image__howmany.style.display = 'none';
   });
   //
-  //プレビューエリアがクリックされた時
-  // const image__drop_area = document.querySelector('#image__drop_area');
-  // image__drop_area.addEventListener('click', function () {
-  //   imagefile.click();
-  // });
-  // document.getElementById("imagefile").addEventListener("change", function () {
-  //   var fileList = this.files;
-  //   for (var i = 0, l = fileList.length; l > i; i++) {
-  //     var fileReader = new FileReader();
-  //     fileReader.onload = function (event) {
-  //       var loadedImageUri = event.target.result;
-  //       $(buildImage(loadedImageUri)).appendTo(".image__preview_area").trigger("create");
-  //     }
-  //     fileReader.readAsDataURL(fileList[i]);
-  //     image__howmany.style.display = 'none';
-  //   }
-  // });
   //
   //プレビューからの削除
   $(document).on('click', '.image__preview_area a', function () {
@@ -165,7 +148,6 @@ $(document).on('turbolinks:load', function () {
   $('#new-item').on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
-    console.log(formData)
 
     $.ajax({
       url: '/items',
