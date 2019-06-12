@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
     @supreme_items_images = Image.where(item_id: @supreme_items.ids).order("id DESC")
     @nike_items = Item.set_index(brand_id: 5)
     @nike_items_images = Image.where(item_id: @nike_items.ids).order("id DESC")
+    binding.pry
   end
 
   def new
