@@ -76,7 +76,8 @@
       %span.item-price__tax (税込)
       %span.item-price__shipping 送料込み
     
-    =link_to "購入画面に進む","",class:"buy-btn"
+    =link_to item_buys_path(@item) ,class:"buy-btn" do
+      購入画面に進む
     
     .item-description
       %p.item-description__inner

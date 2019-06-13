@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :user
   has_many :messages
+  has_one :trade
 
   def self.set_index(id)
     Item.where(id).limit(4).order("created_at DESC")

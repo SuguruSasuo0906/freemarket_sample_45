@@ -22,15 +22,15 @@
             = "¥" + number_with_delimiter(@item.price)
           %span.item__price__shipping
             送料込み
-        .item__point
-          ポイントはありません
-        .item__pay
-          .item__pay__title
-            支払い金額
-          .item__pay__price
-            = "¥" + number_with_delimiter(@item.price)
-        .item__purchase-btn
-          購入する
+        = form_tag action: :create do |f|
+          .item__point
+            ポイントはありません
+          .item__pay
+            .item__pay__title
+              支払い金額
+            .item__pay__price
+              = "¥" + number_with_delimiter(@item.price)
+          = submit_tag "購入する",class:"item__purchase-btn"
       
     -# 送付先
     .buy__contents-wrap
@@ -46,8 +46,9 @@
         .delivery__address
           = @address.name
         .buy__edit
-          変更する
-          = fa_icon "angle-right"
+          = link_to "", class:"buy__edit-link" do 
+            変更する
+            = fa_icon "angle-right"
 
 
     -# クレジットカード情報
@@ -63,8 +64,9 @@
           = month + " / " + year
         =image_tag "visa.svg", class:"creditcard__type"
         .buy__edit
-          変更する
-          = fa_icon "angle-right"
+          = link_to "", class:"buy__edit-link" do 
+            変更する
+            = fa_icon "angle-right"
 
 
   -# フッター

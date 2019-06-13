@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190610064008) do
+ActiveRecord::Schema.define(version: 20190613063644) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -107,6 +107,13 @@ ActiveRecord::Schema.define(version: 20190610064008) do
     t.string "name", null: false
   end
 
+  create_table "trades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "item_id"
+    t.integer "seller_id", null: false
+    t.integer "buyer_id",  null: false
+    t.index ["item_id"], name: "index_trades_on_item_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                                 default: "", null: false
     t.string   "namekana",                             default: "", null: false
@@ -145,4 +152,5 @@ ActiveRecord::Schema.define(version: 20190610064008) do
   add_foreign_key "messages", "items"
   add_foreign_key "messages", "users"
   add_foreign_key "phonenumbers", "users"
+  add_foreign_key "trades", "items"
 end
