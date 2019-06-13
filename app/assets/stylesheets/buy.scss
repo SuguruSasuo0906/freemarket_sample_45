@@ -1,0 +1,120 @@
+// ページ内大枠
+.buy{
+  background: rgb(245,245,245);
+  font-size: 12px;
+
+  &__contents{
+    width: 700px;
+    margin: 0 auto;
+    background: #fff;
+
+    &-title{
+      padding: 32px 16px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    &-wrap{
+      width: 100%;
+      padding: 24px 12.5%;
+      border-top: 1px solid rgb(245,245,245);
+
+      &__item-wrap{
+      max-width:320px;
+      margin: 0 auto; 
+     }   
+    }
+  }
+}
+
+// 購入内容の確認フォント
+.buy-title-font{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+// 商品の情報
+.item__image{
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.item__name{
+  padding: 10px 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.item__price{
+  padding: 10px 0;
+  text-align: center;
+
+  &__cost{
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__shipping{
+    font-size: 12px;
+  }
+}
+
+.item__point{
+  text-align: center;
+  font-size: 12px;
+  background: #ccc;
+  padding: 16px;
+}
+
+.item__pay{
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+
+  &__title{
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &__price{
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+.item__purchase-btn{
+  padding: 16px;
+  background: #ea352d;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+// 送付先
+.delivery__title{
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.delivery__address{
+  font-size: 11px;
+}
+
+// クレジットカード情報
+.creditcard__title{
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.buy__edit{
+  text-align: right;
+  color: #0099e8;
+}
+
+.creditcard__type{
+  height: 20px;
+}
