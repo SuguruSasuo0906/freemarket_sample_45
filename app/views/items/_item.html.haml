@@ -1,0 +1,8 @@
+.item__wrap-link__text
+  %h3.item__wrap-link__text__item-name 
+    = item.name
+  .item__wrap-link__text__info
+    .item__wrap-link__text__info__item-price 
+      = "¥" + number_with_delimiter(item.price)
+    .item__wrap-link__text__info__item-favorite いいね１
+  %p.item__wrap-link__text__item-tax (税込み)

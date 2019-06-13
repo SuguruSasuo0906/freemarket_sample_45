@@ -19,7 +19,7 @@
     %h2.item__title レディース新着アイテム
     - @ladies_items.zip(@ladies_items_images).each do |item, image|
       .item__wrap
-        = link_to "", class:"item__wrap-link" do
+        = link_to item_path(item.id), class:"item__wrap-link" do
           = image_tag image.name_url ,class:"item__wrap-link__img" 
           .item__wrap-link__text
             %h3.item__wrap-link__text__item-name 
@@ -36,7 +36,7 @@
     %h2.item__title メンズ新着アイテム
     - @mens_items.zip(@mens_items_images).each do |item, image|
       .item__wrap
-        = link_to "", class:"item__wrap-link" do
+        = link_to item_path(item.id), class:"item__wrap-link" do
           = image_tag image.name_url ,class:"item__wrap-link__img" 
           .item__wrap-link__text
             %h3.item__wrap-link__text__item-name 
@@ -53,7 +53,7 @@
     %h2.item__title キッズ新着アイテム
     - @kids_items.zip(@kids_items_images).each do |item, image|
       .item__wrap
-        = link_to "", class:"item__wrap-link" do
+        = link_to item_path(item.id), class:"item__wrap-link" do
           = image_tag image.name ,class:"item__wrap-link__img" 
           .item__wrap-link__text
             %h3.item__wrap-link__text__item-name 
@@ -70,7 +70,7 @@
     %h2.item__title コスメ・香水・美容新着アイテム
     - @cosme_items.zip(@cosme_items_images).each do |item, image|
       .item__wrap
-        = link_to "", class:"item__wrap-link" do
+        = link_to item_path(item.id), class:"item__wrap-link" do
           = image_tag image.name ,class:"item__wrap-link__img" 
           .item__wrap-link__text
             %h3.item__wrap-link__text__item-name 
@@ -88,7 +88,7 @@
     %h2.item__title シャネル新着アイテム
     - @shanel_items.zip(@shanel_items_images).each do |item, image|
       .item__wrap
-        = link_to "", class:"item__wrap-link" do
+        = link_to item_path(item.id), class:"item__wrap-link" do
           = image_tag image.name_url ,class:"item__wrap-link__img" 
           .item__wrap-link__text
             %h3.item__wrap-link__text__item-name 
@@ -105,7 +105,7 @@
     %h2.item__title ルイ・ヴィトン新着アイテム
     - @vuitton_items.zip(@vuitton_items_images).each do |item, image|
       .item__wrap
-        = link_to "", class:"item__wrap-link" do
+        = link_to item_path(item.id), class:"item__wrap-link" do
           = image_tag image.name_url ,class:"item__wrap-link__img" 
           .item__wrap-link__text
             %h3.item__wrap-link__text__item-name 
@@ -122,7 +122,7 @@
     %h2.item__title シュプリーム新着アイテム
     - @supreme_items.zip(@supreme_items_images).each do |item, image|
       .item__wrap
-        = link_to "", class:"item__wrap-link" do
+        = link_to item_path(item.id), class:"item__wrap-link" do
           = image_tag image.name ,class:"item__wrap-link__img" 
           .item__wrap-link__text
             %h3.item__wrap-link__text__item-name 
@@ -139,7 +139,7 @@
     %h2.item__title ナイキ新着アイテム
     - @nike_items.zip(@nike_items_images).each do |item, image|
       .item__wrap
-        = link_to "", class:"item__wrap-link" do
+        = link_to item_path(item.id), class:"item__wrap-link" do
           = image_tag image.name ,class:"item__wrap-link__img" 
           .item__wrap-link__text
             %h3.item__wrap-link__text__item-name 

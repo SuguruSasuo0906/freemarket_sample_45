@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :items do
     resources :messages
+    resources :buys
   end
   resources :categories, only:[:new]
 
