@@ -1,0 +1,32 @@
+- if user_signed_in?
+  - unless item.like_user(current_user.id).blank?
+    = link_to item_like_path(item_id: item.id, id: item.likes[0].id), method: :delete, remote: true,class:"good-btn" do
+      .item-status__btn
+        %span
+          = fa_icon "heart"
+          いいね
+        %span
+          = item.good_count
+  - else
+    = link_to item_likes_path(item.id), method: :post, remote: true,class:"ungood-btn" do
+      .item-status__btn
+        %span
+          = fa_icon "heart-o"
+          いいね
+        %span
+          = item.good_count
+- else
+  - if item.good_count > 0
+    .item-status__btn
+      = fa_icon "heart-o"
+      %span
+        いいね
+      %span
+        = item.good_count
+  - else
+    .item-status__btn
+      %span
+        = fa_icon "heart-o"
+        いいね
+      %span
+        = item.good_count

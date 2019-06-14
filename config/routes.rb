@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'likes/create'
+  get 'likes/destroy'
+
   devise_for :users,controllers:{
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   resources :items do
     resources :messages
     resources :buys
+    resources :likes, only: [:create, :destroy]
   end
   resources :categories, only:[:new]
 

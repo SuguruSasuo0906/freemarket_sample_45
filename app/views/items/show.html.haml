@@ -1,6 +1,12 @@
 = render 'shared/item_header'
 
 .navi-bar
+  .navi-bar-wrap 
+    = link_to "メルカリ",root_path
+    = fa_icon "angle-right"
+    %span.navi-bar-wrap__item-name
+      = @item.name
+    
 
 .show
   .show-contents
@@ -76,6 +82,12 @@
       %span.item-price__tax (税込)
       %span.item-price__shipping 送料込み
     
+    -unless @item.user.point.nil?
+      .item-point
+        .item-point-wrap
+          = "P" + @item.user.point + "お持ちです。"
+        .item-point-triangle
+    
     =link_to item_buys_path(@item) ,class:"buy-btn" do
       購入画面に進む
     
@@ -83,17 +95,17 @@
       %p.item-description__inner
         = @item.description
     
-    .item-status
-      %button.item-status__btn 
-        = fa_icon "heart-o"
-        %span いいね
-        %span.itemn-status__btn__good 0
+    .item-good-btn
+      #likes_buttons
+        = render partial:"likes/like", locals:{item: @item, likes: @likes}
+
       =link_to "" do
-        %span.item-status__no-good-report
-          = fa_icon "flag-o"
-          不適切な商品の報告
+        .item-status__no-good-report
+          %span
+            = fa_icon "flag-o"
+            不適切な商品の報告
       .item-status__safety
-        =link_to "" do
+        =link_to "" ,class:"link-update" do
           = fa_icon "lock"
           あんしん・あんぜんへの取り組み
   
@@ -113,12 +125,12 @@
   .show-next
     .show-next__back 
       -if @item.previous.present?
-        = link_to "" do
+        = link_to "",class:"link-update" do
           = fa_icon "angle-left"
           = @item.previous.name
     .show-next__prev 
       -if @item.next.present?
-        = link_to "" do
+        = link_to "",class:"link-update" do
           = @item.next.name
           = fa_icon "angle-right"
 
