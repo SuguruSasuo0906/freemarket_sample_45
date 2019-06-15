@@ -1,5 +1,5 @@
 - if user_signed_in?
-  - unless item.like_user(current_user.id).blank?
+  - if item.like_user(current_user.id)
     = link_to item_like_path(item_id: item.id, id: item.likes[0].id), method: :delete, remote: true,class:"good-btn" do
       .item-status__btn
         %span
