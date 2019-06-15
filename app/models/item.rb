@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :user
   has_many :messages
+  has_one :trade
+  has_many :likes, dependent: :destroy
 
   def self.set_index(id)
     Item.where(id).limit(4).order("created_at DESC")
@@ -19,5 +21,9 @@ class Item < ApplicationRecord
 
   def next
     Item.where("id > ?", self.id).order("id ASC").first
+  end
+
+  def like_user(user_id)
+    likes.find_by(user_id: user_id)
   end
 end

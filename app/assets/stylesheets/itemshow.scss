@@ -5,6 +5,30 @@
   background: #fff;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.20);
   position: relative;
+
+  &-wrap{
+    width: 1020px;
+    padding: 16px;
+    margin: 0 auto;
+    font-size: 12px;
+
+    &__item-name{
+      padding-left: 5px;
+      font-weight: 600;
+    }
+  }
+}
+
+.link-update{
+  color: #0099e8;
+}
+
+.link-update:visited{
+  color: #0099e8;
+}
+
+.link-update:hover{
+  text-decoration: none;
 }
 
 .show{
@@ -73,7 +97,11 @@
         padding: 8px;
 
         & a{
+          color: #0099e8;
           display: block;
+        }
+        & a:visited{
+          color: #0099e8;
         }
 
         .user-rate{
@@ -113,6 +141,32 @@
 }
 // ①ここまで
 
+// ユーザーの保持ポイント
+.item-point{
+  width: 100%;
+  text-align: center;
+  
+  &-wrap{
+    display: inline-block;
+    position: relative;
+    line-height: 1.5;
+    background: #05b0b4;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;  
+  }
+
+  &-triangle{
+    position: absolute;
+    left:49%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 8px 0 8px;
+    border-color: #05b0b4 transparent transparent transparent;
+  }
+}
+
 // ②商品の値段
 .item-price{
   margin: 24px;
@@ -122,6 +176,7 @@
     font-size: 50px;
     margin-right: 8px;
     font-weight: 600;
+    color: #ea352d;
   }
 
   &__tax{
@@ -151,11 +206,17 @@
   text-align: center;
   font-weight: 600;
 }
+.buy-btn:visited{
+  color: #fff;
+}
+.buy-btn:hover{
+  text-decoration: none;
+}
 // ③ここまで
 
 // ④商品の説明
 .item-description{
-  padding: 32px 0 0;
+  padding: 16px 0;
   line-height: 1.5;
   font-size: 18px;
 
@@ -167,38 +228,59 @@
 // ④ここまで
 
 // ⑤商品の状態
-.item-status{
-  margin: 16px 0 0;
-
-  &__btn{
-    display: inline-block;
+.item-good-btn{
+  display: flex;
+  
+  .good-btn{
+    display: inline-flex;
     padding: 8px 16px;
     border-radius: 40px;
-    background: #f5f5f5;
-    border: 1px solid #f5f5f5;
-  }
-
-  &__no-good-report{
-    display: inline-block;
+    border: 1px solid #ea352d;
     font-size: 12px;
-    margin: 0 0 0 16px;
-    padding: 8px 16px;
-    border-radius: 40px;
-    background: #f5f5f5;
-    border: 1px solid #f5f5f5;
-    transition: all ease-out .3s;
-    &:visited{
-      color: #333;
+    color: #ea352d;
+
+    &:hover{
+      text-decoration: none;
     }
   }
 
-  &__safety{
-    margin: 8px 0 0 0;
+  .ungood-btn{
+    display: inline-flex;
+    padding: 8px 16px;
+    border-radius: 40px;
+    background: #f5f5f5;
+    border: 1px solid #f5f5f5;
     font-size: 12px;
-    color: #0099e8;
-    float: right;
+
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
+  .item-status{
+    margin: 16px 0 0;
+
+    &__no-good-report{
+      display: inline-block;
+      font-size: 12px;
+      margin: 0 0 0 16px;
+      padding: 8px 16px;
+      border-radius: 40px;
+      background: #f5f5f5;
+      border: 1px solid #f5f5f5;
+      transition: all ease-out .3s;
+      &:visited{
+        color: #333;
+      }
+    }
+
+    &__safety{
+      margin: 8px 0 0 0;
+      font-size: 12px;
+    }
   }
 }
+
 // ⑤ここまで
 
 // ⑥ユーザーのコメント欄
@@ -311,6 +393,10 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    & a:hover{
+      text-decoration: none;
+    }
     
     &-item{
       width: 220px;

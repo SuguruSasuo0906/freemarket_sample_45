@@ -186,6 +186,12 @@ body {
       background-color: beige;
 
       &-link {
+
+        &:hover{
+          text-decoration:none;
+          opacity: 0.7;
+          transition: 0.3s;
+                }
         &__img {
           display: block;
           width: 100%;

@@ -1,8 +1,161 @@
-.item__wrap-link__text
-  %h3.item__wrap-link__text__item-name 
-    = item.name
-  .item__wrap-link__text__info
-    .item__wrap-link__text__info__item-price 
-      = "¥" + number_with_delimiter(item.price)
-    .item__wrap-link__text__info__item-favorite いいね１
-  %p.item__wrap-link__text__item-tax (税込み)
+%h1.pickup ピックアップカテゴリー
+.item
+  %h2.item__title レディース新着アイテム
+  - @ladies_item.zip(@ladies_items_image).each do |item, image|
+    .item__wrap
+      = link_to item_path(item.id), class:"item__wrap-link" do
+        = image_tag image.name_url ,class:"item__wrap-link__img" 
+        .item__wrap-link__text
+          %h3.item__wrap-link__text__item-name 
+            = item.name
+          .item__wrap-link__text__info
+            .item__wrap-link__text__info__item-price 
+              = "¥" + number_with_delimiter(item.price)
+            .item__wrap-link__text__info__item-favorite 
+              %span
+                = fa_icon "heart-o"
+                = item.good_count
+          %p.item__wrap-link__text__item-tax (税込み)
+  = link_to "",class:"item__footer" do
+    すべての商品を見る
+
+.item
+  %h2.item__title メンズ新着アイテム
+  - @mens_item.zip(@mens_items_image).each do |item, image|
+    .item__wrap
+      = link_to item_path(item.id), class:"item__wrap-link" do
+        = image_tag image.name_url ,class:"item__wrap-link__img" 
+        .item__wrap-link__text
+          %h3.item__wrap-link__text__item-name 
+            = item.name
+          .item__wrap-link__text__info
+            .item__wrap-link__text__info__item-price 
+              = "¥" + number_with_delimiter(item.price)
+            .item__wrap-link__text__info__item-favorite 
+              %span
+                = fa_icon "heart-o"
+                = item.good_count
+          %p.item__wrap-link__text__item-tax (税込み)
+  = link_to "",class:"item__footer" do
+    すべての商品を見る
+
+.item
+  %h2.item__title キッズ新着アイテム
+  - @kids_item.zip(@kids_items_image).each do |item, image|
+    .item__wrap
+      = link_to item_path(item.id), class:"item__wrap-link" do
+        = image_tag image.name ,class:"item__wrap-link__img" 
+        .item__wrap-link__text
+          %h3.item__wrap-link__text__item-name 
+            = item.name
+          .item__wrap-link__text__info
+            .item__wrap-link__text__info__item-price 
+              = "¥" + number_with_delimiter(item.price)
+            .item__wrap-link__text__info__item-favorite 
+              %span
+                = fa_icon "heart-o"
+                = item.good_count
+          %p.item__wrap-link__text__item-tax (税込み)
+  = link_to "",class:"item__footer" do
+    すべての商品を見る
+  
+.item
+  %h2.item__title コスメ・香水・美容新着アイテム
+  - @cosme_item.zip(@cosme_items_image).each do |item, image|
+    .item__wrap
+      = link_to item_path(item.id), class:"item__wrap-link" do
+        = image_tag image.name ,class:"item__wrap-link__img" 
+        .item__wrap-link__text
+          %h3.item__wrap-link__text__item-name 
+            = item.name
+          .item__wrap-link__text__info
+            .item__wrap-link__text__info__item-price 
+              = "¥" + number_with_delimiter(item.price)
+            .item__wrap-link__text__info__item-favorite 
+              %span
+                = fa_icon "heart-o"
+                = item.good_count
+          %p.item__wrap-link__text__item-tax (税込み)
+  = link_to "",class:"item__footer" do
+    すべての商品を見る
+  
+%h1.pickup ピックアップブランド
+.item
+  %h2.item__title シャネル新着アイテム
+  - @shanel_item.zip(@shanel_items_image).each do |item, image|
+    .item__wrap
+      = link_to item_path(item.id), class:"item__wrap-link" do
+        = image_tag image.name_url ,class:"item__wrap-link__img" 
+        .item__wrap-link__text
+          %h3.item__wrap-link__text__item-name 
+            = item.name
+          .item__wrap-link__text__info
+            .item__wrap-link__text__info__item-price 
+              = "¥" + number_with_delimiter(item.price)
+            .item__wrap-link__text__info__item-favorite 
+              %span
+                = fa_icon "heart-o"
+                = item.good_count
+          %p.item__wrap-link__text__item-tax (税込み)
+  = link_to "",class:"item__footer" do
+    すべての商品を見る
+
+.item
+  %h2.item__title ルイ・ヴィトン新着アイテム
+  - @vuitton_item.zip(@vuitton_items_image).each do |item, image|
+    .item__wrap
+      = link_to item_path(item.id), class:"item__wrap-link" do
+        = image_tag image.name_url ,class:"item__wrap-link__img" 
+        .item__wrap-link__text
+          %h3.item__wrap-link__text__item-name 
+            = item.name
+          .item__wrap-link__text__info
+            .item__wrap-link__text__info__item-price 
+              = "¥" + number_with_delimiter(item.price)
+            .item__wrap-link__text__info__item-favorite 
+              %span
+                = fa_icon "heart-o"
+                = item.good_count
+          %p.item__wrap-link__text__item-tax (税込み)
+  = link_to "",class:"item__footer" do
+    すべての商品を見る
+
+.item
+  %h2.item__title シュプリーム新着アイテム
+  - @supreme_item.zip(@supreme_items_image).each do |item, image|
+    .item__wrap
+      = link_to item_path(item.id), class:"item__wrap-link" do
+        = image_tag image.name ,class:"item__wrap-link__img" 
+        .item__wrap-link__text
+          %h3.item__wrap-link__text__item-name 
+            = item.name
+          .item__wrap-link__text__info
+            .item__wrap-link__text__info__item-price 
+              = "¥" + number_with_delimiter(item.price)
+            .item__wrap-link__text__info__item-favorite 
+              %span
+                = fa_icon "heart-o"
+                = item.good_count
+          %p.item__wrap-link__text__item-tax (税込み)
+  = link_to "",class:"item__footer" do
+    すべての商品を見る
+  
+.item
+  %h2.item__title ナイキ新着アイテム
+  - @nike_item.zip(@nike_items_image).each do |item, image|
+    .item__wrap
+      = link_to item_path(item.id), class:"item__wrap-link" do
+        = image_tag image.name ,class:"item__wrap-link__img" 
+        .item__wrap-link__text
+          %h3.item__wrap-link__text__item-name 
+            = item.name
+          .item__wrap-link__text__info
+            .item__wrap-link__text__info__item-price 
+              = "¥" + number_with_delimiter(item.price)
+            .item__wrap-link__text__info__item-favorite 
+              %span
+                = fa_icon "heart-o"
+                = item.good_count
+          %p.item__wrap-link__text__item-tax (税込み)
+  = link_to "",class:"item__footer" do
+    すべての商品を見る
