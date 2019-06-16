@@ -3,8 +3,6 @@ class ItemsController < ApplicationController
 
   def index
 
-    @item_all = Item.all.includes(:user,:brand,:item_sold,:item_state,:prefecture,:category,:images)
-
     # 商品一覧表示をする為に、
     # モデルに定義したメソッドを使用し
     # カテゴリー毎のインスタンス変数の作成
