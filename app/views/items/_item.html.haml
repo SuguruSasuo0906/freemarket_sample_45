@@ -1,0 +1,42 @@
+%h1.pickup ピックアップカテゴリー
+.item
+  %h2.item__title レディース新着アイテム
+  = render partial:'itemlineup' , collection:@ladies_items_image ,as: :image
+  = link_to "すべての商品を見る","",class:"item__footer" 
+
+.item
+  %h2.item__title メンズ新着アイテム
+  = render partial:'itemlineup' , collection:@mens_items_image ,as: :image
+  = link_to "すべての商品を見る","",class:"item__footer" 
+
+.item
+  %h2.item__title キッズ新着アイテム
+  = render partial:'itemlineup' , collection:@kids_items_image ,as: :image
+  = link_to "すべての商品を見る","",class:"item__footer" 
+  
+.item
+  %h2.item__title コスメ・香水・美容新着アイテム
+  = render partial:'itemlineup' , collection:@cosme_items_image ,as: :image
+  = link_to "すべての商品を見る","",class:"item__footer" 
+    
+%h1.pickup ピックアップブランド
+.item
+  %h2.item__title シャネル新着アイテム
+  = render partial:'itemlineup' , collection:@shanel_items_image ,as: :image
+  = link_to "すべての商品を見る","",class:"item__footer" 
+  
+.item
+  %h2.item__title ルイ・ヴィトン新着アイテム
+  = render partial:'itemlineup' , collection:@buitton_items_image ,as: :image
+  = link_to "すべての商品を見る","",class:"item__footer" 
+  
+.item
+  %h2.item__title シュプリーム新着アイテム
+  = render partial:'itemlineup' , collection:@supreme_items_image ,as: :image
+  = link_to "すべての商品を見る","",class:"item__footer" 
+    
+.item
+  %h2.item__title ナイキ新着アイテム
+  = render partial:'itemlineup' , collection:@nike_items_image ,as: :image
+  = link_to "すべての商品を見る","",class:"item__footer" 
+  
