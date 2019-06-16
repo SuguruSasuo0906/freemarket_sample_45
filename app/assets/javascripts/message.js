@@ -57,7 +57,7 @@ $(document).on('turbolinks:load', function () {
           $('.show-comments__wrap__message').append(html)
           scroll();
           $('.show-comments__wrap__btn').prop('disabled', false)
-          $('.show-comments__wrap__box').val('')
+          $('.new_message')[0].reset()
           return false;
         })
 

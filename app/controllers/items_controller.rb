@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    
+
     # 商品一覧表示をする為に、
     # モデルに定義したメソッドを使用し
     # カテゴリー毎のインスタンス変数の作成
