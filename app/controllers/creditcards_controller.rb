@@ -1,5 +1,5 @@
 class CreditcardsController < ApplicationController
-  protect_from_forgery except:  [:create]
+  protect_from_forgery except: [:create]
   before_action :redirect_to_root,unless: :user_signed_in?
 
   require "payjp"

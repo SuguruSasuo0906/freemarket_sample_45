@@ -1,0 +1,23 @@
+= render 'shared/item_header'
+
+#information
+  .swiper-container
+    .swiper-wrapper
+      .swiper-slide 
+        = image_tag "information001.jpg"
+      .swiper-slide
+        = image_tag "information002.jpg"
+      .swiper-slide
+        = image_tag "information001.jpg"
+    .swiper-pagination
+    .swiper-button-prev
+    .swiper-button-next
+
+.contents
+  = render 'item'
+      
+= render 'shared/item_footer'
+
+= link_to new_item_path,class:"sell-btn" do
+  .sell 出品
+  =fa_icon "camera",class:"sell-icon"

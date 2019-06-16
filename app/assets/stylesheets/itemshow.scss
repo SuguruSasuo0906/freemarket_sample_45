@@ -1,0 +1,502 @@
+.navi-bar{
+  width: 100%;
+  height: 50px;
+  border-top:solid 1px #eee;
+  background: #fff;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.20);
+  position: relative;
+
+  &-wrap{
+    width: 1020px;
+    padding: 16px;
+    margin: 0 auto;
+    font-size: 12px;
+
+    &__item-name{
+      padding-left: 5px;
+      font-weight: 600;
+    }
+  }
+}
+
+.link-update{
+  color: #0099e8;
+}
+
+.link-update:visited{
+  color: #0099e8;
+}
+
+.link-update:hover{
+  text-decoration: none;
+}
+
+.show{
+
+  &-contents{
+    background: #fff;
+    padding: 24px 40px 40px;
+    margin: 40px auto;
+    width: 700px;
+  }
+
+  &-comments{
+    background: #fff;
+    margin: 8px auto;
+    width: 700px;
+  }
+}
+
+// ①商品について
+.item-name{
+  font-size: 24px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.show__item{
+  margin: 16px 0 0;
+  display: flex;
+  justify-content: space-between;
+
+  .show__item-left{
+    width: 300px;
+    height: 375px;
+    background: #eee;
+
+    .item-left__image-main{
+      width: 300px;
+      height: 300px;
+      background: #ddd;
+    }
+  }
+
+  .show__item-right{
+    width: 300px;
+
+    .item-right__table{
+      font-size:12px;
+      width: 100%;
+      height: 420px;
+      border-collapse: collapse;
+      border: 1px solid #f5f5f5;
+      border-spacing: 0;
+      & th{
+        width: 40%;
+        text-align: left;
+        font-weight: 400;
+        background: #fafafa;
+        border-collapse: collapse;
+        border: 1px solid #f5f5f5;
+      }
+
+      & td{
+        background: #fff;
+        border-collapse: collapse;
+        border: 1px solid #f5f5f5;
+        padding: 8px;
+
+        & a{
+          color: #0099e8;
+          display: block;
+        }
+        & a:visited{
+          color: #0099e8;
+        }
+
+        .user-rate{
+          display: flex;
+
+          .good{
+            margin: 8px 0 0 0;
+          }
+          
+          .normal{
+            margin: 8px 0 0 16px;
+          }
+
+          .bad{
+            margin: 8px 0 0 16px;
+          }
+
+          .icon{
+            font-size: 16px;
+          }
+
+          .fa-smile-o{
+            color: #ea352d;
+          }
+
+          .fa-meh-o{
+            color: orange;
+          }
+
+          .fa-frown-o{
+            color:blue;
+          }
+        }
+      }
+    }
+  }
+}
+// ①ここまで
+
+// ユーザーの保持ポイント
+.item-point{
+  width: 100%;
+  text-align: center;
+  
+  &-wrap{
+    display: inline-block;
+    position: relative;
+    line-height: 1.5;
+    background: #05b0b4;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;  
+  }
+
+  &-triangle{
+    position: absolute;
+    left:49%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 8px 0 8px;
+    border-color: #05b0b4 transparent transparent transparent;
+  }
+}
+
+// ②商品の値段
+.item-price{
+  margin: 24px;
+  text-align: center;
+
+  &__box{
+    font-size: 50px;
+    margin-right: 8px;
+    font-weight: 600;
+    color: #ea352d;
+  }
+
+  &__tax{
+    font-size: 10px;
+  }
+
+  &__shipping{
+    font-size: 16px;
+    margin-left: 8px;
+    padding: 4px;
+    border-radius: 2px;
+    background: #05b0b4;
+    color: #fff;
+  }
+}
+// ②ここまで
+
+// ③購入ボタン
+.buy-btn{
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  font-size: 24px;
+  background: #ea352d;
+  margin: 16px 0 0;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+}
+.buy-btn:visited{
+  color: #fff;
+}
+.buy-btn:hover{
+  text-decoration: none;
+}
+// ③ここまで
+
+// ④商品の説明
+.item-description{
+  padding: 16px 0;
+  line-height: 1.5;
+  font-size: 18px;
+
+  &__inner{
+    display: block;
+    white-space: pre-wrap;
+  }
+}
+// ④ここまで
+
+// ⑤商品の状態
+.item-good-btn{
+  display: flex;
+  
+  .good-btn{
+    display: inline-flex;
+    padding: 8px 16px;
+    border-radius: 40px;
+    border: 1px solid #ea352d;
+    font-size: 12px;
+    color: #ea352d;
+
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
+  .ungood-btn{
+    display: inline-flex;
+    padding: 8px 16px;
+    border-radius: 40px;
+    background: #f5f5f5;
+    border: 1px solid #f5f5f5;
+    font-size: 12px;
+
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
+  .item-status{
+    margin: 16px 0 0;
+
+    &__no-good-report{
+      display: inline-block;
+      font-size: 12px;
+      margin: 0 0 0 16px;
+      padding: 8px 16px;
+      border-radius: 40px;
+      background: #f5f5f5;
+      border: 1px solid #f5f5f5;
+      transition: all ease-out .3s;
+      &:visited{
+        color: #333;
+      }
+    }
+
+    &__safety{
+      margin: 8px 0 0 0;
+      font-size: 12px;
+    }
+  }
+}
+
+// ⑤ここまで
+
+// ⑥ユーザーのコメント欄
+.show-comments__wrap{
+  padding:24px;
+
+  &__attention{
+    font-size:14px;
+    padding:8px;
+    background: #fff6de;
+  }
+
+  &__box{
+    margin:8px 0 0;
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  &__btn{
+    width: 100%;
+    margin:8px 0 0;
+    text-align: center;
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    display: block;
+    line-height: 48px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+}
+// ⑥ここまで
+
+// ⑦次の商品
+.show-next{
+  width: 700px;
+  margin: 24px auto;
+  display: flex;
+  justify-content: space-between;
+
+  &__back{
+    font-size: 14px;
+    width: 45%;
+    position: relative;
+    float: left;
+    padding: 0 0 0 14px;
+  }
+
+  &__prev{
+    font-size: 14px;
+    width: 45%;
+    position: relative;
+    float: right;
+    padding: 0 14px 0 0;
+    text-align: right;
+  }
+}
+// ⑦ここまで
+
+// ⑧SNSで紹介
+.show-sns{
+  margin: 24px auto;
+  padding: 0 0 24px;
+  width: 700px;
+  background: #fff;
+
+  &__box{
+    font-size:45px;
+    width: 150px;
+    height: 45px;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+
+    .fa-twitter-square{
+      color: #55acee;
+    }
+
+    .fa-facebook-square{
+      color: #315096;
+    }
+
+    .fa-pinterest-square{
+      color: #ce0f19;
+    }
+
+  }
+}
+// ⑧ここまで
+
+// ⑨その他の出品もろもろ
+.show-other-item{
+  width: 700px;
+  margin: 24px auto;
+  padding: 12px 0;
+
+  &__title{
+    color: #0099e8;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  &__wrap{
+    margin-top:24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    & a:hover{
+      text-decoration: none;
+    }
+    
+    &-item{
+      width: 220px;
+      background: #fff;
+      margin-bottom: 24px;
+
+      &-pic{
+        width: 220px;
+        height: 220px;
+      }
+
+      &-box{
+        height: 110px;
+        padding: 16px;
+
+        &__name{
+          font-size: 16px;
+          font-weight: 400;
+          word-break: break-word;
+          white-space: normal;
+        }
+
+        &__pricies{
+          display: flex;
+          justify-content: space-between;
+          font-size: 12px;
+          font-weight: 600;
+          margin: 8px 0 0;
+
+          &__good{
+            display: flex;
+          }
+        }
+
+        &__tax{
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+// ⑨ここまで
+
+// ⑩コメント部分
+.show-comments__wrap__message{
+  width: 100%;
+  margin: 24px 0;
+  
+  &-box{
+    margin: 24px 0 0 0;
+
+    &-wrap{
+      display: flex;
+
+      &__user{
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        border-radius: 50%;
+        background: #0099e8;
+      }
+
+      &__comments{
+        position: relative;
+        width: 100%;
+
+        &-user{
+          position: relative;
+          top:-10px;
+          font-size: 12px;
+        }
+
+        &-text{
+          position: relative;
+          top:-10px;
+          width: 100%;
+          padding: 16px;
+          background: #eef0f4;
+          border-radius: 15px;
+          line-height: 1.5;
+          word-break: break-all;
+          font-size: 12px;
+
+          &-o{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: #aaa;
+          }
+        }
+
+        .fa-comment{
+          position:absolute;
+          top:15px;
+          left:-3px;
+          font-size: 20px;
+          transform: rotate(90deg);
+          color: #eef0f4;
+        }
+      }
+    }
+  }
+}

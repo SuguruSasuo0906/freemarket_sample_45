@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+$(document).on('turbolinks:load', function () {
 
   const image__howmany = document.querySelector('.image__howmany');
 
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return html
   };
   // 画像を入れる配列
-  var files_array = [];
+  var imagefile = document.getElementById('imagefile');
   //
   $('#image__drop_area').on('dragover', function (e) {
     e.preventDefault();
@@ -24,8 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
   $('#image__drop_area').on('drop', function (event) {
     event.preventDefault();
     files = event.originalEvent.dataTransfer.files;
+    imagefile.files = files
+    console.log(imagefile.files)
     for (var i = 0; i < files.length; i++) {
-      files_array.push(files[i]);
       var fileReader = new FileReader();
       fileReader.onload = function (event) {
         var loadedImageUri = event.target.result;
@@ -36,28 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
     image__howmany.style.display = 'none';
   });
   //
-  //プレビューエリアがクリックされた時
-  const image__drop_area = document.querySelector('#image__drop_area');
-  image__drop_area.addEventListener('click', function () {
-    imagefile.click();
-  });
-  document.getElementById("imagefile").addEventListener("change", function () {
-    var fileList = this.files;
-    for (var i = 0, l = fileList.length; l > i; i++) {
-      var fileReader = new FileReader();
-      fileReader.onload = function (event) {
-        var loadedImageUri = event.target.result;
-        $(buildImage(loadedImageUri)).appendTo(".image__preview_area").trigger("create");
-      }
-      fileReader.readAsDataURL(fileList[i]);
-      image__howmany.style.display = 'none';
-    }
-  });
   //
   //プレビューからの削除
   $(document).on('click', '.image__preview_area a', function () {
     var index = $(".image__preview_area a").index(this);
-    files_array.splice(index - 1, 1);
+
     $(this).parent().parent().parent().remove();
     const image__howmany = document.querySelector('.image__howmany');
     image__howmany.style.display = 'block';
@@ -164,9 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
   $('#new-item').on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData($(this).get(0));
-    files_array.forEach(function (file) {
-      formData.append("images[name][]", file)
-    });
+
     $.ajax({
       url: '/items',
       type: 'POST',
@@ -176,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
       dataType: 'json',
     })
       .done(function (data) {
-        alert('出品に成功しました');
+        window.location.href = '/';
       })
   });
 });
