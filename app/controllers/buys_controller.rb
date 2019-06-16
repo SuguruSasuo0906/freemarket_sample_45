@@ -1,5 +1,6 @@
 class BuysController < ApplicationController
-  before_action :set_item, only: [:index,:create]
+  before_action :set_item, only:[:index,:create]
+
 
   def index
 
@@ -12,7 +13,7 @@ class BuysController < ApplicationController
 
     if @item.item_sold_id == 1
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer_id = curretn_user.creditcard.customer_id
+      customer_id = current_user.creditcard.customer_id
       Payjp::Charge.create(currency:'jpy',amount: @item.price,customer: customer_id)
       
       Trade.create(item_id: @item.id, seller_id: @item.user_id, buyer_id: current_user.id)

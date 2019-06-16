@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190520003535) do
+ActiveRecord::Schema.define(version: 20190614013653) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20190520003535) do
   end
 
   create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.binary  "data",    limit: 16777215, null: false
+    t.string  "name",    null: false
     t.integer "item_id"
     t.index ["item_id"], name: "index_images_on_item_id", using: :btree
   end
@@ -75,12 +75,31 @@ ActiveRecord::Schema.define(version: 20190520003535) do
     t.integer  "brand_id"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.integer  "good_count",                  default: 0, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["item_sold_id"], name: "index_items_on_item_sold_id", using: :btree
     t.index ["item_state_id"], name: "index_items_on_item_state_id", using: :btree
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
+  end
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "item_id"
+    t.index ["item_id"], name: "index_likes_on_item_id", using: :btree
+    t.index ["user_id", "item_id"], name: "index_likes_on_user_id_and_item_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "comment",    limit: 65535
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["item_id"], name: "index_messages_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "phonenumbers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -95,6 +114,13 @@ ActiveRecord::Schema.define(version: 20190520003535) do
 
   create_table "prefectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
+  end
+
+  create_table "trades", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "item_id"
+    t.integer "seller_id", null: false
+    t.integer "buyer_id",  null: false
+    t.index ["item_id"], name: "index_trades_on_item_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -132,5 +158,8 @@ ActiveRecord::Schema.define(version: 20190520003535) do
   add_foreign_key "items", "item_states"
   add_foreign_key "items", "prefectures"
   add_foreign_key "items", "users"
+  add_foreign_key "messages", "items"
+  add_foreign_key "messages", "users"
   add_foreign_key "phonenumbers", "users"
+  add_foreign_key "trades", "items"
 end

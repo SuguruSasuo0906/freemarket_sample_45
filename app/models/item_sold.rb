@@ -1,4 +1,4 @@
 class ItemSold < ApplicationRecord
-  belongs_to :item
+  has_many :items
 
 end

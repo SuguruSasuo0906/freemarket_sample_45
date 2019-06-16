@@ -1,5 +1,4 @@
 class Image < ApplicationRecord
-  belongs_to :item
-  accepts_nested_attributes_for :item
-  mount_uploader :data, ImageUploader
+  belongs_to :item, optional: true
+  mount_uploader :name, ImageUploader
 end

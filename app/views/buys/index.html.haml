@@ -14,7 +14,7 @@
     -# 商品の情報
     .buy__contents-wrap
       .buy__contents-wrap__item-wrap  
-        = image_tag @item.images.name_url,class:"item__image"
+        = image_tag @item.images[0].name_url,class:"item__image"
         .item__name
           = @item.name
         .item__price
@@ -40,11 +40,11 @@
         .delivery__address
           = "〒" + current_user.address.postal_code
         .delivery__address
-          = current_user.address.address.city
-          = current_user.address.address.block_number
-          = current_user.address.address.building_name
+          = current_user.address.city
+          = current_user.address.block_number
+          = current_user.address.building_name
         .delivery__address
-          = current_user.address.address.name
+          = current_user.address.name
         .buy__edit
           = link_to "", class:"buy__edit-link" do 
             変更する

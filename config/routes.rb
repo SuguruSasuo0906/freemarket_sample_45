@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
 
+  get 'likes/create'
+  get 'likes/destroy'
+
   devise_for :users,controllers:{
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
-
-  devise_scope :users do
-    get "sign_in", to:"users/sessions#new"
-    get "sign_out", to:"users/sessions#destroy" 
-  end
-
-  root 'freemarket_sample#index'
+  root 'items#index'
 
   resources :users
-  resources :freemarket_sample, only:[:index]
-  resources :items
+  resources :items do
+    resources :messages
+    resources :buys
+    resources :likes, only: [:create, :destroy]
+  end
   resources :categories, only:[:new]
 
   resources :sign_up, only:[:index,:show] 
