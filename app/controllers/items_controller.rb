@@ -2,15 +2,13 @@ class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-
-    @item_all = Item.all.includes(:images)
     
     # 商品一覧表示をする為に、
     # モデルに定義したメソッドを使用し
     # カテゴリー毎のインスタンス変数の作成
     # limit(4)は４つ表示するということ
     
-    @ladies_item = @item_all.set_index(category_id: 150..336)
+    @ladies_item = Item.set_index(category_id: 150..336)
     @ladies_items_image = Image.where(item_id: @ladies_item.ids).order("id DESC")
     @mens_item = Item.set_index(category_id: 337..466)
     @mens_items_image = Image.where(item_id: @mens_item.ids).order("id DESC")

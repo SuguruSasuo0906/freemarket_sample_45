@@ -52,8 +52,8 @@ $(document).on('turbolinks:load', function () {
         contentType: false
       })
 
-        .done(function (data) {
-          var html = buildHTML(data)
+        .done(function (message) {
+          var html = buildHTML(message)
           $('.show-comments__wrap__message').append(html)
           scroll();
           $('.show-comments__wrap__btn').prop('disabled', false)
