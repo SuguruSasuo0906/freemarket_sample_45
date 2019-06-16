@@ -18,9 +18,9 @@
         = fa_icon "google",class:"login__link__wrapper__google-icon"
 
   .login__form
-    = form_for user_session_path do |f|
-      = f.text_field :email, placeholder:"メールアドレス",class:"login__form-email"
-      = f.text_field :password, placeholder:"パスワード",class:"login__form-password"
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.email_field :email, placeholder:"メールアドレス",class:"login__form-email"
+      = f.password_field :password, placeholder:"パスワード",class:"login__form-password"
       = recaptcha_tags
       = f.submit "ログイン",class:"login__form-loginbtn"
       .login__form__wrap
