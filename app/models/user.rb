@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_one :address
   has_one :phonenumber
+  has_one :creditcard
 
   has_many :items
   

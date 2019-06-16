@@ -1,0 +1,73 @@
+-# ページ配色
+.buy
+  -# ヘッダー
+  .new__header
+    .new__header__wrap
+      %h1
+        = link_to "/" do
+          =image_tag "logo001.png", class:"new__header__wrap__logo"
+
+  .buy__contents
+    .buy__contents-title
+      %h1.buy-title-font 購入内容の確認
+
+    -# 商品の情報
+    .buy__contents-wrap
+      .buy__contents-wrap__item-wrap  
+        = image_tag @item.images.name_url,class:"item__image"
+        .item__name
+          = @item.name
+        .item__price
+          %span.item__price__cost
+            = "¥" + number_with_delimiter(@item.price)
+          %span.item__price__shipping
+            送料込み
+        = form_tag action: :create do |f|
+          .item__point
+            ポイントはありません
+          .item__pay
+            .item__pay__title
+              支払い金額
+            .item__pay__price
+              = "¥" + number_with_delimiter(@item.price)
+          = submit_tag "購入する",class:"item__purchase-btn"
+      
+    -# 送付先
+    .buy__contents-wrap
+      .buy__contents-wrap__item-wrap
+        .delivery__title
+          配送先
+        .delivery__address
+          = "〒" + current_user.address.postal_code
+        .delivery__address
+          = current_user.address.address.city
+          = current_user.address.address.block_number
+          = current_user.address.address.building_name
+        .delivery__address
+          = current_user.address.address.name
+        .buy__edit
+          = link_to "", class:"buy__edit-link" do 
+            変更する
+            = fa_icon "angle-right"
+
+
+    -# クレジットカード情報
+    .buy__contents-wrap
+      .buy__contents-wrap__item-wrap
+        .creditcard__title
+          支払い方法
+        .creditcard__number
+          = "**** **** **** " + @card_information.last4
+        .creditcard__limit
+          - month = @card_information.exp_month.to_s
+          - year = @card_information.exp_year.to_s.slice(2,3)
+          = month + " / " + year
+        =image_tag "visa.svg", class:"creditcard__type"
+        .buy__edit
+          = link_to "", class:"buy__edit-link" do 
+            変更する
+            = fa_icon "angle-right"
+
+
+  -# フッター
+  = render 'shared/member-new-login-footer'
