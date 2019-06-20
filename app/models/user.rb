@@ -12,7 +12,6 @@ class User < ApplicationRecord
 
   has_many :items, dependent: :destroy
   has_many :messages
-  belongs_to :trade
   has_many :likes, dependent: :destroy
   
   has_many :todos
