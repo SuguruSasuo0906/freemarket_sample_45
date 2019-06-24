@@ -41,8 +41,13 @@ body {
           height: 40px;
           cursor: pointer;
           position: absolute;
-          top: 10px;
-          right: -10px;
+          top: 0;
+          right: -5px;
+          color: #fff;
+          background: #aaa;
+          border: 1px solid #aaa;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
         }
       }
     }

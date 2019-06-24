@@ -1,0 +1,146 @@
+// コンテンツ部分枠組み
+.search-container{
+  width: 1020px;
+  margin: 40px auto;
+  display: flex;
+
+  &-left{
+    width: 280px;
+    margin: 0 40px 0 0;
+
+    &__order{
+      width: auto;
+      height: 50px;
+      background: #fff;
+    }
+    
+    // 左サイドバーの枠組み
+    &--wrap{
+      width: auto;
+      margin: 40px 0 0;
+      padding: 16px;
+      background: #fff;
+
+      // 詳細検索フォント設定
+      &__title{
+        font-size: 16px;
+      }
+
+      // コンテンツ枠組み
+      &__group{
+        margin: 24px 0 0;
+
+        &-title{
+          font-size:12px;
+        }
+        &-field{
+          width: 100%;
+          height: 50px;
+          margin: 8px 0 0;
+          border: 1px solid #ccc;
+        }
+        &-price{
+          margin: 8px 0 0 0;
+          display: flex;
+          justify-content: space-between;
+
+          p{
+            line-height: 3;
+          }
+
+          &-min{
+            width: 47%;
+            height: 50px;
+            border: 1px solid #ccc;
+          }
+          &-max{
+            width: 47%;
+            height: 50px;
+            border: 1px solid #ccc;
+          }
+        }
+
+        &-btn{
+          display: flex;
+          justify-content: space-between;
+
+          &__clear{
+            width: 45%;
+            height: 50px;
+            background: #aaa;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            line-height: 50px;
+          }
+
+          &__end{
+            width: 45%;
+            height: 50px;
+            background: #ea352d;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            line-height: 50px;
+          }
+        }
+      }
+    }
+  }
+
+  &-right{
+    width: 700px;
+
+    &__title{
+      margin: 0 0 16px 0;
+      font-size: 22px;
+    }
+
+    &-wrap{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+  
+      &__item{
+        width: 160px;
+        height: 270px;
+        background: #fff;
+        margin: 0 20px 20px 0;
+
+        &:nth-child(4n){
+          margin: 0 0 20px 0;
+        }
+        
+        &-image{
+          width: 100%;
+          height: 160px;
+        }
+
+        &-wrap{
+          width: 100%;
+          height: 110px;
+          padding: 16px;
+
+          &-name{
+            font-size: 12px;
+          }
+
+          &-other{
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0 0 0;
+
+            &-price{
+              font-size: 13px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      p{
+        font-size: 10px;
+      }
+    }
+  }
+}

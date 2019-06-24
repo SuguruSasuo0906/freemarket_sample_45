@@ -60,6 +60,11 @@ class ItemsController < ApplicationController
     @another_images = Image.where(item_id: @another_items.ids).limit(6).order("id DESC")
   end
 
+  def search
+    @items = Item.search(params[:search])
+    @images = Image.where(item_id: @items.ids)
+  end
+
   private
 
   def item_params
