@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :messages
     resources :buys
     resources :likes, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
   resources :categories, only:[:new]
 

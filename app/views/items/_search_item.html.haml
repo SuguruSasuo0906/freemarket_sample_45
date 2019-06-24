@@ -1,0 +1,14 @@
+= link_to item_path(image.item.id),class:"search-container-right-wrap__item" do
+  = image_tag image.name_url,class:"search-container-right-wrap__item-image"
+  .search-container-right-wrap__item-wrap
+    .search-container-right-wrap__item-wrap-name
+      = image.item.name
+    .search-container-right-wrap__item-wrap-other
+      .search-container-right-wrap__item-wrap-othre-price
+        = "¥" + number_with_delimiter(image.item.price)
+      .search-container-right-wrap__item-wrap-other-like
+        %span
+          = fa_icon "heart-o"
+          = image.item.good_count
+    %p
+      (税込)

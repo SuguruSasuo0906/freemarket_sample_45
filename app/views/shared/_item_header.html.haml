@@ -2,9 +2,10 @@
   .header
     .header__up
       =image_tag "logo001.png", class:"header__up__logo"
-      %form.header__up__form
-        %input.header__up__form-input{placeholder:"何かお探しですか？"}
-        = fa_icon "search" ,class:"header__up__form-input__icon-search"
+      = form_tag search_items_path,class:"header__up__form",method: "get" do
+        = text_field_tag :search,"",class:"header__up__form-input",placeholder:"何かお探しですか？"
+        = button_tag type:"submit" ,name:"nil",class:"header__up__form-input__icon-search" do
+          = fa_icon "search"
     .header__down
       .header__down-left
         %ul.header__down-left__nav
