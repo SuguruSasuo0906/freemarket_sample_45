@@ -25,11 +25,7 @@ class ItemsController < ApplicationController
     @supreme_items_image = Image.where(item_id: @supreme_item.ids).order("id DESC")
     @nike_item = Item.set_index(brand_id: 5)
     @nike_items_image = Image.where(item_id: @nike_item.ids).order("id DESC")
-
-    @q = Item.ransack(params[:q])
-    @items = @q.result(distinct: true)
-    @images = Image.where(item_id: @items.ids)
-
+    
   end
 
   def new
@@ -69,6 +65,7 @@ class ItemsController < ApplicationController
     @q = Item.search(params[:q])
     @items = @q.result(distinct: true)
     @images = Image.where(item_id: @items.ids)
+    @brands = Brand.all
   end
 
   private

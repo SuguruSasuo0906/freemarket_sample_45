@@ -9,7 +9,7 @@
         %p.search-container-left--wrap__group-title
           = fa_icon"plus"
           キーワードを追加する
-        = f.search_field :name_cont, class:'search-container-left--wrap__group-field'
+        = f.search_field :name_cont_all, class:'search-container-left--wrap__group-field',placeholder:"例）値下げ"
 
       .search-container-left--wrap__group
         %p.search-container-left--wrap__group-title
@@ -23,13 +23,14 @@
         %p.search-container-left--wrap__group-title
           = fa_icon"tag"
           ブランド名から探す
-          = f.search_field :name_cont, class:'search-container-left--wrap__group-field'
+        = f.search_field :brand_name_cont, class:'search-container-left--wrap__group-field',placeholder:"例）シャネル"
 
       .search-container-left--wrap__group
         %p.search-container-left--wrap__group-title
           = fa_icon"arrows-alt"
           サイズを指定する
-        .search-container-left--wrap__group-field
+        = f.select :size_eq, options_for_select([["XXS以下","XXS以下"],["XS(SS)","XS(SS)"],["S","S"],["M","M"],["L","L"],["XL(LL)","XL(LL)"],["2XL(3L)","2XL(3L)"],["3XL(4L)","3XL(4L)"],["4XL(5L)以上","4XL(5L)以上"],["FREE SIZE","FREE SIZE"]]),{include_blank:"すべて"},{class: 'search-container-left--wrap__group-field'}
+
 
       .search-container-left--wrap__group
         %p.search-container-left--wrap__group-title
