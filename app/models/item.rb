@@ -27,11 +27,11 @@ class Item < ApplicationRecord
     likes.find_by(user_id: user_id)
   end
 
-  def self.search(search)
-    if search
-      Item.where(['name LIKE(?)',"%#{search}%"])
-    else
-      Item.all
-    end
-  end
+  # def self.search_first(search)
+  #   if search
+  #     Item.where(['name LIKE(?)',"%#{search}%"])
+  #   else
+  #     Item.all
+  #   end
+  # end
 end
