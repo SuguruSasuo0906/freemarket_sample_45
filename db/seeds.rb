@@ -1,6 +1,0 @@
-Pricegtlt.create(gtlt:'300~1000')
-Pricegtlt.create(gtlt:'1000~5000')
-Pricegtlt.create(gtlt:'5000~10000')
-Pricegtlt.create(gtlt:'10000~30000')
-Pricegtlt.create(gtlt:'30000~50000')
-Pricegtlt.create(gtlt:'50000~')
