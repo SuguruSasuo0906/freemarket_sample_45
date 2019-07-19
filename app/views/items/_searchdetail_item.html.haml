@@ -36,7 +36,7 @@
         %p.search-container-left--wrap__group-title
           = fa_icon"rmb"
           価格
-        = f.select :size_eq, options_for_select([["300〜1000","300〜1000"],["1000〜5000","1000〜5000"],["5000〜10000","5000〜10000"],["10000〜30000","10000〜30000"],["30000〜50000","30000〜50000"],["50000〜","50000〜"]]),{include_blank:"選択して下さい"},{class: 'search-container-left--wrap__group-field'}
+        = f.select :pricegtlt_id_eq, options_for_select([["300〜999","1"],["1000〜4999","2"],["5000〜9999","3"],["10000〜29999","4"],["30000〜49999","5"],["50000〜","6"]]),{include_blank:"選択して下さい"},{class: 'search-container-left--wrap__group-field'}
         .search-container-left--wrap__group-price
           = f.search_field :price_gteq, class:'search-container-left--wrap__group-price-min',placeholder:"¥ Min"
           %p -

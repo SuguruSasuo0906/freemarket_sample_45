@@ -63,9 +63,10 @@ class ItemsController < ApplicationController
 
   def search
     @q = Item.ransack(params[:q])
-    @items = @q.result(distinct: true)
-    @images = Image.where(item_id: @items.ids)
     @brands = Brand.all
+    @pricegtlt = Pricegtlt.all
+    @items = @q.result(distinct: true).includes(:brand,:pricegtlt)
+    @images = Image.where(item_id: @items.ids)
   end
 
   private
