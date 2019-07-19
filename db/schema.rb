@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190719002823) do
+ActiveRecord::Schema.define(version: 20190719004824) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -76,11 +76,13 @@ ActiveRecord::Schema.define(version: 20190719002823) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.integer  "good_count",                  default: 0, null: false
+    t.integer  "pricegtlt_id"
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_items_on_category_id", using: :btree
     t.index ["item_sold_id"], name: "index_items_on_item_sold_id", using: :btree
     t.index ["item_state_id"], name: "index_items_on_item_state_id", using: :btree
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id", using: :btree
+    t.index ["pricegtlt_id"], name: "index_items_on_pricegtlt_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -161,6 +163,7 @@ ActiveRecord::Schema.define(version: 20190719002823) do
   add_foreign_key "items", "item_solds"
   add_foreign_key "items", "item_states"
   add_foreign_key "items", "prefectures"
+  add_foreign_key "items", "pricegtlts"
   add_foreign_key "items", "users"
   add_foreign_key "messages", "items"
   add_foreign_key "messages", "users"
