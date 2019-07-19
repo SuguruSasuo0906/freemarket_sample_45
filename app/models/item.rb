@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :item_state
   belongs_to :prefecture
   belongs_to :user
+  belongs_to :pricegtlt
   has_many :messages
   has_one :trade
   has_many :likes, dependent: :destroy
