@@ -1,0 +1,2 @@
+class Pricegtlt < ApplicationRecord
+end
