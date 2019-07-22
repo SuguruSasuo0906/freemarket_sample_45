@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :buys
     resources :likes, only: [:create, :destroy]
     collection do
-      get 'search'
+      match 'search', to: 'items#search', via: [:get, :post]
     end
   end
   resources :categories, only:[:new]

@@ -1,6 +1,7 @@
 .search-container-left
-  = search_form_for @q,url:search_items_path do |f|
-    .search-container-left__order
+  = search_form_for @q,url:search_items_path,html:{method: :post} do |f|
+    = f.select :sorts, ([['並び替え', 'id desc'], ['価格の安い順','price asc'], ['価格の高い順', 'price desc'], ['出品の古い順', 'updated_at asc'], ['出品の新しい順','updated_at desc']]),{selected: params[:q][:sorts]},{class:"search-container-left__order",onchange: 'this.form.submit()'}
+
     .search-container-left--wrap
       %p.search-container-left--wrap__title
         詳細検索
@@ -15,9 +16,9 @@
         %p.search-container-left--wrap__group-title
           = fa_icon"list"
           カテゴリーを選択する
-        .search-container-left--wrap__group-field
-        .search-container-left--wrap__group-field
-        .search-container-left--wrap__group-field
+        = f.select :category_id_eq, Category.all.where(parent_id: nil).map{|c| [c.name, c.id]},{include_blank:"選択して下さい"},{class:'search-container-left--wrap__group-field',id:'selectitem'}
+        = f.select :category_id_eq, {},{include_blank:"選択して下さい"},{class: 'search-container-left--wrap__group-field',id:'selectitem1',style:'display:none'}  
+        = f.select :category_id_eq, {},{include_blank:"選択して下さい"},{class: 'search-container-left--wrap__group-field',id:'selectitem2',style:'display:none'}  
 
       .search-container-left--wrap__group
         %p.search-container-left--wrap__group-title
@@ -47,19 +48,49 @@
         %p.search-container-left--wrap__group-title
           = fa_icon"star"
           商品の状態
-        .search-container-left--wrap__group-state
+        .search-container-left--wrap__group-wrap
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :item_state_id_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},1,''
+            %label 新品、未使用
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :item_state_id_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},2,''
+            %label 未使用に近い
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :item_state_id_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},3,''
+            %label 目立った傷や汚れなし
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :item_state_id_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},4,''
+            %label やや傷や汚れあり
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :item_state_id_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},5,''
+            %label 傷や汚れあり
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :item_state_id_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},6,''
+            %label 全体的に状態が悪い
 
       .search-container-left--wrap__group
         %p.search-container-left--wrap__group-title
           = fa_icon"truck"
           配送料の負担
-        .search-container-left--wrap__group-fee
+        .search-container-left--wrap__group-wrap
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :feewho_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},'着払い(購入者負担)',''
+            %label 着払い(購入者負担)
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :feewho_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},'送料込み(出品者負担)',''
+            %label 送料込み(出品者負担)
 
       .search-container-left--wrap__group
         %p.search-container-left--wrap__group-title
           = fa_icon"shopping-cart"
           販売状況
-        .search-container-left--wrap__group-sale
+        .search-container-left--wrap__group-wrap
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :item_sold_id_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},1,''
+            %label 販売中
+          .search-container-left--wrap__group-wrap__box
+            = f.check_box :item_sold_id_eq_any,{multiple:true,class:'search-container-left--wrap__group-wrap__box-check'},4,''
+            %label 売り切れ
 
       .search-container-left--wrap__group
         .search-container-left--wrap__group-btn

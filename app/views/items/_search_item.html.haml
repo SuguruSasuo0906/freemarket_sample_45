@@ -1,14 +1,16 @@
-= link_to item_path(image.item.id),class:"search-container-right-wrap__item" do
-  = image_tag image.name_url,class:"search-container-right-wrap__item-image"
+= link_to item_path(item.id),class:"search-container-right-wrap__item" do
+
+  = image_tag item.images[0].name,class:"search-container-right-wrap__item-image"
+  
   .search-container-right-wrap__item-wrap
     .search-container-right-wrap__item-wrap-name
-      = image.item.name
+      = item.name
     .search-container-right-wrap__item-wrap-other
       .search-container-right-wrap__item-wrap-othre-price
-        = "¥" + number_with_delimiter(image.item.price)
+        = "¥" + number_with_delimiter(item.price)
       .search-container-right-wrap__item-wrap-other-like
         %span
           = fa_icon "heart-o"
-          = image.item.good_count
+          = item.good_count
     %p
       (税込)

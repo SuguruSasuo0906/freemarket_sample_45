@@ -9,9 +9,10 @@
     margin: 0 40px 0 0;
 
     &__order{
-      width: auto;
+      width: 100%;
       height: 50px;
       background: #fff;
+      padding: 16px;
     }
     
     // 左サイドバーの枠組み
@@ -29,6 +30,29 @@
       // コンテンツ枠組み
       &__group{
         margin: 24px 0 0;
+
+        &-wrap{
+          width: 100%;
+          height: auto;
+          display: flex;
+          flex-wrap: wrap;
+
+          &__box{
+            width: 50%;
+            display: flex;
+            margin-top:8px;
+
+            &-check{
+              display: block;
+              width: 20px;
+              margin-top: 4px;
+            }
+
+            label{
+              font-size: 12px;
+            }
+          }
+        }
 
         &-title{
           font-size:12px;
