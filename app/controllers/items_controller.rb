@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
     @supreme_items_image = Image.where(item_id: @supreme_item.ids).order("id DESC")
     @nike_item = Item.set_index(brand_id: 5)
     @nike_items_image = Image.where(item_id: @nike_item.ids).order("id DESC")
+    
   end
 
   def new
@@ -36,6 +37,19 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    if @item.price > 300 && @item.price < 999
+      @item.pricegtlt_id = 1
+    elsif @item.price > 1000 && @item.price < 4999
+      @item.pricegtlt_id = 2
+    elsif @item.price > 5000 && @item.price < 9999
+      @item.pricegtlt_id = 3
+    elsif @item.price > 10000 && @item.price < 29999
+      @item.pricegtlt_id = 4
+    elsif @item.price > 30000 && @item.price < 49999
+      @item.pricegtlt_id = 5
+    elsif @item.price > 50000
+      @item.pricegtlt_id = 6
+    end
     if @item.save!
       respond_to do |format|
         format.html {redirect_to root_path}
@@ -61,8 +75,16 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:search])
-    @images = Image.where(item_id: @items.ids)
+    if params[:q].present?
+      @q = Item.ransack(params[:q])
+      @brands = Brand.all
+      @pricegtlt = Pricegtlt.all
+      @items = @q.result(distinct: true).includes(:brand,:pricegtlt,:images)
+    else
+      params[:q] = {sorts: 'id desc'}
+      @q = Item.ransack()
+      @items = @q.result
+    end
   end
 
   private

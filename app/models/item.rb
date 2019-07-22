@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :item_state
   belongs_to :prefecture
   belongs_to :user
+  belongs_to :pricegtlt
   has_many :messages
   has_one :trade
   has_many :likes, dependent: :destroy
@@ -27,11 +28,4 @@ class Item < ApplicationRecord
     likes.find_by(user_id: user_id)
   end
 
-  def self.search(search)
-    if search
-      Item.where(['name LIKE(?)',"%#{search}%"])
-    else
-      Item.all
-    end
-  end
 end
