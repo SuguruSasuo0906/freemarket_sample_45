@@ -37,15 +37,15 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.price > 300
+    if @item.price > 300 && @item.price < 999
       @item.pricegtlt_id = 1
-    elsif @item.price > 1000
+    elsif @item.price > 1000 && @item.price < 4999
       @item.pricegtlt_id = 2
-    elsif @item.price > 5000
+    elsif @item.price > 5000 && @item.price < 9999
       @item.pricegtlt_id = 3
-    elsif @item.price > 10000
+    elsif @item.price > 10000 && @item.price < 29999
       @item.pricegtlt_id = 4
-    elsif @item.price > 30000
+    elsif @item.price > 30000 && @item.price < 49999
       @item.pricegtlt_id = 5
     elsif @item.price > 50000
       @item.pricegtlt_id = 6
